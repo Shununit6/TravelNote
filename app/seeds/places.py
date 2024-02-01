@@ -27,12 +27,30 @@ def seed_places():
         numerous waterfalls and two mountain ranges, spread across more than 1 million acres that shelter a variety of wildlife.""")
     # Got description from https://travel.usnews.com/Glacier_National_Park_MT/
     placefour = Place(
-        user_id=1, name='', type='', description='')
+        user_id=1, name='Las Vegas', type='City',
+        description="""Sin City, America's Playground, the Entertainment Capital of the World ... all worthy names for this Nevada hot spot.
+        Think of Vegas as a theme park rather than a city it can awe as much as it can overwhelm, and that's part of the appeal.
+        This is a city where inhibitions are not welcome: Every night, Las Vegas draws pleasure mongers to the brightly lit Strip like moths
+        to a flame. While you may not want to go as far as to reenact "The Hangover," you certainly don't want to leave without experiencing
+        a bit of "Viva Las Vegas.""")
+    # Got description from https://travel.usnews.com/Las_Vegas_NV/
     placefive = Place(
-        user_id=2, name='', type='', description='')
+        user_id=2, name='Grand Canyon National Park', type='Park', description=""""Grand" doesn't begin to do this canyon justice.
+        Measuring approximately 277 river miles in length, up to 18 miles in width and a mile deep, this massive chasm in northern Arizona
+        is truly a natural wonder. For 6 million years, the Grand Canyon has expanded with the help of the mighty Colorado River,
+        and for centuries, people from all over the globe have traveled to gaze out over its red and orange grandeur.
+        Managed by the National Park Service and officially designated as a UNESCO World Heritage Site,
+        the Grand Canyon leaves its approximately 4 million visitors per year awestruck.""")
+    # Got description from https://travel.usnews.com/Grand_Canyon_AZ/
     placesix = Place(
-        user_id=3, name='', type='', description='')
-
+        user_id=3, name='Honolulu - Oahu', type='Island',
+        description="""Oahu blends cosmopolitan luxury and breathtaking scenery more than any other Hawaiian island. The state's capital city,
+        Honolulu, showcases the island's urban appeal. Nearby you'll find a host of cultural and historic sites, from the ornate Iolani Palace
+        to the austere USS Arizona Memorial at the Pearl Harbor National Memorial. In the nearby Waikiki neighborhood, a skyline of high-rises
+        and resorts contrasts with sprawling white sand beaches. For a taste of rural Hawaii, visit the North Shore. Here, you'll find the most
+        brilliant blue waters and meandering hikes. But those three spots aren't Oahu's only must-see locales. Its top-notch restaurants,
+        vibrant cultural events and wild nightlife further showcase this island as a "Gathering Place" of Hawaiian culture.""")
+    # Got description from https://travel.usnews.com/Honolulu_Oahu_HI/
 
     db.session.add(placeone)
     db.session.add(placetwo)
