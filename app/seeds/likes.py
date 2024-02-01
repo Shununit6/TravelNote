@@ -2,7 +2,7 @@ from app.models import db, Like, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-# Adds a demo artist, you can add other albums here if you want
+# Adds a demo like, you can add other likes here if you want
 def seed_likes():
     firstlike = Like(
         user_id = 2,
