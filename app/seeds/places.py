@@ -11,14 +11,21 @@ def seed_places():
         with an estimated 24 million visitors annually.""")
     #Got description from https://en.wikipedia.org/wiki/Golden_Gate_Park
     placetwo = Place(
-        user_id=2, name='Maui', type='Island', description="""Maui is not nearly as large as the Big Island, nor is it as small as Lanai,
-        as bustling as Oahu or as quiet as Kauai. For many Hawaii vacationers, Maui is just right - offering a taste of just about
-        everything the Aloha State has to offer, from impressive wildlife to intriguing history and culture. While on a visit here,
-        you can shimmy alongside professional hula dancers, golf along coastal fairways, sail down a zip line, snorkel alongside five
-        different types of sea turtles or simply lounge along some of Hawaii's most notable beaches.""")
+        user_id=2, name='Maui', type='Island',
+        description="""Maui is not nearly as large as the Big Island, nor is it as small as Lanai, as bustling as Oahu or as quiet as Kauai.
+        For many Hawaii vacationers, Maui is just right - offering a taste of just about everything the Aloha State has to offer,
+        from impressive wildlife to intriguing history and culture. While on a visit here, you can shimmy alongside professional hula dancers,
+        golf along coastal fairways, sail down a zip line, snorkel alongside five different types of sea turtles
+        or simply lounge along some of Hawaii's most notable beaches.""")
     #Got description from https://travel.usnews.com/Maui_HI/
     placethree = Place(
-        user_id=3, name='', type='', description='')
+        user_id=3, name='Glacier National Park', type='Park',
+        description="""Named for the remnants of glaciers from the ice age, Glacier National Park is located on the border of Canada and Montana.
+        It is often called the "Crown of the Continent," because of its dizzying array of natural beauty. A favorite spot among hikers,
+        the park features a variety of trails for all skill levels, ranging from the easy Trail of the Cedars (home to towering and beautiful cedars)
+        to the challenging Grinnell Glacier (which offers sweeping views). What's more, the park boasts more than 700 lakes,
+        numerous waterfalls and two mountain ranges, spread across more than 1 million acres that shelter a variety of wildlife.""")
+    # Got description from https://travel.usnews.com/Glacier_National_Park_MT/
     placefour = Place(
         user_id=1, name='', type='', description='')
     placefive = Place(
