@@ -1,26 +1,30 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
-class Storyimage(db.Model):
-    __tablename__ = 'storyimages'
+class Place(db.Model):
+    __tablename__ = 'places'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    story_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("stories.id")), nullable=False)
-    image_url = db.Column(db.String(255), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    name = db.Column(db.String(40), nullable=False)
+    type = db.Column(db.String(40), nullable=False)
+    description = db.Column(db.String(260), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    story = db.relationship('Story', back_populates = 'storyimage')
+    user = db.relationship('User', back_populates='place')
 
 
     def to_dict(self):
         return {
             'id': self.id,
-            'story_id': self.story_id,
-            "image_url": self.image_url,
+            'user_id': self.user_id,
+            'name': self.name,
+            'type': self.type,
+            'desciption': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

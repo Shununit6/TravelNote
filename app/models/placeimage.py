@@ -8,12 +8,12 @@ class Placeimage(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("place.id")), nullable=False)
+    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("places.id")), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    place = db.relationship('Place', back_populates = 'places')
+    place = db.relationship('Place', back_populates = 'place')
 
 
     def to_dict(self):
