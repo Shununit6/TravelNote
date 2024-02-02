@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 
 # Adds a demo plan, you can add other plans here if you want
-def seed_users():
+def seed_plans():
     planone = Plan(
         user_id=1, name='Summer Vacation', number_traveler='5', private=False, city='Honolulu', country='United States', start_date='2024-08-08', end_date='2024-08-16')
     plantwo = Plan(
@@ -11,17 +11,21 @@ def seed_users():
     planthree = Plan(
         user_id=3, name='Anniversary', number_traveler='2', private=False, city='Bangkok', country='Thailand', start_date='2025-01-11', end_date='2025-01-18')
     planfour = Plan(
-        user_id=1, name='Park', number_traveler='6', private=False, city='', country='', start_date='', end_date='')
+        user_id=1, name='Park', number_traveler='6', private=False, city='San Francisco', country='United States', start_date='2024-04-10', end_date='2024-04-11')
     planfive = Plan(
-        user_id=2, name='Europe Tour', number_traveler='4', private=False, city='Paris', country='France', start_date='', end_date='')
+        user_id=2, name='Europe Tour', number_traveler='4', private=False, city='Paris', country='France', start_date='2025-06-12', end_date='2025-06-24')
     plansix = Plan(
-        user_id=3, name='Asia Trip', number_traveler='', private=False, city='Tokyo', country='Japan', start_date='', end_date='')
-    plantseven = Plan(
+        user_id=3, name='Asia Trip', number_traveler='', private=False, city='Tokyo', country='Japan', start_date='2024-05-04', end_date='2024-05-10')
+    planseven = Plan(
         user_id=1, name="Eric's Wedding", number_traveler='5', private=True, city='Napa', country='United States', start_date='2025-07-02', end_date='2025-07-04')
 
     db.session.add(planone)
     db.session.add(plantwo)
     db.session.add(planthree)
+    db.session.add(planfour)
+    db.session.add(planfive)
+    db.session.add(plansix)
+    db.session.add(planseven)
     db.session.commit()
 
 
@@ -31,7 +35,7 @@ def seed_users():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_plans():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
