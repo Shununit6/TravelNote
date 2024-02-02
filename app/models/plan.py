@@ -20,6 +20,7 @@ class Plan(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     user = db.relationship('User', back_populates='plan')
+    expense = db.relationship("Expense", back_populates="plan")
 
 
     def to_dict(self):
