@@ -13,7 +13,7 @@ class Placeimage(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    place = db.relationship('Place', back_populates = 'place')
+    place = db.relationship('Place', back_populates = 'placeimage')
 
 
     def to_dict(self):

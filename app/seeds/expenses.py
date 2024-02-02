@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 
 # Adds a demo expense, you can add other expenses here if you want
-def seed_users():
+def seed_expenses():
     expenseone = Expense(
         plan_id=1, name='Flight Ticket', amount=500, split=False)
     expensetwo = Expense(
