@@ -37,8 +37,8 @@ def seed_plans():
 # it will reset the primary keys for you as well.
 def undo_plans():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.plans RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM plans"))
 
     db.session.commit()
