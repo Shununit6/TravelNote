@@ -20,6 +20,8 @@ class Story(db.Model):
     user = db.relationship('User', back_populates='story')
     place = db.relationship('Place', back_populates = 'story')
 
+    like = db.relationship('Like', back_populates = 'story')
+    storyimage = db.relationship('Storyimage', back_populates = 'story')
 
     def to_dict(self):
         return {
@@ -27,7 +29,7 @@ class Story(db.Model):
             'user_id': self.user_id,
             'place_id': self.place_id,
             'title': self.user_id,
-            'desciption': self.description,
+            'description': self.description,
             'article_url': self.article_url,
             'shorts_url': self.shorts_url,
             'created_at': self.created_at,

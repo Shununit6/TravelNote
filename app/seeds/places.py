@@ -6,7 +6,7 @@ from sqlalchemy.sql import text
 def seed_places():
     placeone = Place(
         user_id=1, name='Golden Gate Park', type='Park',
-        desciption="""Golden Gate Park is an urban park between the Richmond and Sunset districts of San Francisco, United States.
+        description="""Golden Gate Park is an urban park between the Richmond and Sunset districts of San Francisco, United States.
         It is the largest park in the city, containing 1,017 acres, and the third-most visited urban park in the United States,
         with an estimated 24 million visitors annually.""")
     #Got description from https://en.wikipedia.org/wiki/Golden_Gate_Park

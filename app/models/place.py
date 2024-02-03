@@ -17,6 +17,9 @@ class Place(db.Model):
 
     user = db.relationship('User', back_populates='place')
 
+    placeimage = db.relationship('Placeimage', back_populates='place')
+    story = db.relationship('Story', back_populates='place')
+
 
     def to_dict(self):
         return {
@@ -24,7 +27,7 @@ class Place(db.Model):
             'user_id': self.user_id,
             'name': self.name,
             'type': self.type,
-            'desciption': self.description,
+            'description': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

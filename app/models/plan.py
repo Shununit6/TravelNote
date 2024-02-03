@@ -14,13 +14,13 @@ class Plan(db.Model):
     private = db.Column(db.Boolean, nullable=False, default=True)
     city = db.Column(db.String(40), nullable=False)
     country = db.Column(db.String(40), nullable=False)
-    start_date = db.Column(db.DateTime, default=datetime.now)
-    end_date = db.Column(db.DateTime, default=start_date)
+    start_date = db.Column(db.String(255),nullable=False)
+    end_date = db.Column(db.String(255),nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     user = db.relationship('User', back_populates='plan')
-    expense = db.relationship("Expense", back_populates="plan")
+    expense = db.relationship('Expense', cascade = "all,delete-orphan", back_populates='plan')
 
 
     def to_dict(self):

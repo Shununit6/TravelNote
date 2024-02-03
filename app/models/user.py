@@ -17,10 +17,10 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
-    songs = db.relationship('Song', back_populates = 'user')
-    playlists = db.relationship('Playlist', back_populates='user')
     like = db.relationship('Like', back_populates='user')
-    albums = db.relationship('Album', back_populates='user')
+    place = db.relationship('Place', back_populates = 'user')
+    plan = db.relationship('Plan', back_populates='user')
+    story = db.relationship('Story', back_populates='user')
 
     @property
     def password(self):
