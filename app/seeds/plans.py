@@ -15,7 +15,7 @@ def seed_plans():
     planfive = Plan(
         user_id=2, name='Europe Tour', number_traveler='4', private=False, city='Paris', country='France', start_date='2025-06-12', end_date='2025-06-24')
     plansix = Plan(
-        user_id=3, name='Asia Trip', number_traveler='', private=False, city='Tokyo', country='Japan', start_date='2024-05-04', end_date='2024-05-10')
+        user_id=3, name='Asia Trip', number_traveler='2', private=False, city='Tokyo', country='Japan', start_date='2024-05-04', end_date='2024-05-10')
     planseven = Plan(
         user_id=1, name="Eric's Wedding", number_traveler='5', private=True, city='Napa', country='United States', start_date='2025-07-02', end_date='2025-07-04')
 

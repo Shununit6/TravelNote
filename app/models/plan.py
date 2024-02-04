@@ -14,8 +14,8 @@ class Plan(db.Model):
     private = db.Column(db.Boolean, nullable=False, default=True)
     city = db.Column(db.String(40), nullable=False)
     country = db.Column(db.String(40), nullable=False)
-    start_date = db.Column(db.String(255),nullable=False)
-    end_date = db.Column(db.String(255),nullable=False)
+    start_date = db.Column(db.String(10),nullable=False)
+    end_date = db.Column(db.String(10),nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
