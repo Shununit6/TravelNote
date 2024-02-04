@@ -43,3 +43,75 @@ def get_plans_by_id(planId):
 # Create a plan
 # Require Authentication: true
 # POST /api/plans
+@plan_routes.route('/', method=['POST'])
+@login_required
+def post_plan():
+    """
+    Creates and returns a new plan in a dictionary.
+    """
+    form = PlanForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        new_plan = Plan(
+            user_id=current_user.id,
+            name=form.data['name'],
+            number_traveler=form.data['number_traveler'],
+            private = form.data['private'],
+            city=form.data['city'],
+            country=form.data['country'],
+            start_date=form.data['start_date'],
+            end_date=form.data['end_date']
+        )
+
+        db.session.add(new_plan)
+        db.session.commit()
+
+        return jsonify(new_plan.to_dict()), 201  # HTTP status code for Created
+    return jsonify({"PlanForm validation failed.", form.errors}), 401
+
+
+
+# Edit a Plan
+# Updates and returns an existing plan.
+# Require Authentication: true
+# Require proper authorization: Plan must be created by the current user
+# PUT /api/plans/:planId
+@plan_routes.route('/<int:planId>', methods=['PUT'])
+@login_required
+def edit_plan(planId):
+    planbyid = Plan.query.get(planId)
+    if not planbyid:
+        return {'errors': f"Plan {planId} does not exist."}, 400
+    # checks if plan is created by the current user
+    if planbyid.user_id != current_user.id:
+        return {'errors': f"Plan {planId} must be created by the current user."}, 401
+    payload= request.get_json()
+    planbyid.name=payload['name']
+    planbyid.number_traveler=payload['number_traveler']
+    planbyid.private=payload['private']
+    planbyid.city=payload['city']
+    planbyid.country=payload['country']
+    planbyid.start_date=payload['start_date']
+    planbyid.end_date=payload['end_date']
+    db.session.commit()
+    return jsonify(planbyid.to_dict())
+
+
+# Delete a plan
+# Deletes an existing plan: A logged in user may delete one of their own Albums, removing it from the list of visible Albums without causing a refresh/redirect.
+# Require Authentication: true
+# Require proper authorization: Album must be created by the current user
+# DELETE /api/albums/:id
+@album_routes.route('/<int:albumId>', methods=['DELETE'])
+@login_required
+def delete_album(albumId):
+    albumbyid = Album.query.get(albumId)
+    if not albumbyid:
+        return {'errors': f"Album {id} does not exist."}, 400
+    # checks if album is created by the current user
+    if albumbyid.user_id != current_user.id:
+        return {'errors': f"Album{id} must be created by the current user."}, 401
+    db.session.delete(albumbyid)
+    db.session.commit()
+    return {'message': 'Delete successful.'}
