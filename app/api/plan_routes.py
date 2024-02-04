@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Plan
-from ..forms.create_edit_album_form import CreateEditAlbumForm
+from ..forms.plan_form import PlanForm
 
 plan_routes = Blueprint('plans', __name__)
 
