@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, NumberRange
 
 class PlanForm(FlaskForm):
     name = StringField('Plan Name', validators=[DataRequired(message='Plan Name is required')])
-    number_traveler =IntegerField('Number of Travelers', validators=[DataRequired(message='Number of travelers are required'), NumberRange(min=1, message='Number of travelers must be at lease 1')])
+    number_traveler =IntegerField('Number of Travelers', validators=[NumberRange(min=1, message='Number of travelers must be at lease 1')])
     private = BooleanField('Private', validators=[DataRequired(message='Private is required')])
     city = StringField('City', validators=[DataRequired(message='City is required')])
     country = StringField('Country', validators=[DataRequired(message='Country is required')])
