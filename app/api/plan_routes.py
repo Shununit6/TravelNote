@@ -82,10 +82,10 @@ def post_plan():
 def edit_plan(planId):
     planbyid = Plan.query.get(planId)
     if not planbyid:
-        return {'errors': f"Plan {planId} does not exist."}, 400
+        return {'errors': f"Plan {planId} does not exist."}, 404
     # checks if plan is created by the current user
     if planbyid.user_id != current_user.id:
-        return {'errors': f"Plan {planId} must be created by the current user."}, 401
+        return {'errors': f"Forbidden, Plan {planId} must be created by the current user."}, 403
     payload= request.get_json()
     planbyid.name=payload['name']
     planbyid.number_traveler=payload['number_traveler']
@@ -99,19 +99,19 @@ def edit_plan(planId):
 
 
 # Delete a plan
-# Deletes an existing plan: A logged in user may delete one of their own Albums, removing it from the list of visible Albums without causing a refresh/redirect.
+# Deletes an existing plan: A logged in user may delete one of their own plans, removing it from the list of visible Plans without causing a refresh/redirect.
 # Require Authentication: true
-# Require proper authorization: Album must be created by the current user
-# DELETE /api/albums/:id
-@album_routes.route('/<int:albumId>', methods=['DELETE'])
+# Require proper authorization: Plan must be created by the current user
+# DELETE /api/plans/:planId
+@plan_routes.route('/<int:planId>', methods=['DELETE'])
 @login_required
-def delete_album(albumId):
-    albumbyid = Album.query.get(albumId)
-    if not albumbyid:
-        return {'errors': f"Album {id} does not exist."}, 400
-    # checks if album is created by the current user
-    if albumbyid.user_id != current_user.id:
-        return {'errors': f"Album{id} must be created by the current user."}, 401
-    db.session.delete(albumbyid)
+def delete_plan(planId):
+    planbyid = Plan.query.get(planId)
+    if not planbyid:
+        return {'errors': f"Plan {planId} does not exist."}, 404
+    # checks if plan is created by the current user
+    if planbyid.user_id != current_user.id:
+        return {'errors': f"Forbidden, Plan{planId} must be created by the current user."}, 403
+    db.session.delete(planbyid)
     db.session.commit()
-    return {'message': 'Delete successful.'}
+    return jsonify({'message': 'Successfully deleted'})
