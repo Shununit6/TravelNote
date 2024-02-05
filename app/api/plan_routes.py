@@ -86,7 +86,7 @@ def edit_plan(planId):
         return {'errors': f"Plan {planId} does not exist."}, 404
     # checks if plan is created by the current user
     if planbyid.user_id != current_user.id:
-        return {'errors': f"Forbidden, Plan {planId} must be created by the current user."}, 403
+        return {'errors': f"Forbidden, Plan {planId} is not created by the current user."}, 403
     payload= request.get_json()
     planbyid.name=payload['name']
     planbyid.number_traveler=payload['number_traveler']
@@ -112,7 +112,7 @@ def delete_plan(planId):
         return {'errors': f"Plan {planId} does not exist."}, 404
     # checks if plan is created by the current user
     if planbyid.user_id != current_user.id:
-        return {'errors': f"Forbidden, Plan{planId} must be created by the current user."}, 403
+        return {'errors': f"Forbidden, Plan {planId} is not created by the current user."}, 403
     db.session.delete(planbyid)
     db.session.commit()
     return jsonify({'message': 'Successfully deleted'})
