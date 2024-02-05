@@ -9,7 +9,6 @@ plan_routes = Blueprint('plans', __name__)
 ### Require Authentication: false
 ### `GET /api/plans`
 @plan_routes.route('/')
-@login_required
 def get_all_plans():
     """
     Query for all plans and returns them in a list of plan dictionaries
@@ -38,12 +37,14 @@ def get_plans_by_id(planId):
     Query for the details of a plan specified by its id and returns that plan in a dictionary.
     """
     plan = Plan.query.get(planId)
+    if(not plan):
+        return {'errors': f"Plan {planId} does not exist."}, 404
     return jsonify(plan.to_dict())
 
 # Create a plan
 # Require Authentication: true
 # POST /api/plans
-@plan_routes.route('/', method=['POST'])
+@plan_routes.route('/', methods=['POST'])
 @login_required
 def post_plan():
     """
@@ -68,7 +69,7 @@ def post_plan():
         db.session.commit()
 
         return jsonify(new_plan.to_dict()), 201  # HTTP status code for Created
-    return jsonify({"PlanForm validation failed.", form.errors}), 401
+    return form.errors, 401
 
 
 
