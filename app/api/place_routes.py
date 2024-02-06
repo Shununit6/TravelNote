@@ -57,12 +57,8 @@ def post_place():
         new_place = Place(
             user_id=current_user.id,
             name=form.data['name'],
-            number_traveler=form.data['number_traveler'],
-            private = form.data['private'],
-            city=form.data['city'],
-            country=form.data['country'],
-            start_date=form.data['start_date'],
-            end_date=form.data['end_date']
+            type=form.data['type'],
+            description = form.data['description']
         )
 
         db.session.add(new_place)
@@ -89,12 +85,8 @@ def edit_place(placeId):
         return {'errors': f"Forbidden, Place {placeId} is not created by the current user."}, 403
     payload= request.get_json()
     placebyid.name=payload['name']
-    placebyid.number_traveler=payload['number_traveler']
-    placebyid.private=payload['private']
-    placebyid.city=payload['city']
-    placebyid.country=payload['country']
-    placebyid.start_date=payload['start_date']
-    placebyid.end_date=payload['end_date']
+    placebyid.type=payload['type']
+    placebyid.description = payload['description']
     db.session.commit()
     return jsonify(placebyid.to_dict())
 
