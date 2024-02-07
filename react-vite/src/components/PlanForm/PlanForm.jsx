@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useHistory,} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
 import { createPlan, updatePlan } from "../../redux/plans";
-// import { createPlan, createGroupImage, updateGroup,} from "../../store/s";//groupDetails, updateGroupImages
 import "./PlanForm.css";
 
 const PlanForm = ({ plan, formType }) => {
@@ -14,8 +13,8 @@ const PlanForm = ({ plan, formType }) => {
     let [number_traveler, setNumber_Traveler] = useState(plan?.number_traveler);
     let [city, setCity] = useState(plan?.city);
     let [country, setCountry] = useState(plan?.country);
-    let [startdate, setStartDate] = useState(plan?.start_date);
-    let [enddate, setEndDate] = useState(plan?.end_date);
+    let [startDate, setStartDate] = useState(plan?.start_date);
+    let [endDate, setEndDate] = useState(plan?.end_date);
     let privateState;
     let organizerId = sessionUser.id;
     if(plan?.private === 1){
@@ -28,7 +27,7 @@ const PlanForm = ({ plan, formType }) => {
     let [isPrivate, setIsPrivate] = useState(privateState);
 
     let isUpdate = false;
-    if(formType === "Update Group"){
+    if(formType === "Update Plan"){
         isUpdate = true;
     }
 
@@ -36,97 +35,67 @@ const PlanForm = ({ plan, formType }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
-        const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], start_date:[], end_date:[] };
+        const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };
         if (!name.length) errors["name"].push("Name is required");
         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
         if (number_traveler < 1) errors["number_traveler"].push("");
         if (!isPrivate.length) errors["isPrivate"].push("Visibility Type is required");
         if (!city.length) errors["city"].push("City is required");
         if (!country.length) errors["country"].push("Country is required");
-        if (!city.length) errors["city"].push("City is required");
-        if (!city.length) errors["city"].push("City is required");
-        if(formType === "Create Group" || formType === "Update Group"){
-            city = location.split(",")[0];
-            state = location.split(",")[1];
-            if(!city){
-                errors["location"].push("City is required");
-            }
-            if(!state){
-                errors["location"].push("State is required");
-            }
-        }
+        if (!startDate.length) errors["startDate"].push("Plan start date is required");
+        if (new Date(`${new Date()}`).getTime() > new Date(startDate).getTime()) errors["startDate"].push("Start date must be in the future");
+        if (!endDate.length) errors["endDate"].push("Plan end date is required");
+        if (new Date(`${endDate}`).getTime() < new Date(startDate).getTime()) errors["endDate"].push("End date is less than start date");
+
         setValidationErrors(errors);
-    }, [location, name, about, type, isPrivate, imageUrl]);
+    }, [name, number_traveler, isPrivate, city, country, startDate, endDate]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        // console.log(location);
-        city = location.split(",")[0];
-        state = location.split(",")[1];
-        // console.log(validationErrors);
         if(isPrivate === "Private"){
             isPrivate = 1;
         }else{
             isPrivate = 0;
         }
-        group = { ...group, city, state, name, about, type, private:isPrivate, organizerId};
-        // console.log("78group", group.organizerId);
-        // console.log("user.id", organizerId);
-        let newGroup;
-        let errorCount = validationErrors.location.length + validationErrors.name.length
-        + validationErrors.about.length + validationErrors.type.length + validationErrors.isPrivate.length
-        + validationErrors.imageUrl.length;
+        plan = { ...plan,  name, number_traveler, private:isPrivate, city, country, startDate, endDate };
+
+        let newPlan;
+        let errorCount = validationErrors.name.length + validationErrors.number_traveler.length
+        + validationErrors.isPrivate.length + validationErrors.city.length
+        + validationErrors.country.length + validationErrors.startDate.length
+        + validationErrors.endDate.length;
         // console.log(errorCount);
         if (errorCount > 0){
             // console.log("has errors");
             }else{
                 // console.log("no errors");
-                if (formType === "Update Group") {
-                    if(sessionUser && Object.values(groups)[0].organizerId !== sessionUser.id){
-                        history.push(`/`);
-                        return;
-                    }
-                    // {console.log("isprivate", isPrivate)}
-                    // console.log("updateimageurl",imageUrl);
-                    group.imageUrl = imageUrl;
-                    // console.log(group);
-                    newGroup = await dispatch(updateGroup(group));
-                    //uncomment to edit groupimages
-                    // newGroup = await dispatch(updateGroupImages(group, imageUrl));
+                if (formType === "Update Plan") {
+                    newPlan = await dispatch(updatePlan(plan));
                 } else {
-                    newGroup = await dispatch(createGroup(group));
-                    let GroupImages={url: imageUrl, preview: 1};
-                    await dispatch(createGroupImage(GroupImages, newGroup.id));
+                    newPlan = await dispatch(createPlan(plan));
                 }
-                if (newGroup.id) {
-                    // console.log("newGroup.id", newGroup.id);
-                    history.push(`/groups/${newGroup.id}`);
+                if (newPlan.id) {
+                    // console.log("newPlan.id", newPlan.id);
+                    history.push(`/plans/${newPlan.id}`);
                 } else {
-                    const { validationErrors } = await newGroup.json();
+                    const { validationErrors } = await newPlan.json();
                     setValidationErrors(validationErrors);
                 }
-                // console.log(newGroup);
+                // console.log(newPlan);
 
-                setCity('');
-                setState('');
-                setLocation('');
                 setName('');
-                setAbout('');
-                setType('');
+                setNumber_Traveler('');
                 setIsPrivate('');
-                setImageUrl('')
+                setCity('');
+                setCountry('');
+                setStartDate('');
+                setEndDate('');
                 setValidationErrors({});
                 setHasSubmitted(false);
             }
-        // const button = document.getElementById("groupButton");
-        // if (Object.values(validationErrors).length){
-        //     button.disabled = true;
-        // }else{
-        //     button.disabled = false;
-        // }
     };
 
 //     /* **DO NOT CHANGE THE RETURN VALUE** */
