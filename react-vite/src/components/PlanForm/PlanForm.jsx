@@ -107,11 +107,6 @@ const PlanForm = ({ plan, formType }) => {
                     {!isUpdate && <h2>Start a New Plan</h2>}
                     {isUpdate && <h2>Update your Plan</h2>}
                 </div>
-            <h2>We'll walk you through a few steps to build your local community</h2>
-            <div><hr/>
-            <h2>First, set your group's location.</h2>
-            <p>San Francisco Events groups meet locally, in person and online. We'll connect you with people in your area, and more can join you online.</p>
-            </div>
             <div>
                 <label>
                     <input
@@ -131,11 +126,6 @@ const PlanForm = ({ plan, formType }) => {
                 </label>
             </div>
             <div>
-                <hr/>
-                <h2>What will your group's name be?</h2>
-                <p>Choose a name that will give people a clear idea of what the group is about. Feel free to get creative! You can edit this later if you change your mind.</p>
-            </div>
-            <div>
                 <label>
                     <input
                         id='groupformname'
@@ -153,16 +143,7 @@ const PlanForm = ({ plan, formType }) => {
                         ))}
                 </label>
             </div>
-            <div>
-                <hr/>
-                <h2>Now describe the purpose of your group.</h2>
-                <p>People will see this when we promote your group, but you'll be able to add to it later, too.</p>
-                <p>
-                1. What's the purpose of the group?<br></br>
-                2. Who should join?<br></br>
-                3. What will you do at your events?
-                </p>
-            </div>
+
             <div>
                 <label>
                     <textarea
@@ -179,10 +160,6 @@ const PlanForm = ({ plan, formType }) => {
                             </div>
                         ))}
                 </label>
-            </div>
-            <div>
-                <hr/>
-                <h2>Final steps...</h2>
             </div>
             <div>
                 <label>
@@ -218,28 +195,11 @@ const PlanForm = ({ plan, formType }) => {
                         ))}
                 </label>
             </div>
-            <div>
-                <label><p>Please add an image URL for your group below:</p>
-                    <textarea
-                        id='groupformimageUrl'
-                        value={imageUrl}
-                        placeholder="Image Url"
-                        onChange={(e) => setImageUrl(e.target.value)}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.imageUrl.length > 0 &&
-                        validationErrors.imageUrl.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div><hr/></div>
+
             <button type="submit" id="GroupCreateUpdateButton" >{formType}</button>
             </div>
         </form>
     );
 };
 
-export default GroupForm;
+export default PlanForm;
