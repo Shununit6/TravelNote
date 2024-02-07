@@ -102,10 +102,10 @@ const PlanForm = ({ plan, formType }) => {
     return (
         <form onSubmit={handleSubmit}>
             {/* {console.log(validationErrors)} */}
-            <div id="groupformcreateupdate">
+            <div id="planformcreateupdate">
                 <div id="titlecreateupdategroupform">
-                    {!isUpdate && <h2>Start a New Group</h2>}
-                    {isUpdate && <h2>Update your Group</h2>}
+                    {!isUpdate && <h2>Start a New Plan</h2>}
+                    {isUpdate && <h2>Update your Plan</h2>}
                 </div>
             <h2>We'll walk you through a few steps to build your local community</h2>
             <div><hr/>
