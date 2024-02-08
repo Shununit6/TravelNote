@@ -110,27 +110,9 @@ const PlanForm = ({ plan, formType }) => {
             <div>
                 <label>
                     <input
-                        id='groupformlocation'
+                        id='planformname'
                         type="text"
-                        placeholder="City, STATE"
-                        onChange={(e) => setLocation(e.target.value)}
-                        value={location}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.location.length > 0 &&
-                        validationErrors.location.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='groupformname'
-                        type="text"
-                        placeholder="What is your group name?"
+                        placeholder="What is your plan name?"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                     />
@@ -143,18 +125,17 @@ const PlanForm = ({ plan, formType }) => {
                         ))}
                 </label>
             </div>
-
             <div>
                 <label>
                     <textarea
-                        id='groupformabout'
-                        value={about}
-                        placeholder="Please write at least 50 characters"
+                        id='planformnumber'
+                        value={number_traveler}
+                        placeholder="Please enter a number larger than 0"
                         onChange={(e) => setAbout(e.target.value)}
                     />
                     {hasSubmitted &&
-                        validationErrors.about.length > 0 &&
-                        validationErrors.about.map((error, idx) => (
+                        validationErrors.number_traveler.length > 0 &&
+                        validationErrors.number_traveler.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
@@ -163,11 +144,11 @@ const PlanForm = ({ plan, formType }) => {
             </div>
             <div>
                 <label>
-                    <p>Is this an in-person or online group?</p>
+                    <p>Is this a private or public plan?</p>
                     <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
                         <option value='' disabled>(select one)</option>
-                        <option value="In person">In person</option>
-                        <option value="Online">Online</option>
+                        <option value="Private">Private</option>
+                        <option value="Public">Public</option>
                     </select>
                     {hasSubmitted &&
                         validationErrors.type.length > 0 &&
