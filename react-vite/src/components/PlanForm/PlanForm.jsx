@@ -16,7 +16,7 @@ const PlanForm = ({ plan, formType }) => {
     let [startDate, setStartDate] = useState(plan?.start_date);
     let [endDate, setEndDate] = useState(plan?.end_date);
     let privateState;
-    let organizerId = sessionUser.id;
+    let userId = sessionUser.id;
     if(plan?.private === 1){
         privateState="Private";
     }else if(plan?.private === 0){
@@ -161,22 +161,86 @@ const PlanForm = ({ plan, formType }) => {
             </div>
             <div>
                 <label>
-                    <p>Is this group private or public?</p>
-                    <select id="groupformisPrivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
-                        <option value='' disabled>(select one)</option>
-                        <option value="Private">Private</option>
-                        <option value="Public">Public</option>
-                    </select>
+                    <input
+                        id='planformcity'
+                        type="text"
+                        placeholder="Please add the city"
+                        onChange={(e) => setCity(e.target.value)}
+                        value={city}
+                    />
                     {hasSubmitted &&
-                        validationErrors.isPrivate.length > 0 &&
-                        validationErrors.isPrivate.map((error, idx) => (
+                        validationErrors.city.length > 0 &&
+                        validationErrors.city.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
                         ))}
                 </label>
             </div>
-
+            <div>
+                <label>
+                    <input
+                        id='planformcity'
+                        type="text"
+                        placeholder="Please add the country"
+                        onChange={(e) => setCountry(e.target.value)}
+                        value={country}
+                    />
+                    {hasSubmitted &&
+                        validationErrors.country.length > 0 &&
+                        validationErrors.country.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <div>
+                <label>
+                     When does your trip start?
+                     <div>
+                        <input
+                            id='planformstartDate'
+                            type="datetime-local"
+                            name="startDate"
+                            placeholder="MM/DD/YYYY, HH/mm AM"
+                            onChange={(e) => setStartDate(e.target.value)}
+                            value={startDate}
+                            min={Date()}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.startDate.length > 0 &&
+                            validationErrors.startDate.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                     </div>
+                 </label>
+            </div>
+            <div>
+                <label>
+                    When does your trip end?
+                    <div>
+                        <input
+                            id='planformendDate'
+                            type="datetime-local"
+                            name="endDate"
+                            placeholder="MM/DD/YYYY, HH/mm PM"
+                            onChange={(e) => setEndDate(e.target.value)}
+                            value={endDate}
+                            min={startDate}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.endDate.length > 0 &&
+                            validationErrors.endDate.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </div>
+                </label>
+            </div>
             <button type="submit" id="GroupCreateUpdateButton" >{formType}</button>
             </div>
         </form>
