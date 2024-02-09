@@ -118,10 +118,10 @@ const plansReducer = (state = {}, action) => {
                 if (!plansState[plan.id]) { plansState[plan.id] = plan; }
             });
             return plansState;
-        };
+        }
         case LOAD_PLAN_DETAILS: {
             return { ...state, [action.plan.id]: action.plan };
-        };
+        }
         case RECEIVE_PLAN:
             return { ...state, [action.plan.id]: action.plan };
         case UPDATE_PLAN:
@@ -130,7 +130,7 @@ const plansReducer = (state = {}, action) => {
             const planState = { ...state };
             delete planState[action.plan];
             return planState;
-        };
+        }
         default:
             return state;
     }

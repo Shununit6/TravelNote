@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 import './Home.css';
 import MenuLibrary from '../MenuLibrary';
 import MainPageContent from '../MainPageContent';
 
 function Home(){
-
 	return (
+        <>
 		<nav>
 			<div className="homewrapper">
                 <div className="homeitem-1">
@@ -16,7 +16,8 @@ function Home(){
                 </div>
 			</div>
 		</nav>
-	);
+        </>
+	)
 }
 
 export default Home;

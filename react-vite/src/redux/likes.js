@@ -81,29 +81,28 @@ export const deleteLike = (likeId, songId) => async (dispatch) => {
 
 const likesReducer = (state = { }, action) => {
     switch (action.type) {
-        case LOAD_LIKES:
-            const likesState = {...state};
-            // console.log(action)
+        case LOAD_LIKES:{
+            const likesState = {...state}
             action.likes.likes.forEach((like) => {
                 if(!likesState[like.id]) {likesState[like.id] = like;}
             });
-            return {...likesState};
+            return {...likesState}}
         case LOAD_SONG_LIKES:{
-            return { ...state, ...action.likes };
-        };
-        case RECEIVE_LIKE:
-            // console.log("actionhereisthe", action)
-            // console.log("actionhereisthe", action.like.id)
-            // console.log("state", {...state})
-            return { ...state, [action.like.id]: action.like};
+            return { ...state, ...action.likes }
+        }
+        case RECEIVE_LIKE:{
+            console.log("actionhereisthe", action)
+            console.log("actionhereisthe", action.like.id)
+            console.log("state", {...state})
+            return { ...state, [action.like.id]: action.like}}
         case REMOVE_LIKE:{
-            // console.log("deleteaction", action)
-            // console.log("deleteactionhereisthe", action)
-            // console.log("deleteactionhereisthe", action.like.id)
+            console.log("deleteaction", action)
+            console.log("deleteactionhereisthe", action)
+            console.log("deleteactionhereisthe", action.like.id)
             const likeState = { ...state, ...action.likes};
-            // console.log("state", likeState)
-            // console.log("statelikeState[likes]", likeState.likes)
-            // console.log("statelikeState[likes]", likeState.likes[0].id)
+            console.log("state", likeState)
+            console.log("statelikeState[likes]", likeState.likes)
+            console.log("statelikeState[likes]", likeState.likes[0].id)
             delete likeState[action.like];
             return likeState;
         }
