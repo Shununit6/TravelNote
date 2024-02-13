@@ -1,0 +1,32 @@
+#deleteplanmodal{
+    display: grid;
+}
+
+#deleteplanmodal > h2{
+    justify-self: center;
+    margin-bottom: 0.3em;
+}
+
+#deleteplanmodal > p{
+    margin-top: 0;
+}
+
+#yesdeleteplan{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    color: white;
+    background-color: red;
+    width:98%;
+    cursor: pointer;
+}
+
+#nokeepplan{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    color: white;
+    background-color: #555555;
+    width:98%;
+    cursor: pointer;
+}

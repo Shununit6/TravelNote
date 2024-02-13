@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import Home from '../components/Home/Home';
 import Plans from '../components/Plans/Plans'
 import Layout from './Layout';
+import PlanDetails from '../components/PlanDetails/PlanDetails';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "plans/:planId",
+        element: <PlanDetails />,
       },
       {
         path: "plans",
