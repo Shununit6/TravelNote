@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useHistory,} from "react-router-dom"; //useParams,
+import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
 import { createPlan, updatePlan } from "../../redux/plans";
 import "./PlanForm.css";
 
 const PlanForm = ({ plan, formType }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
     const plans = useSelector(state => state.plans);
     let [name, setName] = useState(plan?.name);
@@ -81,7 +81,7 @@ const PlanForm = ({ plan, formType }) => {
                 }
                 if (newPlan.id) {
                     // console.log("newPlan.id", newPlan.id);
-                    history.push(`/plans/${newPlan.id}`);
+                    navigate(`/plans/${newPlan.id}`);
                 } else {
                     const { validationErrors } = await newPlan.json();
                     setValidationErrors(validationErrors);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getPlanDetails} from '../../redux/plans';
 import "./planDetails.css";
@@ -16,7 +16,7 @@ const PlanDetails = () => {
         dispatch(getPlanDetails(planId)).then(()=>setIsLoaded(true))
     }, [dispatch, planId])
     if(isLoaded && !planData){
-        return (<Redirect to="/plans"/>);
+        return (<Navigate to="/plans"/>);
     }
     if(!isLoaded) {
         return (<div>Loading...</div>);

@@ -1,15 +1,15 @@
 // import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
-import { useHistory } from "react-router-dom"; //useParams,
+import { useNavigate } from "react-router-dom"; //useParams,
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./DeletePlan.css";
+import "./DeletePlanModal.css";
 import { deletePlan } from "../../redux/plans";
 
 const DeletePlanModal = ({plan}) => {
     const planId = plan.id;
     // console.log("deletemodal", planId);
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     // const sessionUser = useSelector(state => state.session.user);
@@ -18,7 +18,7 @@ const DeletePlanModal = ({plan}) => {
         e.preventDefault();
         await dispatch(deletePlan(planId));
         closeModal();
-        history.push(`/plans`);
+        navigate(`/plans`);
     };
 
     return (

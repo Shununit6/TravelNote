@@ -5,6 +5,7 @@ import Home from '../components/Home/Home';
 import Plans from '../components/Plans/Plans'
 import Layout from './Layout';
 import PlanDetails from '../components/PlanDetails/PlanDetails';
+import PlanForm from '../components/PlanForm/PlanForm';
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "plans/:planId/edit",
+        element: <PlanForm />,
       },
       {
         path: "plans/:planId",
