@@ -12,18 +12,6 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "login",
-        element: <LoginFormPage />,
-      },
-      {
-        path: "signup",
-        element: <SignupFormPage />,
-      },
-      {
         path: "plans/:planId/edit",
         element: <PlanForm />,
       },
@@ -34,6 +22,18 @@ export const router = createBrowserRouter([
       {
         path: "plans",
         element: <Plans />,
+      },
+      {
+        path: "login",
+        element: <LoginFormPage />,
+      },
+      {
+        path: "signup",
+        element: <SignupFormPage />,
+      },
+      {
+        path: "/",
+        element: <Home />,
       },
     ],
   },
