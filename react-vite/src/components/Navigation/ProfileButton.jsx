@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import "./ProfileButton.css";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -11,10 +13,11 @@ function ProfileButton() {
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
 
-  // const toggleMenu = (e) => {
-  //   e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
-  //   setShowMenu(!showMenu);
-  // };
+  const toggleMenu = (e) => {
+    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    if (showMenu) return;
+    setShowMenu(!showMenu);
+  };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -37,6 +40,8 @@ function ProfileButton() {
     dispatch(thunkLogout());
     closeMenu();
   };
+
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
 //   return (
 //     <>
@@ -98,7 +103,7 @@ return (
     }
     <div id="iconandcloseopenmenu">
     {user && !showMenu &&
-      <div id="openMenuNavButton" onClick={openMenu}>
+      <div id="openMenuNavButton" onClick={toggleMenu}>
         <i className="fas fa-user-circle fa-2x"/>
         <i className="fas fa-sort-down fa-2x"></i>
       </div>}
@@ -107,7 +112,7 @@ return (
       <i className="fas fa-user-circle fa-2x"/>
       <i className="fas fa-sort-up fa-2x"></i>
       </div>}
-    <section className={"profile-dropdown"} ref={ulRef}>
+    <section className={ulClassName} ref={ulRef}>
       {user ? (
         <div id="menuwithlogout">
           <div>Hello, {user.username}</div>

@@ -5,7 +5,7 @@ import Home from '../components/Home/Home';
 import Plans from '../components/Plans/Plans'
 import Layout from './Layout';
 import PlanDetails from '../components/PlanDetails/PlanDetails';
-import PlanForm from '../components/PlanForm/PlanForm';
+import EditPlanForm from '../components/EditPlanForm/EditPlanForm';
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "plans/:planId/edit",
-        element: <PlanForm />,
+        element: <EditPlanForm />,
       },
       {
         path: "plans/:planId",

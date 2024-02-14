@@ -1,0 +1,36 @@
+#signupform {
+    display: grid;
+    width:340px;
+    grid-gap: 0.6em;
+    justify-content: center;
+    font-family: Georgia, serif, cursive;
+  }
+
+  #signupmodal > h1 {
+    text-align: center;
+  }
+
+  .signupinput {
+    width: 260px;
+    padding: 6px 6px;
+    display: inline-block;
+  }
+
+  #disabledsignup {
+    font-size: 1em;
+    padding: 6px 6px;
+    color:white;
+    background-color: darkgray;
+    margin-bottom: 1.2em;
+    /* margin: 2px 1em; */
+  }
+
+  #regularsignup {
+    font-size: 1em;
+    padding: 6px 6px;
+    color:white;
+    background-color: red;
+    cursor: pointer;
+    margin-bottom: 1.2em;
+    /* margin: 2px 1em; */
+  }

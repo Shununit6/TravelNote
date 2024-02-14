@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { planDetails } from "../../store/plan";
+import { getPlanDetails } from "../../redux/plans";
 import { useEffect } from "react";
 import PlanForm from "../PlanForm";
 
@@ -10,7 +10,7 @@ const EditPlanForm = () => {
     const plan = useSelector((state) => state.plans[planId]);
 
     useEffect(() => {
-        dispatch(planDetails(planId));
+        dispatch(getPlanDetails(planId));
     }, [dispatch, planId]);
 
     if (!plan) return <></>;
