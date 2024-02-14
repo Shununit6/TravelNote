@@ -132,8 +132,10 @@ const PlanForm = ({ plan, formType }) => {
             </div>
             <div>
                 <label>
-                    <textarea
+                    <input
                         id='planformnumber'
+                        type="number"
+                        min="1"
                         value={number_traveler}
                         placeholder="Please enter a number larger than 0"
                         onChange={(e) => setNumber_Traveler(e.target.value)}
