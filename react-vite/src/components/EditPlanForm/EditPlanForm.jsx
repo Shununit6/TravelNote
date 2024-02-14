@@ -14,9 +14,6 @@ const EditPlanForm = () => {
     }, [dispatch, planId]);
 
     if (!plan) return <></>;
-    console.log(plan)
-    console.log("length")
-    console.log(Object.keys(plan).length)
 
     /* **DO NOT CHANGE THE RETURN VALUE** */
     return (

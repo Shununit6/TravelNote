@@ -11,20 +11,20 @@ function MainPageContent(){
         <nav>
             <div id="MainPageContentCss">
                 <div>
-                <p>Trip Plans</p>
-                <ul className='MainPageFourSong'>
-                    <Plans/>
-                        {/* <SongIndex num={num}/> */}
-                </ul>
+                    <p>Trip Plans</p>
+                    <ul className='MainPageFourSong'>
+                        <Plans/>
+                            {/* <SongIndex num={num}/> */}
+                    </ul>
                 </div>
                 <div>
-                    <p>Spotify Albums</p>
+                    <p>Places To Go</p>
                     <ul className='MainPageFourAlbum'>
                             {/* <Albums num={num}/> */}
                     </ul>
                 </div>
                 <div>
-                    <p>Spotify Playlists</p>
+                    <p>Stories</p>
                     <ul className='MainPageFourPlaylist'>
                             {/* <PlaylistIndex num={num}/> */}
                     </ul>

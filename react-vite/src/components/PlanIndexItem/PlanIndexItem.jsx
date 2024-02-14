@@ -8,6 +8,7 @@ const PlanIndexItem = ({ plan }) => {
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
     const { id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
+    const isPrivate = plan.private;
 
     return (
         <Link id="planlinkwithtext" to={`/plans/${id}`} key={`${id}`}>
@@ -15,7 +16,7 @@ const PlanIndexItem = ({ plan }) => {
                 {/* <div id="planitem1">
                     <img id="planExpenseImage" src={url} alt="planExpenseImage" />
                 </div> */}
-                <div id="planitem2">
+                {!isPrivate && <div id="planitem2">
                     {id}
                     {name}
                     {number_traveler}
@@ -25,7 +26,7 @@ const PlanIndexItem = ({ plan }) => {
                     {end_date}
                     {created_at}
                     {updated_at}
-                </div>
+                </div>}
             </div>
         </Link>
 
