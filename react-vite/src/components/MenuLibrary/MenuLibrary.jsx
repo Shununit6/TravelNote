@@ -1,6 +1,6 @@
 // import React from 'react';
 // import { NavLink, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './MenuLibrary.css';
 
@@ -14,12 +14,12 @@ function MenuLibrary(){
 				<i className="fa-brands fa-spotify"></i>
 				{" "} Spotify
             </div> */}
-            <div>
+            {/* <div>
                 <Link exact to="/">
 					<i id="fa-house" className="fa-solid fa-house"></i>
 					{" "} Home
 				</Link>
-            </div>
+            </div> */}
             {/* <div>
 				<i className="fa-solid fa-magnifying-glass"></i>
 				{" "} Search
