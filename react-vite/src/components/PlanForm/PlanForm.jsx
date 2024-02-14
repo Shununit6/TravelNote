@@ -62,8 +62,9 @@ const PlanForm = ({ plan, formType }) => {
         }else{
             isPrivate = 0;
         }
-        plan = { ...plan,  name, number_traveler, private:isPrivate, city, country, startDate, endDate };
-
+        plan = { ...plan,  name, number_traveler, private:isPrivate, city, country};
+        plan.start_date = startDate;
+        plan.end_date = endDate;
         let newPlan;
         let errorCount = validationErrors.name.length + validationErrors.number_traveler.length
         + validationErrors.isPrivate.length + validationErrors.city.length
@@ -75,7 +76,9 @@ const PlanForm = ({ plan, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Plan") {
+                    console.log("before", plan)
                     newPlan = await dispatch(updatePlan(plan));
+                    console.log("after", newPlan)
                 } else {
                     newPlan = await dispatch(createPlan(plan));
                 }
@@ -153,8 +156,8 @@ const PlanForm = ({ plan, formType }) => {
                         <option value="Public">Public</option>
                     </select>
                     {hasSubmitted &&
-                        validationErrors.private.length > 0 &&
-                        validationErrors.private.map((error, idx) => (
+                        validationErrors.isPrivate.length > 0 &&
+                        validationErrors.isPrivate.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
@@ -203,9 +206,9 @@ const PlanForm = ({ plan, formType }) => {
                      <div>
                         <input
                             id='planformstartDate'
-                            type="datetime-local"
+                            type="date"
                             name="startDate"
-                            placeholder="MM/DD/YYYY, HH/mm AM"
+                            placeholder="MM/DD/YYYY"
                             onChange={(e) => setStartDate(e.target.value)}
                             value={startDate}
                             min={Date()}
@@ -226,9 +229,9 @@ const PlanForm = ({ plan, formType }) => {
                     <div>
                         <input
                             id='planformendDate'
-                            type="datetime-local"
+                            type="date"
                             name="endDate"
-                            placeholder="MM/DD/YYYY, HH/mm PM"
+                            placeholder="MM/DD/YYYY"
                             onChange={(e) => setEndDate(e.target.value)}
                             value={endDate}
                             min={startDate}
