@@ -117,7 +117,7 @@ const plansReducer = (state = {}, action) => {
             action.plans.plans.forEach((plan) => {
                 if (!plansState[plan.id]) { plansState[plan.id] = plan; }
             });
-            return plansState;
+            return {...plansState};
         }
         case LOAD_PLAN_DETAILS: {
             return { ...state, [action.plan.id]: action.plan };
@@ -129,10 +129,10 @@ const plansReducer = (state = {}, action) => {
         case REMOVE_PLAN: {
             const planState = { ...state };
             delete planState[action.plan];
-            return planState;
+            return {...planState};
         }
         default:
-            return state;
+            return { ...state };
     }
 };
 

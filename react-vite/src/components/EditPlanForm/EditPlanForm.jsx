@@ -14,10 +14,13 @@ const EditPlanForm = () => {
     }, [dispatch, planId]);
 
     if (!plan) return <></>;
+    console.log(plan)
+    console.log("length")
+    console.log(Object.keys(plan).length)
 
     /* **DO NOT CHANGE THE RETURN VALUE** */
     return (
-        Object.keys(plan).length > 1 && (
+        Object.keys(plan).length > 0 && (
             <>
                 <PlanForm plan={plan} formType="Update Plan" />
             </>
