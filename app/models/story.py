@@ -20,8 +20,8 @@ class Story(db.Model):
     user = db.relationship('User', back_populates='story')
     place = db.relationship('Place', back_populates = 'story')
 
-    like = db.relationship('Like', back_populates = 'story')
-    storyimage = db.relationship('Storyimage', back_populates = 'story')
+    like = db.relationship('Like', cascade = "all,delete-orphan", back_populates = 'story')
+    storyimage = db.relationship('Storyimage', cascade = "all,delete-orphan", back_populates = 'story')
 
     def to_dict(self):
         return {
