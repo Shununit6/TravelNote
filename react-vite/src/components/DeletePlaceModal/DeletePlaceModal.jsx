@@ -8,7 +8,7 @@ import { deletePlace } from "../../redux/places";
 
 const DeletePlaceModal = ({place}) => {
     const placeId = place.id;
-    // console.log("deletemodal", placeId);
+    console.log("deletemodal", typeof(placeId), placeId);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { closeModal } = useModal();

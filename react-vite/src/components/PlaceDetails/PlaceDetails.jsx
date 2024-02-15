@@ -3,7 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getPlaceDetails} from '../../redux/places';
 import "./placeDetails.css";
-import DeleteModal from "../DeleteModal";
+import DeleteTheModal from "../DeleteTheModal";
 import DeletePlaceModal from "../DeletePlaceModal";
 const PlaceDetails = () => {
     const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const PlaceDetails = () => {
                         <Link to={`/places/${placeId}/edit`}>
                             <button id="updateplacedetails" >Update</button>
                         </Link>
-                        <DeleteModal id="deleteplacedetails"
+                        <DeleteTheModal id="deleteplacedetails"
                                 itemText="Delete"
                                 modalComponent={<DeletePlaceModal place={placeData}/>}
                                 />

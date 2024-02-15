@@ -1,0 +1,32 @@
+#deleteplacemodal{
+    display: grid;
+    width: 360px;
+}
+
+#deleteplacemodal > h2{
+    justify-self: center;
+    margin-bottom: 0.3em;
+}
+
+#deleteplacemodal > p{
+    margin-top: 0;
+    justify-self: center;
+}
+
+#yesdeleteplace{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.5em 1em;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+#nokeepplace{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.5em 1em;
+    color: white;
+    background-color: #555555;
+    cursor: pointer;
+}

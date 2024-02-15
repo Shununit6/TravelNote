@@ -11,14 +11,14 @@ class Place(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     name = db.Column(db.String(40), nullable=False)
     type = db.Column(db.String(40), nullable=False)
-    description = db.Column(db.String(260), nullable=False)
+    description = db.Column(db.String(260000), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     user = db.relationship('User', back_populates='place')
 
-    placeimage = db.relationship('Placeimage', back_populates='place')
-    story = db.relationship('Story', back_populates='place')
+    placeimage = db.relationship('Placeimage', cascade = "all,delete-orphan", back_populates='place')
+    story = db.relationship('Story', cascade = "all,delete-orphan", back_populates='place')
 
 
     def to_dict(self):
