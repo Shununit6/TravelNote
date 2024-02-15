@@ -8,10 +8,12 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import likesReducer from './likes';
 import plansReducer from './plans';
+import placesReducer from "./places";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   plans: plansReducer,
+  places: placesReducer,
   likes: likesReducer
 });
 

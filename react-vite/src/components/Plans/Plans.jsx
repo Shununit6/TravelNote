@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
-import "./plans.css";
+import "./Plans.css";
 
 function Plans() {
     const dispatch = useDispatch();

@@ -8,6 +8,7 @@ import PlanDetails from '../components/PlanDetails';
 import EditPlanForm from '../components/EditPlanForm';
 import CreatePlanForm from '../components/CreatePlanForm';
 import ManagePlans from '../components/ManagePlans/ManagePlans';
+import Places from '../components/Places/Places';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "plans",
         element: <Plans />,
+      },
+      {
+        path: "places",
+        element: <Places />,
       },
       {
         path: "login",

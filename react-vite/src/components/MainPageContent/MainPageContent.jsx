@@ -1,6 +1,7 @@
 // import { React } from 'react';
 import './MainPageContent.css';
 import Plans from '../Plans/Plans';
+import Places from '../Places';
 // import SongIndex from '../../components/SongIndex';
 // import Albums from '../Albums';
 // import PlaylistIndex from '../PlaylistIndex';
@@ -20,6 +21,7 @@ function MainPageContent(){
                 <div>
                     <p>Places To Go</p>
                     <ul className='MainPageFourAlbum'>
+                        <Places/>
                             {/* <Albums num={num}/> */}
                     </ul>
                 </div>
