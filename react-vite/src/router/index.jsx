@@ -9,6 +9,9 @@ import EditPlanForm from '../components/EditPlanForm';
 import CreatePlanForm from '../components/CreatePlanForm';
 import ManagePlans from '../components/ManagePlans/ManagePlans';
 import Places from '../components/Places/Places';
+import EditPlaceForm from '../components/EditPlaceForm';
+import CreatePlaceForm from '../components/CreatePlaceForm';
+import PlaceDetails from '../components/PlaceDetails';
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +22,10 @@ export const router = createBrowserRouter([
         element: <CreatePlanForm />,
       },
       {
+        path: "places/new",
+        element: <CreatePlaceForm />,
+      },
+      {
         path: "plans/current",
         element: <ManagePlans />,
       },
@@ -27,8 +34,16 @@ export const router = createBrowserRouter([
         element: <EditPlanForm />,
       },
       {
+        path: "places/:placeId/edit",
+        element: <EditPlaceForm />,
+      },
+      {
         path: "plans/:planId",
         element: <PlanDetails />,
+      },
+      {
+        path: "places/:placeId",
+        element: <PlaceDetails />,
       },
       {
         path: "plans",
