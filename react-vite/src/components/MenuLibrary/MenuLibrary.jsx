@@ -52,19 +52,20 @@ function MenuLibrary(){
 				</div>
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-2">
-					<div id="leftmenulibrarytext2">Create a new plan here. It's easy, we'll help you</div>
+					<div id="leftmenulibrarytext2">Create a new plan here. It is easy, we will help you</div>
+					{/* <NavLink exact to="/plans/new"><button>Create Plan</button></NavLink> */}
 					<NavLink exact to="/plans/new"><button>Create Plan</button></NavLink>
 				</div>
 				}
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-4">
-					<div id="leftmenulibrarytext4">Create a new place here. It's easy, we'll help you</div>
+					<div id="leftmenulibrarytext4">Create a new place here. It is easy, we will help you</div>
 					<NavLink exact to="/places/new"><button>Create Place</button></NavLink>
 				</div>
 				}
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-3">
-					<div id="leftmenulibrarytext3">Create a new story here. It's easy, we'll help you</div>
+					<div id="leftmenulibrarytext3">Create a new story here. It is easy, we will help you</div>
 					<NavLink exact to="/stories/new"><button>Create Story</button></NavLink>
 				</div>
 				}
