@@ -13,6 +13,7 @@ import EditPlaceForm from '../components/EditPlaceForm';
 import CreatePlaceForm from '../components/CreatePlaceForm';
 import PlaceDetails from '../components/PlaceDetails';
 import ManagePlaces from '../components/ManagePlaces/ManagePlaces';
+import Stories from '../components/Stories';
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "places",
         element: <Places />,
+      },
+      {
+        path: "stories",
+        element: <Stories />,
       },
       {
         path: "login",

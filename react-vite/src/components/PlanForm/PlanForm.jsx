@@ -33,8 +33,8 @@ const PlanForm = ({ plan, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(plans);
-    console.log(userId)
+    // console.log(plans);
+    // console.log(userId)
 
     useEffect(() => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };
@@ -76,9 +76,9 @@ const PlanForm = ({ plan, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Plan") {
-                    console.log("before", plan)
+                    // console.log("before", plan)
                     newPlan = await dispatch(updatePlan(plan));
-                    console.log("after", newPlan)
+                    // console.log("after", newPlan)
                 } else {
                     newPlan = await dispatch(createPlan(plan));
                 }

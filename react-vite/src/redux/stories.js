@@ -33,9 +33,11 @@ export const removeStory = (story) => ({
 
 // /** Thunk Action Creators: */
 export const getAllStories = () => async (dispatch) => {
-    const res = await fetch(`/api/stories`);
+    // console.log("thunk36")
+    const res = await fetch(`/api/stories/`);
 
     if (res.ok) {
+        // console.log("resok40")
         const data = await res.json();
         // console.log("data", data);
         dispatch(loadStories(data));

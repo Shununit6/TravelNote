@@ -9,11 +9,13 @@ import sessionReducer from "./session";
 import likesReducer from './likes';
 import plansReducer from './plans';
 import placesReducer from "./places";
+import storiesReducer from "./stories";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   plans: plansReducer,
   places: placesReducer,
+  stories: storiesReducer,
   likes: likesReducer
 });
 

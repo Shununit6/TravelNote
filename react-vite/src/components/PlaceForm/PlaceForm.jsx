@@ -20,8 +20,8 @@ const PlaceForm = ({ place, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(places);
-    console.log(sessionUser.user_id)
+    // console.log(places);
+    // console.log(sessionUser.user_id)
 
     useEffect(() => {
         const errors = { name: [], type: [], description:[]};
@@ -49,9 +49,9 @@ const PlaceForm = ({ place, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Place") {
-                    console.log("before", place)
+                    // console.log("before", place)
                     newPlace = await dispatch(updatePlace(place));
-                    console.log("after", newPlace)
+                    // console.log("after", newPlace)
                 } else {
                     newPlace = await dispatch(createPlace(place));
                 }
