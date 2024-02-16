@@ -14,6 +14,7 @@ import CreatePlaceForm from '../components/CreatePlaceForm';
 import PlaceDetails from '../components/PlaceDetails';
 import ManagePlaces from '../components/ManagePlaces/ManagePlaces';
 import Stories from '../components/Stories';
+import StoryDetails from '../components/StoryDetails';
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "places/:placeId",
         element: <PlaceDetails />,
+      },
+      {
+        path: "stories/:storyId",
+        element: <StoryDetails />,
       },
       {
         path: "plans",
