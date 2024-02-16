@@ -33,8 +33,8 @@ const PlanForm = ({ plan, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    // console.log(plans);
-    // console.log(userId)
+    console.log(plans);
+    console.log(userId)
 
     useEffect(() => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };

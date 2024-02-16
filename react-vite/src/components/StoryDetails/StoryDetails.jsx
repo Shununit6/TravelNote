@@ -22,7 +22,7 @@ const StoryDetails = () => {
         return (<div>Loading...</div>);
     }
     // const { id, user_id, place_id, title, description, article_url, shorts_url, created_at, updated_at} = storyData;
-    const { title, created_at, updated_at} = storyData;
+    const { title, user_id, description, article_url, shorts_url} = storyData;
     let isStoryCreator=false;
     if(sessionUser && storyData && user_id === sessionUser.id){
         isStoryCreator=true;

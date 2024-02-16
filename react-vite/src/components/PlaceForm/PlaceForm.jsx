@@ -20,8 +20,8 @@ const PlaceForm = ({ place, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    // console.log(places);
-    // console.log(sessionUser.user_id)
+    console.log(places);
+    console.log(sessionUser.user_id)
 
     useEffect(() => {
         const errors = { name: [], type: [], description:[]};
