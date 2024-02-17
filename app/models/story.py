@@ -28,7 +28,7 @@ class Story(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'place_id': self.place_id,
-            'title': self.user_id,
+            'title': self.title,
             'description': self.description,
             'article_url': self.article_url,
             'shorts_url': self.shorts_url,
