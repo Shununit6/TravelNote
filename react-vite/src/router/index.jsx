@@ -15,6 +15,8 @@ import PlaceDetails from '../components/PlaceDetails';
 import ManagePlaces from '../components/ManagePlaces/ManagePlaces';
 import Stories from '../components/Stories';
 import StoryDetails from '../components/StoryDetails';
+import EditStoryForm from '../components/EditStoryForm';
+import CreateStoryForm from '../components/CreateStoryForm';
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "places/new",
         element: <CreatePlaceForm />,
+      },
+      {
+        path: "stories/new",
+        element: <CreateStoryForm />,
       },
       {
         path: "plans/current",
@@ -43,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "places/:placeId/edit",
         element: <EditPlaceForm />,
+      },
+      {
+        path: "stories/:storyId/edit",
+        element: <EditStoryForm />,
       },
       {
         path: "plans/:planId",

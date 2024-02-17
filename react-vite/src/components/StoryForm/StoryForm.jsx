@@ -124,8 +124,8 @@ const StoryForm = ({ story, formType }) => {
                         id='storyformarticle'
                         type="text"
                         placeholder="Please add the article url"
-                        onChange={(e) => setType(e.target.value)}
-                        value={type}
+                        onChange={(e) => setArticle(e.target.value)}
+                        value={article_url}
                     />
                     {hasSubmitted &&
                         validationErrors.article_url.length > 0 &&
@@ -143,7 +143,7 @@ const StoryForm = ({ story, formType }) => {
                         type="text"
                         placeholder="Please add the shorts url"
                         onChange={(e) => setShorts(e.target.value)}
-                        value={type}
+                        value={shorts_url}
                     />
                     {hasSubmitted &&
                         validationErrors.shorts_url.length > 0 &&
