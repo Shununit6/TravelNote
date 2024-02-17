@@ -14,6 +14,21 @@ def get_all_likes():
 
     return jsonify({'likes': [like.to_dict() for like in likes]})
 
+# Get all Likes of a story
+# Require Authentication: false
+# GET /api/stories/:id/likes
+@like_routes.route('/<int:id>/likes')
+def get_likes(id):
+    """
+    Query for all the likes of a story by story_id.
+    """
+    likes = Like.query.filter(Like.story_id==id).all()
+
+    #return number of likes of a story by id
+    # numoflikes = likes.count()
+    # return jsonify(numoflikes)
+    return jsonify({'likes': [like.to_dict() for like in likes]})
+
 # Like or unlike a story
 # A logged in user can like or unlike a story with visible confirmation without causing a refresh/redirect.
 # POST /api/stories/:id/likes
