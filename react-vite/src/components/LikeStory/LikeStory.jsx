@@ -4,24 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStoryLikes, getAllLikes,createLike, deleteLike } from '../../store/likes';
 import { getStoryDetails } from '../../store/stories';
 
-function LikeSong({songId, userId}) {
+function LikeStory({storyId, userId}) {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
-    songId = parseInt(songId);
+    storyId = parseInt(storyId);
     // const likes = useSelector(state => state.likesReducer.likes);
     const alllikes = useSelector(state => state.likesReducer);
-    const numofl=  Object.values(alllikes).filter((curr)=> (curr.song_id == songId)).length;
+    const numofl=  Object.values(alllikes).filter((curr)=> (curr.story_id == storyId)).length;
 
-    let currLike = Object.values(alllikes).filter((curr)=> (curr.song_id == songId && curr.user_id == sessionUser.id));
+    let currLike = Object.values(alllikes).filter((curr)=> (curr.story_id == storyId && curr.user_id == sessionUser.id));
     // console.log("currLike", currLike);
-    // .filter((curr)=> (curr.song_id == songId));
+    // .filter((curr)=> (curr.story_id == storyId));
 
     const[isliked, setIsLiked] = useState(currLike.length==true);
 
     useEffect(() => {
-      dispatch(getSongDetails(songId)).then(()=>dispatch(getAllLikes())).then(()=>dispatch(getSongLikes(songId))).then(() => setIsLoading(false));
-    }, [dispatch, songId]);
+      dispatch(getStoryDetails(storyId)).then(()=>dispatch(getAllLikes())).then(()=>dispatch(getStoryLikes(storyId))).then(() => setIsLoading(false));
+    }, [dispatch, storyId]);
 
   if (isLoading) return (<>Loading...</>);
 
@@ -33,15 +33,15 @@ function LikeSong({songId, userId}) {
         likeId = currLike[0].id;
       }
 
-      dispatch(deleteLike(likeId, songId))
+      dispatch(deleteLike(likeId, storyId))
 
     }
     if(isliked == 0)
     {
 
     const addlike = {"user_id" : userId,
-      "song_id" : songId };
-    dispatch(createLike(addlike, songId))
+      "story_id" : storyId };
+    dispatch(createLike(addlike, storyId))
 
     }
     setIsLiked(!isliked);
@@ -52,18 +52,18 @@ function LikeSong({songId, userId}) {
     return (
       <>
         <button onClick={handleClick}>like</button>
-        <div>{numofl} liked this song</div>
+        <div>{numofl} liked this story</div>
       </>
         )
   }else{
     return (
       <>
         <button onClick={handleClick}>unlike</button>
-        <div>{numofl} liked this song</div>
+        <div>{numofl} liked this story</div>
       </>
     )
   }
 
 }
 
-export default LikeSong
+export default LikeStory
