@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, IntegerField, StringField, DateField, SubmitField
-from wtforms.validators import DataRequired, NumberRange
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 class StoryForm(FlaskForm):
     title = StringField('Story Title', validators=[DataRequired(message='Story Title is required')])
