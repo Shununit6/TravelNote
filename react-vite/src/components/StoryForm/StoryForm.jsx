@@ -42,32 +42,33 @@ const StoryForm = ({ story, formType }) => {
         story = { ...story, description, article_url, shorts_url};
 
         let newStory;
-        let errorCount = validationErrors.name.length + validationErrors.type.length
-        + validationErrors.description.length;
+        let errorCount = validationErrors.description.length + validationErrors.article_url.length
+        + validationErrors.shorts_url.length + validationErrors.description.length;
         // console.log(errorCount);
         if (errorCount > 0){
             // console.log("has errors");
             }else{
                 // console.log("no errors");
-                if (formType === "Update Place") {
-                    // console.log("before", place)
-                    newPlace = await dispatch(updatePlace(place));
-                    // console.log("after", newPlace)
+                if (formType === "Update Story") {
+                    // console.log("before", story)
+                    newStory = await dispatch(updateStory(story));
+                    // console.log("after", newStory)
                 } else {
-                    newPlace = await dispatch(createPlace(place));
+                    newStory = await dispatch(createStory(story));
                 }
-                if (newPlace.id) {
-                    // console.log("newPlace.id", newPlace.id);
-                    navigate(`/places/${newPlace.id}`);
+                if (newStory.id) {
+                    // console.log("newStory.id", newStory.id);
+                    navigate(`/stories/${newStory.id}`);
                 } else {
-                    const { validationErrors } = await newPlace.json();
+                    const { validationErrors } = await newStory.json();
                     setValidationErrors(validationErrors);
                 }
-                // console.log(newPlace);
+                // console.log(newStory);
 
-                setName('');
-                setType('');
+                setTitle('');
                 setDescription('');
+                setArticle('');
+                setShorts('');
                 setValidationErrors({});
                 setHasSubmitted(false);
             }
@@ -77,41 +78,23 @@ const StoryForm = ({ story, formType }) => {
     return (
         <form onSubmit={handleSubmit}>
             {/* {console.log(validationErrors)} */}
-            <div id="placeformcreateupdate">
-                <div id="titlecreateupdateplaceform">
-                    {!isUpdate && <h2>Start a New Place</h2>}
-                    {isUpdate && <h2>Update your Place</h2>}
+            <div id="storyformcreateupdate">
+                <div id="titlecreateupdatestoryform">
+                    {!isUpdate && <h2>Start a New Story</h2>}
+                    {isUpdate && <h2>Update your Story</h2>}
                 </div>
             <div>
                 <label>
                     <input
-                        id='placeformname'
+                        id='storyformtitle'
                         type="text"
-                        placeholder="What is your place name?"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
+                        placeholder="What is your story title?"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
                     />
                     {hasSubmitted &&
-                        validationErrors.name.length > 0 &&
-                        validationErrors.name.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='placeformtype'
-                        type="text"
-                        placeholder="Please add the type"
-                        onChange={(e) => setType(e.target.value)}
-                        value={type}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.type.length > 0 &&
-                        validationErrors.type.map((error, idx) => (
+                        validationErrors.title.length > 0 &&
+                        validationErrors.title.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
@@ -121,7 +104,7 @@ const StoryForm = ({ story, formType }) => {
             <div>
                 <label>
                     <textarea
-                        id='placeformdescription'
+                        id='storyformdescription'
                         placeholder="Please add the description"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
@@ -135,10 +118,46 @@ const StoryForm = ({ story, formType }) => {
                         ))}
                 </label>
             </div>
-            <button type="submit" id="PlaceCreateUpdateButton" >{formType}</button>
+            <div>
+                <label>
+                    <input
+                        id='storyformarticle'
+                        type="text"
+                        placeholder="Please add the article url"
+                        onChange={(e) => setType(e.target.value)}
+                        value={type}
+                    />
+                    {hasSubmitted &&
+                        validationErrors.article_url.length > 0 &&
+                        validationErrors.article_url.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input
+                        id='storyformshorts'
+                        type="text"
+                        placeholder="Please add the shorts url"
+                        onChange={(e) => setShorts(e.target.value)}
+                        value={type}
+                    />
+                    {hasSubmitted &&
+                        validationErrors.shorts_url.length > 0 &&
+                        validationErrors.shorts_url.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <button type="submit" id="StoryCreateUpdateButton" >{formType}</button>
             </div>
         </form>
     );
 };
 
-export default PlaceForm;
+export default StoryForm;
