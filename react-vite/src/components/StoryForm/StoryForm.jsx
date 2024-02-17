@@ -39,7 +39,7 @@ const StoryForm = ({ story, formType }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        story = { ...story, description, article_url, shorts_url};
+        story = { ...story, title, description, article_url, shorts_url};
 
         let newStory;
         let errorCount = validationErrors.description.length + validationErrors.article_url.length
@@ -54,7 +54,10 @@ const StoryForm = ({ story, formType }) => {
                     newStory = await dispatch(updateStory(story));
                     // console.log("after", newStory)
                 } else {
+                    console.log("before", story)
+                    // story.place_id = 1;
                     newStory = await dispatch(createStory(story));
+                    console.log("after", newStory)
                 }
                 if (newStory.id) {
                     // console.log("newStory.id", newStory.id);

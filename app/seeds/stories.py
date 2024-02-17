@@ -5,17 +5,29 @@ from sqlalchemy.sql import text
 # Adds a demo story, you can add other stories here if you want
 def seed_stories():
     storyone = Story(
-        user_id=1, place_id=1, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=1, title='sample', description='sample', article_url='sample', shorts_url='sample')
     storytwo = Story(
-        user_id=1, place_id=4, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=1, title='sample', description='sample', article_url='sample', shorts_url='sample')
     storythree = Story(
-        user_id=2, place_id=2, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=2, title='sample', description='sample', article_url='sample', shorts_url='sample')
     storyfour = Story(
-        user_id=2, place_id=5, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=2, title='sample', description='sample', article_url='sample', shorts_url='sample')
     storyfive = Story(
-        user_id=3, place_id=3, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=3, title='sample', description='sample', article_url='sample', shorts_url='sample')
     storysix = Story(
-        user_id=3, place_id=6, title='sample', description='sample', article_url='sample', shorts_url='sample')
+        user_id=3, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storyone = Story(
+    #     user_id=1, place_id=1, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storytwo = Story(
+    #     user_id=1, place_id=4, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storythree = Story(
+    #     user_id=2, place_id=2, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storyfour = Story(
+    #     user_id=2, place_id=5, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storyfive = Story(
+    #     user_id=3, place_id=3, title='sample', description='sample', article_url='sample', shorts_url='sample')
+    # storysix = Story(
+    #     user_id=3, place_id=6, title='sample', description='sample', article_url='sample', shorts_url='sample')
 
     db.session.add(storyone)
     db.session.add(storytwo)

@@ -52,7 +52,7 @@ def post_story():
     """
     form = StoryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    # return form.validate_on_submit()
     if form.validate_on_submit():
         new_story = Story(
             user_id=current_user.id,

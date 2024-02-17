@@ -18,7 +18,7 @@ class Place(db.Model):
     user = db.relationship('User', back_populates='place')
 
     placeimage = db.relationship('Placeimage', cascade = "all,delete-orphan", back_populates='place')
-    story = db.relationship('Story', cascade = "all,delete-orphan", back_populates='place')
+    # story = db.relationship('Story', cascade = "all,delete-orphan", back_populates='place')
 
 
     def to_dict(self):

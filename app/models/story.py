@@ -9,7 +9,7 @@ class Story(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("places.id")), nullable=True)
+    # place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("places.id")), nullable=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(260), nullable=False)
     article_url = db.Column(db.String(255), nullable=True)
@@ -18,7 +18,7 @@ class Story(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     user = db.relationship('User', back_populates='story')
-    place = db.relationship('Place', back_populates = 'story')
+    # place = db.relationship('Place', back_populates = 'story')
 
     like = db.relationship('Like', cascade = "all,delete-orphan", back_populates = 'story')
     storyimage = db.relationship('Storyimage', cascade = "all,delete-orphan", back_populates = 'story')
@@ -27,7 +27,7 @@ class Story(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'place_id': self.place_id,
+            # 'place_id': self.place_id,
             'title': self.title,
             'description': self.description,
             'article_url': self.article_url,
