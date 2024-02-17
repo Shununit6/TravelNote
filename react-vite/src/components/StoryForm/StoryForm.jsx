@@ -12,7 +12,7 @@ const StoryForm = ({ story, formType }) => {
     let [title, setTitle] = useState(story?.title);
     let [description, setDescription] = useState(story?.description);
     let [article_url, setArticle] = useState(story?.article_url);
-    let [shorts_url, setShorts] = useState(story.shorts_url);
+    let [shorts_url, setShorts] = useState(story?.shorts_url);
     let isUpdate = false;
     if(formType === "Update Story"){
         isUpdate = true;

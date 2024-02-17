@@ -7,7 +7,7 @@ import StoryForm from "../StoryForm";
 const EditStoryForm = () => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
-    const story = useSelector((state) => state.storys[storyId]);
+    const story = useSelector((state) => state.stories[storyId]);
 
     useEffect(() => {
         dispatch(getStoryDetails(storyId));
