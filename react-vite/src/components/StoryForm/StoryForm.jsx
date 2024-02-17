@@ -1,46 +1,47 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
-import { createPlace, updatePlace } from "../../redux/places";
-import "./PlaceForm.css";
+import { createStory, updateStory } from "../../redux/stories";
+import "./StoryForm.css";
 
-const PlaceForm = ({ place, formType }) => {
+const StoryForm = ({ story, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
-    const places = useSelector(state => state.places);
-    let [name, setName] = useState(place?.name);
-    let [type, setType] = useState(place?.type);
-    let [description, setDescription] = useState(place?.description);
-
+    const stories = useSelector(state => state.stories);
+    let [title, setTitle] = useState(story?.title);
+    let [description, setDescription] = useState(story?.description);
+    let [article_url, setArticle] = useState(story?.article_url);
+    let [shorts_url, setShorts] = useState(story.shorts_url);
     let isUpdate = false;
-    if(formType === "Update Place"){
+    if(formType === "Update Story"){
         isUpdate = true;
     }
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(places);
+    console.log(stories);
     console.log(sessionUser.user_id)
 
     useEffect(() => {
-        const errors = { name: [], type: [], description:[]};
-        if (!name.length) errors["name"].push("Name is required");
-        if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
-        if (!type.length) errors["type"].push("Type is required");
+        const errors = { title: [], description: [], article_url:[], shorts_url:[]};
+        if (!title.length) errors["name"].push("Title is required");
+        if (title.length > 60) errors["title"].push("Title must be 60 characters or less");
         if (!description.length) errors["description"].push("Description is required");
+        if (!article_url.length) errors["article"].push("Article URL is required");
+        if (!shorts_url.length) errors["article"].push("Shorts URL is required");
 
         setValidationErrors(errors);
-    }, [name, type, description]);
+    }, [title, description, article_url, shorts_url]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        place = { ...place, name, type, description};
+        story = { ...story, description, article_url, shorts_url};
 
-        let newPlace;
+        let newStory;
         let errorCount = validationErrors.name.length + validationErrors.type.length
         + validationErrors.description.length;
         // console.log(errorCount);

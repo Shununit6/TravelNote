@@ -9,7 +9,7 @@ class Story(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("places.id")), nullable=False)
+    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("places.id")), nullable=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(260), nullable=False)
     article_url = db.Column(db.String(255), nullable=True)
