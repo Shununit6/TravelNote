@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom"; //useParams,
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./DeletestoryModal.css";
+import "./DeleteStoryModal.css";
 import { deleteStory } from "../../redux/stories";
 
 const DeleteStoryModal = ({story}) => {

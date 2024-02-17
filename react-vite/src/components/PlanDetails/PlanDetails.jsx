@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getPlanDetails} from '../../redux/plans';
-import "./planDetails.css";
+import "./PlanDetails.css";
 import DeleteModal from "../DeleteModal";
 import DeletePlanModal from "../DeletePlanModal";
 const PlanDetails = () => {

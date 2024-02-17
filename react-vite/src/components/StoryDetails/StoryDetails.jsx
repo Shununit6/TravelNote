@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getStoryDetails} from '../../redux/stories';
-import "./storyDetails.css";
+import "./StoryDetails.css";
 import DeleteModal from "../DeleteModal";
 import DeleteStoryModal from "../DeleteStoryModal";
 const StoryDetails = () => {
