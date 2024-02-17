@@ -25,11 +25,11 @@ const StoryForm = ({ story, formType }) => {
 
     useEffect(() => {
         const errors = { title: [], description: [], article_url:[], shorts_url:[]};
-        if (!title.length) errors["name"].push("Title is required");
+        if (!title.length) errors["title"].push("Title is required");
         if (title.length > 60) errors["title"].push("Title must be 60 characters or less");
         if (!description.length) errors["description"].push("Description is required");
-        if (!article_url.length) errors["article"].push("Article URL is required");
-        if (!shorts_url.length) errors["article"].push("Shorts URL is required");
+        if (!article_url.length) errors["article_url"].push("Article URL is required");
+        if (!shorts_url.length) errors["shorts_url"].push("Shorts URL is required");
 
         setValidationErrors(errors);
     }, [title, description, article_url, shorts_url]);
