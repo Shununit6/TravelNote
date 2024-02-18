@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getStoryDetails} from '../../redux/stories';
+import { getAllLikes, getStoryLikes } from "../../redux/likes";
 import "./StoryDetails.css";
 import DeleteModal from "../DeleteModal";
 import DeleteStoryModal from "../DeleteStoryModal";
+import LikeStory from "../LikeStory";
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
@@ -12,9 +14,13 @@ const StoryDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const storyData = useSelector((state) => state.stories[storyId]);
 
+    // useEffect(() => {
+    //     dispatch(getStoryDetails(storyId)).then(()=>setIsLoaded(true))
+    // }, [dispatch, storyId])
     useEffect(() => {
-        dispatch(getStoryDetails(storyId)).then(()=>setIsLoaded(true))
-    }, [dispatch, storyId])
+        dispatch(getStoryDetails(storyId)).then(()=>dispatch(getAllLikes()))
+        .then(()=>dispatch(getStoryLikes(storyId))).then(() => setIsLoaded(true));
+      }, [dispatch, storyId]);
     if(isLoaded && !storyData){
         return (<Navigate to="/stories"/>);
     }
@@ -23,6 +29,7 @@ const StoryDetails = () => {
     }
     // const { id, user_id, place_id, title, description, article_url, shorts_url, created_at, updated_at} = storyData;
     const { title, user_id, description, article_url, shorts_url} = storyData;
+
     let isStoryCreator=false;
     if(sessionUser && storyData && user_id === sessionUser.id){
         isStoryCreator=true;
@@ -55,6 +62,7 @@ const StoryDetails = () => {
                                 />
                         </div>
                         : null}
+                    {sessionUser && <LikeStory userId={user_id} storyId={storyId}/>}
             </div>
         );
     }

@@ -1,6 +1,6 @@
 // /** Action Type Constants: */
 export const LOAD_LIKES = "likes/LOAD_LIKES";
-export const LOAD_SONG_LIKES = "likes/LOAD_SONG_LIKES";
+export const LOAD_STORY_LIKES = "likes/LOAD_STORY_LIKES";
 export const RECEIVE_LIKE = "likes/RECEIVE_LIKE";
 export const REMOVE_LIKE = "likes/REMOVE_LIKE";
 
@@ -10,8 +10,8 @@ export const loadLikes = (likes) => ({
     likes,
 });
 
-export const loadSongLikes = (likes) => ({
-    type: LOAD_SONG_LIKES,
+export const loadStoryLikes = (likes) => ({
+    type: LOAD_STORY_LIKES,
     likes,
 });
 
@@ -27,7 +27,7 @@ export const removeLike = (like) => ({
 
 // /** Thunk Action Creators: */
 export const getAllLikes = () => async (dispatch) => {
-    const res = await fetch(`/api/songs/likes`);
+    const res = await fetch(`/api/stories/likes`);
 
     if (res.ok) {
         const data = await res.json();
@@ -38,21 +38,21 @@ export const getAllLikes = () => async (dispatch) => {
     return res;
 };
 
-export const getSongLikes = (songId) => async (dispatch) => {
-    const res = await fetch(`/api/songs/${songId}/likes`);
+export const getStoryLikes = (storyId) => async (dispatch) => {
+    const res = await fetch(`/api/stories/${storyId}/likes`);
 
     if (res.ok) {
         const data = await res.json();
         // console.log("likedata", data);
-        dispatch(loadSongLikes(data));
+        dispatch(loadStoryLikes(data));
         return data;
     }
     return res;
 };
 
 
-export const createLike = (payload, songId) => async (dispatch) => {
-    const res = await fetch(`/api/songs/${songId}/likes`, {
+export const createLike = (payload, storyId) => async (dispatch) => {
+    const res = await fetch(`/api/stories/${storyId}/likes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -65,8 +65,8 @@ export const createLike = (payload, songId) => async (dispatch) => {
     return res;
 };
 
-export const deleteLike = (likeId, songId) => async (dispatch) => {
-    const res = await fetch(`/api/songs/${songId}/likes`, {
+export const deleteLike = (likeId, storyId) => async (dispatch) => {
+    const res = await fetch(`/api/stories/${storyId}/likes`, {
         method: "DELETE",
     });
 
@@ -87,7 +87,7 @@ const likesReducer = (state = { }, action) => {
                 if(!likesState[like.id]) {likesState[like.id] = like;}
             });
             return {...likesState}}
-        case LOAD_SONG_LIKES:{
+        case LOAD_STORY_LIKES:{
             return { ...state, ...action.likes }
         }
         case RECEIVE_LIKE:{

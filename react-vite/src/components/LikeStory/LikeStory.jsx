@@ -1,8 +1,8 @@
 import './LikeStory.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStoryLikes, getAllLikes,createLike, deleteLike } from '../../store/likes';
-import { getStoryDetails } from '../../store/stories';
+import { getStoryLikes, getAllLikes, createLike, deleteLike } from '../../redux/likes';
+import { getStoryDetails } from '../../redux/stories';
 
 function LikeStory({storyId, userId}) {
     const dispatch = useDispatch();
@@ -10,11 +10,11 @@ function LikeStory({storyId, userId}) {
     const sessionUser = useSelector(state => state.session.user);
     storyId = parseInt(storyId);
     // const likes = useSelector(state => state.likesReducer.likes);
-    const alllikes = useSelector(state => state.likesReducer);
+    const alllikes = useSelector(state => state.likes);
     const numofl=  Object.values(alllikes).filter((curr)=> (curr.story_id == storyId)).length;
 
     let currLike = Object.values(alllikes).filter((curr)=> (curr.story_id == storyId && curr.user_id == sessionUser.id));
-    // console.log("currLike", currLike);
+    console.log("currLike", currLike);
     // .filter((curr)=> (curr.story_id == storyId));
 
     const[isliked, setIsLiked] = useState(currLike.length==true);
@@ -66,4 +66,4 @@ function LikeStory({storyId, userId}) {
 
 }
 
-export default LikeStory
+export default LikeStory;
