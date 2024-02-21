@@ -2,6 +2,7 @@
   right:0;
   position:fixed;
   z-index:1;
+  cursor: pointer;
 }
 
 nav {
@@ -13,6 +14,7 @@ nav {
   align-items: center;
   font-size: 21px;
   border-radius: 6px;
+  cursor: pointer;
 }
 NavLink {
   position: relative;
@@ -22,4 +24,12 @@ NavLink {
 #logoImage {
   width: 60%;
   height: 60%;
+}
+
+#discover{
+  color:#90daec;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 3em;
+  margin-bottom: 1em;
 }

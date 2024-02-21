@@ -2,7 +2,7 @@
 import './FrontPage.css';
 // import MenuLibrary from '../MenuLibrary';
 // import MainPageContent from '../MainPageContent';
-import frontimg from '../../../public/images/img-1.jpg';
+import frontimg from '../../../src/images/img-1.jpg';
 
 
 function FrontPage(){
@@ -19,10 +19,9 @@ function FrontPage(){
                     <MainPageContent />
                 </div> */}
 			</div>
-            {/* <div className="TravelMakesYouHappy">Travel Makes You Happy</div>
-            <div className="DiscoverFun">Discover Fun</div>
-            <div className="TravelerNote">Traveler Note</div>
-            <div className="YourTravelStory">Your Travel Story</div> */}
+            {/* <div className="homeitem-1">
+                    <MenuLibrary />
+                </div> */}
         </>
 	)
 }

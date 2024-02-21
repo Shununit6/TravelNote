@@ -2,21 +2,17 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-import navlogo from '../../../public/images/logo.png';
-
+import navlogo from '../../../src/images/logo.png';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
-
 	return (
-		<nav>
-			<NavLink exact to="/home" src="../../../public/images/navlogo.png">
-				<img id="logoImage" src={navlogo} alt="logoimage"/>
-          	</NavLink>
+		<nav><NavLink to="/home"><img id="logoImage" src={navlogo} alt="logoimage"/></NavLink>
+			<div>
+			{/* <Link to="/home"><i id="discover" className="fa-solid fa-bars"></i></Link> */}
 			{isLoaded && (
-				<div id="loginsignupnavbar">
-					<ProfileButton user={sessionUser} />
-				</div>
+				<ProfileButton user={sessionUser} />
 			)}
+			</div>
 		</nav>
 	);
 }
