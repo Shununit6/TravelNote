@@ -19,9 +19,10 @@ function FrontPage(){
                     <MainPageContent />
                 </div> */}
 			</div>
-            <div>
-
-            </div>
+            {/* <div className="TravelMakesYouHappy">Travel Makes You Happy</div>
+            <div className="DiscoverFun">Discover Fun</div>
+            <div className="TravelerNote">Traveler Note</div>
+            <div className="YourTravelStory">Your Travel Story</div> */}
         </>
 	)
 }

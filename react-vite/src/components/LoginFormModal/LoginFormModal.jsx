@@ -2,7 +2,7 @@ import { useState } from "react";
 import { thunkLogin, thunkLogout } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import "./LoginFormModal.css";
 
 function LoginFormModal() {
@@ -26,6 +26,7 @@ function LoginFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
+      Navigate("/home");
     }
   };
 
@@ -82,7 +83,7 @@ function LoginFormModal() {
         {email.length>=4 && password.length>=6 &&
         <button id="loginsubmitbutton" type="submit">Log In</button>}
         <button id="logindemobutton" onClick={logInDemo}>
-            <Link className="logindemobutton" to="/" >Log in as Demo User</Link>
+            <Link className="logindemobutton" to="/home" >Log in as Demo User</Link>
         </button>
       </form>
     </div>
