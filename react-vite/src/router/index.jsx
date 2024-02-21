@@ -17,6 +17,7 @@ import Stories from '../components/Stories';
 import StoryDetails from '../components/StoryDetails';
 import EditStoryForm from '../components/EditStoryForm';
 import CreateStoryForm from '../components/CreateStoryForm';
+import FrontPage from '../components/FrontPage/FrontPage';
 
 export const router = createBrowserRouter([
   {
@@ -87,8 +88,12 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path: "/",
+        path: "home",
         element: <Home />,
+      },
+      {
+        path: "/",
+        element: <FrontPage />,
       },
     ],
   },

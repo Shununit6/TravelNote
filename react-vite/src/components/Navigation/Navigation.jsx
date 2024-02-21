@@ -8,9 +8,9 @@ function Navigation({ isLoaded }){
 
 	return (
 		<>
-			{/* <li>
-				<NavLink exact to="/">Home</NavLink>
-			</li> */}
+			<NavLink exact to="/home" src="../../../public/images/navlogo.png">
+            <img id="logoImage" src={navlogo} alt="logoimage"/>
+          	</NavLink>
 			{isLoaded && (
 				<div id="loginsignupnavbar">
 					<ProfileButton user={sessionUser} />
