@@ -5,7 +5,7 @@
     display: grid;
     width:360px;
     grid-gap: 0.6em;
-    justify-content: center;
+    justify-items: center;
     font-family: Georgia, serif, cursive;
 }
 

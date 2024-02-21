@@ -1,36 +1,47 @@
+#signupmodal {
+  border-radius: 60px;
+}
 #signupform {
     display: grid;
     width:360px;
     grid-gap: 0.6em;
-    justify-content: center;
+    align-items: center;
+    justify-items: center;
     font-family: Georgia, serif, cursive;
-  }
+    margin: 2em;
+}
 
-  #signupmodal > h1 {
+#signupmodal > h1{
     text-align: center;
-  }
+}
 
-  .signupinput {
+.signupinput {
     width: 270px;
     padding: 6px 6px;
     display: inline-block;
-  }
+    margin: 0 auto;
+    align-items: center;
+}
 
-  #disabledsignup {
+#disabledsignup {
+    width: 270px;
     font-size: 1em;
     padding: 6px 6px;
     color:white;
     background-color: darkgray;
     margin-bottom: 1.2em;
-    /* margin: 2px 1em; */
-  }
+    margin: 2px 1em;
+    /* margin: 0 auto; */
+}
 
-  #regularsignup {
+#regularsignup {
+    width: 270px;
     font-size: 1em;
     padding: 6px 6px;
     color:white;
     background-color: red;
     cursor: pointer;
     margin-bottom: 1.2em;
-    /* margin: 2px 1em; */
+    margin: 2px 1em;
+    /* margin: 0 auto; */
   }
