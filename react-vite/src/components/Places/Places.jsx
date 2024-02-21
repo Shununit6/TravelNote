@@ -24,7 +24,6 @@ function Places() {
             {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
         <Link id="placesIsActive" to="/places" > Places </Link>
         </h2>
-         <p>All Trip Places</p>
          <div id="viewallplaces">
             {places && Object.values(places).map((place, index) => (
                   <PlaceIndexItem place={place} key={index}/>

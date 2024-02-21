@@ -7,7 +7,7 @@ const PlanIndexItem = ({ plan }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
-    const { id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
+    const { id, name } = plan;
     const isPrivate = plan.private;
 
     return (
@@ -17,15 +17,7 @@ const PlanIndexItem = ({ plan }) => {
                     <img id="planExpenseImage" src={url} alt="planExpenseImage" />
                 </div> */}
                 {!isPrivate && <div id="planitem2">
-                    {id}
                     {name}
-                    {number_traveler}
-                    {city}
-                    {country}
-                    {start_date}
-                    {end_date}
-                    {created_at}
-                    {updated_at}
                 </div>}
             </div>
         </Link>

@@ -50,7 +50,7 @@ const PlanDetails = () => {
                     <p>{number_traveler}</p>
                     <p>{city}, {country}</p>
                     <p>{isPrivate}</p>
-                    <p> by {start_date} {end_date}</p>
+                    <p> From {start_date} To {end_date}</p>
                 </div>
                     {sessionUser && isPlanCreator ?
                         <div id="item4" className="buttons-container">

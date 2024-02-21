@@ -24,7 +24,6 @@ function Stories() {
             {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
         <Link id="storiesIsActive" to="/stories" > Stories </Link>
         </h2>
-         <p>All Trip Stories</p>
          <div id="viewallstories">
             {Object.values(stories).map((story, index) => (
                   <StoryIndexItem story={story} key={index}/>

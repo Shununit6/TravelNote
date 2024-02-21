@@ -24,7 +24,6 @@ function Plans() {
             {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
         <Link id="plansIsActive" to="/plans" > Plans </Link>
         </h2>
-         <p>All Trip Plans</p>
          <div id="viewallplans">
             {Object.values(plans).map((plan, index) => (
                   <PlanIndexItem plan={plan} key={index}/>

@@ -7,7 +7,7 @@
 
 nav {
   font-family: Georgia, serif, cursive;
-  color:#90daec;
+  /* color:#90daec; */
   background-color: white;
   display:flex;
   justify-content: space-between;

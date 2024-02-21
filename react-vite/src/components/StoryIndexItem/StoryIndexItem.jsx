@@ -7,7 +7,7 @@ const StoryIndexItem = ({ story }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, place_id, title, description, article_ url, shorts_url, created_at, updated_at} = story;
-    const { id, title, created_at, updated_at} = story;
+    const { id, title} = story;
 
     return (
         <Link id="storylinkwithtext" to={`/stories/${id}`} key={`${id}`}>
@@ -16,10 +16,7 @@ const StoryIndexItem = ({ story }) => {
                     <img id="storyImage" src={url} alt="storyImage" />
                 </div> */}
                 <div id="storyitem2">
-                    {id}
                     {title}
-                    {created_at}
-                    {updated_at}
                 </div>
             </div>
         </Link>

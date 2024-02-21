@@ -7,7 +7,7 @@ const PlaceIndexItem = ({ place }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, type, description, created_at, updated_at} = place;
-    const { id, name, type, description, created_at, updated_at} = place;
+    const { id, name} = place;
 
     return (
         <Link id="placelinkwithtext" to={`/places/${id}`} key={`${id}`}>
@@ -16,12 +16,7 @@ const PlaceIndexItem = ({ place }) => {
                     <img id="placeExpenseImage" src={url} alt="placeExpenseImage" />
                 </div> */}
                 <div id="placeitem2">
-                    {id}
                     {name}
-                    {type}
-                    {description}
-                    {created_at}
-                    {updated_at}
                 </div>
             </div>
         </Link>
