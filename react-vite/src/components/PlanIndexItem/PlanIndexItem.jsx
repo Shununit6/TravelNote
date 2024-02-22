@@ -3,7 +3,7 @@
 // import { getPlanDetails } from "../../redux/plans";
 import { Link } from 'react-router-dom';
 import "./PlanIndexItem.css";
-const PlanIndexItem = ({ plan }) => {
+const PlanIndexItem = ({ plan, manage }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
@@ -16,7 +16,10 @@ const PlanIndexItem = ({ plan }) => {
                 {/* <div id="planitem1">
                     <img id="planExpenseImage" src={url} alt="planExpenseImage" />
                 </div> */}
-                {!isPrivate && <div id="planitem2">
+                {manage && <div id="planitem2">
+                    {name}
+                </div>}
+                {!manage && !isPrivate && <div id="planitem2">
                     {name}
                 </div>}
             </div>
