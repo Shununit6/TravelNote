@@ -101,33 +101,32 @@ def new_expense_to_plan(planId):
 # Add an existing expense to one of the current user's plans
 # Require Authentication: true
 # POST /api/plans/:planId/expenses/:expenseId
-# @plan_routes.route('/<int:planId>/expenses/<int:expenseId>', methods = ['POST'])
-# @login_required
-# def add_expense_to_plan(expenseId, planId):
+@plan_routes.route('/<int:planId>/expenses/<int:expenseId>', methods = ['POST'])
+@login_required
+def add_expense_to_plan(expenseId, planId):
 
-#   expense = Expense.query.get(expenseId)
-#   if not expense:
-#       return {'error':f"Expense {expenseId} is not found"}, 404
+  expense = Expense.query.get(expenseId)
+  if expense.plan_id == planId:
+      return {'error':f"Bad Request, Expense {expenseId} with Plan {planId} already exist"}, 400
+  if not expense:
+      return {'error':f"Expense {expenseId} is not found"}, 404
+  plan = Plan.query.filter(Plan.id==planId).first()
+  if not plan:
+      return {'error':f"Plan {planId} is not found"}, 404
 
-#   plan = Plan.query.filter(Plan.id==planId).first()
-#   if not plan:
-#       return {'error':f"Plan {planId} is not found"}, 404
+  plan = Plan.query.filter(Plan.user_id==current_user.get_id()).filter(Plan.id==planId).first()
 
-#   plan = Plan.query.filter(Plan.user_id==current_user.get_id()).filter(Plan.id==planId).first()
-
-#   if expense and plan:
-    # if song in album.songs:
-    #   return {'message': f"Song {songId} is already in the album {albumId}"}
-    # album.songs.append(song)
-    # db.session.commit()
-    # return jsonify(album.to_dict())
-    # oldExpense = Expense.query.filter(Expense.place_id==planId).first()
-    # if expense in plan.expenses:
-    #   return {'message': f"Expense {expenseId} is already in the plan {planId}"}
-    # plan.expenses.append(expense)
-    # db.session.commit()
-    # return jsonify(plan.to_dict())
-
+  if expense and plan:
+    new_expense = Expense(
+            plan_id=planId,
+            name=expense.name,
+            amount=expense.amount,
+            split = expense.split,
+    )
+    db.session.add(new_expense)
+    db.session.commit()
+    return jsonify(new_expense.to_dict()), 201  # HTTP status code for Created
+  return {'error':f"Failed to add Expense {expenseId} to Plan {planId}"}, 401
 
 # Edit a Plan
 # Updates and returns an existing plan.
