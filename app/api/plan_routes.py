@@ -78,6 +78,11 @@ def post_plan():
 @plan_routes.route('/<int:planId>/expenses', methods = ['POST'])
 @login_required
 def new_expense_to_plan(planId):
+    plan = Plan.query.filter(Plan.id==planId).first()
+    if not plan:
+        return {'error':f"Plan {planId} is not found"}, 404
+    if (plan.user_id != current_user.id):
+        return {'errors': {'message': 'Unauthorized'}}, 401
     """
     Creates and returns a new expense in a dictionary.
     """
@@ -104,13 +109,14 @@ def new_expense_to_plan(planId):
 @plan_routes.route('/<int:planId>/expenses/<int:expenseId>', methods = ['POST'])
 @login_required
 def add_expense_to_plan(expenseId, planId):
-
   expense = Expense.query.get(expenseId)
   if expense.plan_id == planId:
       return {'error':f"Bad Request, Expense {expenseId} with Plan {planId} already exist"}, 400
   if not expense:
       return {'error':f"Expense {expenseId} is not found"}, 404
   plan = Plan.query.filter(Plan.id==planId).first()
+  if (plan.user_id != current_user.id):
+      return {'errors': {'message': 'Unauthorized'}}, 401
   if not plan:
       return {'error':f"Plan {planId} is not found"}, 404
 
