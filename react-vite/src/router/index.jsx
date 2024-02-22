@@ -17,6 +17,7 @@ import Stories from '../components/Stories';
 import StoryDetails from '../components/StoryDetails';
 import EditStoryForm from '../components/EditStoryForm';
 import CreateStoryForm from '../components/CreateStoryForm';
+import ManageStories from '../components/ManageStories';
 import FrontPage from '../components/FrontPage/FrontPage';
 
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "places/current",
         element: <ManagePlaces />,
+      },
+      {
+        path: "stories/current",
+        element: <ManageStories />,
       },
       {
         path: "plans/:planId/edit",
