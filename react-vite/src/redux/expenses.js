@@ -1,75 +1,75 @@
 // /** Action Type Constants: */
 export const LOAD_EXPENSES = "expenses/LOAD_EXPENSES";
-export const LOAD_EXPENSE_DETAILS = "expenses/LOAD_PLACE_DETAILS";
-export const RECEIVE_PLACE = "places/RECEIVE_PLACE";
-export const UPDATE_PLACE = "places/UPDATE_PLACE";
-export const REMOVE_PLACE = "places/REMOVE_PLACE";
+export const LOAD_EXPENSE_DETAILS = "expenses/LOAD_EXPENSE_DETAILS";
+export const RECEIVE_EXPENSE = "expenses/RECEIVE_EXPENSE";
+export const UPDATE_EXPENSE = "expenses/UPDATE_EXPENSE";
+export const REMOVE_EXPENSE = "expenses/REMOVE_EXPENSE";
 
 // /**  Action Creators: */
-export const loadPlaces = (places) => ({
-    type: LOAD_PLACES,
-    places,
+export const loadExpenses = (expenses) => ({
+    type: LOAD_EXPENSES,
+    expenses,
 });
 
-export const loadPlaceDetails = (place) => ({
-    type: LOAD_PLACE_DETAILS,
-    place,
+export const loadExpenseDetails = (expense) => ({
+    type: LOAD_EXPENSE_DETAILS,
+    expense,
 });
 
-export const receivePlace = (place) => ({
-    type: RECEIVE_PLACE,
-    place,
+export const receiveExpense = (expense) => ({
+    type: RECEIVE_EXPENSE,
+    expense,
 });
 
-export const editPlace = (place) => ({
-    type: UPDATE_PLACE,
-    place,
+export const editExpense = (expense) => ({
+    type: UPDATE_EXPENSE,
+    expense,
 });
 
-export const removePlace = (place) => ({
-    type: REMOVE_PLACE,
-    place,
+export const removeExpense = (expense) => ({
+    type: REMOVE_EXPENSE,
+    expense,
 });
 
 // /** Thunk Action Creators: */
-export const getAllPlaces = () => async (dispatch) => {
-    const res = await fetch(`/api/places`);
+export const getAllExpenses = () => async (dispatch) => {
+    const res = await fetch(`/api/expenses`);
 
     if (res.ok) {
         const data = await res.json();
         // console.log("data", data);
-        dispatch(loadPlaces(data));
+        dispatch(loadExpenses(data));
         return data;
     }
     return res;
 };
 
-export const getPlaceDetails = (placeId) => async dispatch => {
-    // console.log("Fetching place details for placeId:", placeId);
-    const res = await fetch(`/api/places/${placeId}`);
+export const getExpenseDetails = (expenseId) => async dispatch => {
+    // console.log("Fetching expense details for expenseId:", expenseId);
+    const res = await fetch(`/api/expenses/${expenseId}`);
 
     if (res.ok) {
         const data = await res.json();
         // console.log("Received data:", data);
-        dispatch(loadPlaceDetails(data));
+        dispatch(loadExpenseDetails(data));
         return data;
     }
-    // console.log("Error fetching place details:", res.statusText);
+    // console.log("Error fetching expense details:", res.statusText);
     return res;
 };
 
-export const getMyPlaces = () => async (dispatch) => {
-    const res = await fetch('/api/places/current');
+export const getMyExpense = () => async (dispatch) => {
+    const res = await fetch('/api/expenses/current');
     if (res.ok) {
         const data = await res.json();
-        dispatch(loadPlaces(data));
+        dispatch(loadExpenses(data));
         return data;
     }
     return res;
 };
 
-export const createPlace = (payload) => async (dispatch) => {
-    const res = await fetch("/api/places/", {
+export const createExpense = (payload) => async (dispatch) => {
+    const res = await fetch("/api/expenses/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -77,63 +77,63 @@ export const createPlace = (payload) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(receivePlace(data));
+        dispatch(receiveExpense(data));
         return data;
     }
     return res;
 };
 
-export const updatePlace = (place) => async (dispatch) => {
-    const res = await fetch(`/api/places/${place.id}`, {
+export const updateExpense = (expense) => async (dispatch) => {
+    const res = await fetch(`/api/expenses/${expense.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(place),
+        body: JSON.stringify(expense),
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(editPlace(data));
+        dispatch(editExpense(data));
         return data;
     }
     return res;
 };
 
-export const deletePlace = (placeId) => async (dispatch) => {
-    const res = await fetch(`/api/places/${placeId}`, {
+export const deleteExpense = (expenseId) => async (dispatch) => {
+    const res = await fetch(`/api/expenses/${expenseId}`, {
         method: "DELETE",
     });
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(removePlace(placeId));
+        dispatch(removeExpense(expenseId));
         return data;
     }
     return res;
 };
 
-const placesReducer = (state = {}, action) => {
+const expensesReducer = (state = {}, action) => {
     switch (action.type) {
-        case LOAD_PLACES: {
-            const placesState = { ...state };
-            action.places.places.forEach((place) => {
-                if (!placesState[place.id]) { placesState[place.id] = place; }
+        case LOAD_EXPENSES: {
+            const expensesState = { ...state };
+            action.expenses.expenses.forEach((expense) => {
+                if (!expensesState[expense.id]) { expensesState[expense.id] = expense; }
             });
-            return {...placesState};
+            return {...expensesState};
         }
-        case LOAD_PLACE_DETAILS: {
-            return { ...state, [action.place.id]: action.place };
+        case LOAD_EXPENSE_DETAILS: {
+            return { ...state, [action.expense.id]: action.expense };
         }
-        case RECEIVE_PLACE:
-            return { ...state, [action.place.id]: action.place };
-        case UPDATE_PLACE:
+        case RECEIVE_EXPENSE:
+            return { ...state, [action.expense.id]: action.expense };
+        case UPDATE_EXPENSE:
             return { ...state };
-        case REMOVE_PLACE: {
-            const placeState = { ...state };
-            delete placeState[action.place];
-            return {...placeState};
+        case REMOVE_EXPENSE: {
+            const expenseState = { ...state };
+            delete expenseState[action.expense];
+            return {...expenseState};
         }
         default:
             return { ...state };
     }
 };
 
-export default placesReducer;
+export default expensesReducer;
