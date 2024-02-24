@@ -3,5 +3,5 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class PlaceImageForm(FlaskForm):
-    img_url = StringField('Place Image', validators=[DataRequired(message='Place Image is required')])
+    image_url = StringField('Place Image URL', validators=[DataRequired(message='Place Image URL is required')])
     submit = SubmitField('Submit')
