@@ -8,7 +8,7 @@ placeimage_routes = Blueprint('placeimages', __name__)
 #Get all the placeimages
 ### Require Authentication: false
 ### `GET /api/places/images`
-@placeimage_routes.route('/')
+@placeimage_routes.route('/images')
 def get_all_placeimages():
     """
     Query for all placeimages and returns them in a list of placeimages dictionaries
@@ -24,11 +24,12 @@ def get_imagesof_place(placeId):
     """
     Query for all the images of a place by id and returns them in a list of placeimages dictionaries
     """
-    placeimages = Placeimage.query.get(placeId)
+    placeimages = Placeimage.query.filter(Placeimage.place_id == placeId)
     place = Place.query.get(placeId)
     if(not place):
         return {'errors': f"place {placeId} does not exist."}, 404
-    return {'placeimages': [placeimage.to_dict() for placeimage in placeimages]}
+    # return jsonify(placeimages.to_dict())
+    return jsonify({'placeimages': [placeimage.to_dict() for placeimage in placeimages]})
 
 # Create an image to a place
 # Require Authentication: true
