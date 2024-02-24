@@ -10,12 +10,14 @@ import likesReducer from './likes';
 import plansReducer from './plans';
 import placesReducer from "./places";
 import storiesReducer from "./stories";
+import expensesReducer from "./expenses";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   plans: plansReducer,
   places: placesReducer,
   stories: storiesReducer,
+  expenses: expensesReducer,
   likes: likesReducer
 });
 
