@@ -31,7 +31,7 @@ def get_imagesof_place(placeId):
     # return jsonify(placeimages.to_dict())
     return jsonify({'placeimages': [placeimage.to_dict() for placeimage in placeimages]})
 
-# Create an image to a place
+# Create an image for a place
 # Require Authentication: true
 # POST /api/places/:placeId/images
 @placeimage_routes.route('/<int:placeId>/images', methods=['POST'])
@@ -64,7 +64,7 @@ def post_placeimage(placeId):
 # Require Authentication: true
 # Require proper authorization: Place must be created by the current user
 # PUT /api/places/images/:imageId
-@placeimage_routes.route('/<int:imageId>', methods=['PUT'])
+@placeimage_routes.route('/images/<int:imageId>', methods=['PUT'])
 @login_required
 def edit_placeimage(imageId):
     placeimagebyid = Placeimage.query.get(imageId)
@@ -91,7 +91,7 @@ def delete_placeimage(imageId):
     # checks if placeimage is created by the current user
     place = Place.query.get(placeimagebyid.place_id)
     if place.user_id != current_user.id:
-        return {'errors': f"Forbidden, Place {place.id} is not created by the current user."}, 403
+        return {'errors': f"Forbidden, Placeimage {placeimagebyid.id} of Place {place.id} is not created by the current user."}, 403
     db.session.delete(placeimagebyid)
     db.session.commit()
     # return jsonify({'message': 'Successfully deleted'})
