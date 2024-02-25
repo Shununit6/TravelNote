@@ -1,6 +1,6 @@
 #placeImage{
     width:420px;
-    height:330px;
+    height:270px;
     border-radius: 6px;
 }
 
@@ -19,7 +19,7 @@
 
 #placeitem2 {
     position: absolute;
-    bottom: 8px;
+    bottom: 5px;
     left: 0px;
     background-color: #000000;
     color: #ffffff;

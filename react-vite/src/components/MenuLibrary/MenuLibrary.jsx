@@ -15,7 +15,7 @@ function MenuLibrary(){
 				{" "} Spotify
             </div> */}
             <div>
-                <Link to="/">
+                <Link to="/home">
 					<i id="fa-house" className="fa-solid fa-house"></i>
 					{" "} Home
 				</Link>
@@ -39,10 +39,10 @@ function MenuLibrary(){
 
 		</div>
 		<div className="leftmenulibrary">
-			<div>
+			{/* <div>
 				<i className="fa-solid fa-earth-americas"></i>
 				{" "}Discover All
-			</div>
+			</div> */}
 			<div className="leftmenulibrarycreate">
 				<div className="leftmenulibrarycreate-1">
 					<div id="leftmenulibrarytext1">View all travels here</div>

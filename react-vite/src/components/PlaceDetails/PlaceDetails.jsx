@@ -5,15 +5,17 @@ import { getPlaceDetails} from '../../redux/places';
 import "./PlaceDetails.css";
 import DeleteModal from "../DeleteModal";
 import DeletePlaceModal from "../DeletePlaceModal";
+import { getPlaceimageDetails } from "../../redux/placeimages";
+import noImg from '../../images/noimage.png';
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const [isLoaded, setIsLoaded] = useState(false);
     const placeData = useSelector((state) => state.places[placeId]);
-
+    const placeimageData = useSelector((state) => state.placeimages);
     useEffect(() => {
-        dispatch(getPlaceDetails(placeId)).then(()=>setIsLoaded(true))
+        dispatch(getPlaceDetails(placeId)).then(()=>dispatch(getPlaceimageDetails(placeId))).then(()=>setIsLoaded(true))
     }, [dispatch, placeId])
     if(isLoaded && !placeData){
         return (<Navigate to="/places"/>);
@@ -26,6 +28,11 @@ const PlaceDetails = () => {
     let isPlaceCreator=false;
     if(sessionUser && placeData && user_id === sessionUser.id){
         isPlaceCreator=true;
+    }
+
+    let placeimageurl = Object.values(placeimageData);
+    if(!placeimageurl || !placeimageurl.length){
+        placeimageurl = noImg;
     }
 
     if(isLoaded){

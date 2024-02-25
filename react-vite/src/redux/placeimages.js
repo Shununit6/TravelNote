@@ -107,7 +107,12 @@ const placeimagesReducer = (state = {}, action) => {
             return {...placeimagesState};
         }
         case LOAD_PLACEIMAGE: {
-            return { ...state, [action.placeimage.id]: action.placeimage };
+            const placeimagesState = { ...state };
+            const Imagesplace = {};
+            action.image.placeimages.forEach((image)=>{
+                Imagesplace[image.id] = image;
+            });
+            return { ...placeimagesState, placeImage: Imagesplace };
         }
         case RECEIVE_IMAGE:
             return { ...state, [action.placeimage.id]: action.placeimage };
