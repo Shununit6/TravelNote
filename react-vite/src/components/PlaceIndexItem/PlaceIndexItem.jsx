@@ -9,8 +9,11 @@ const PlaceIndexItem = ({ place, placeimages }) => {
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, type, description, created_at, updated_at} = place;
     const { id, name} = place;
-    let placeimageurl = Object.values(placeimages).filter((image)=> image.place_id == id);
-    if(placeimageurl.length){
+    let placeimageurl;
+    if(placeimages){
+        placeimageurl = Object.values(placeimages).filter((image)=> image.place_id == id);
+    }
+    if(placeimageurl && placeimageurl.length){
         console.log(placeimageurl[0].image_url)
         placeimageurl = placeimageurl[0].image_url;
     }else{

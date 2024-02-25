@@ -4,4 +4,5 @@
     flex-flow: row wrap;
     position: relative;
     width: auto;
+    column-gap: 1em;
   }

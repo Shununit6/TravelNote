@@ -1,4 +1,29 @@
 #placeImage{
-    height:210px;
-    width:270px;
+    width:420px;
+    height:330px;
+    border-radius: 6px;
+}
+
+#placelinkwithtext {
+    position: relative;
+    display: inline-block;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+
+#placeitem1 {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+#placeitem2 {
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 6px 6px;
+    font-size: 1.2em;
+    text-align: center;
 }
