@@ -33,7 +33,7 @@ def seed_placeimages():
     imagefourteen = Placeimage(
         place_id=5, image_url='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/83/4a/1d/grand-canyon-national.jpg?w=1400&h=-1&s=1')
     imagefifteen = Placeimage(
-        place_id=5, image_url='https://en.wikipedia.org/wiki/Grand_Canyon_National_Park#/media/File:Dawn_on_the_S_rim_of_the_Grand_Canyon_(8645178272).jpg')
+        place_id=5, image_url='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/84/4e/38/caption.jpg?w=1200&h=-1&s=1')
     imagesixteen = Placeimage(
         place_id=6, image_url='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c1/a0/72/caption.jpg?w=1400&h=-1&s=1')
     imageseventeen = Placeimage(

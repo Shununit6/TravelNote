@@ -13,7 +13,7 @@ const PlaceDetails = () => {
     const sessionUser = useSelector(state => state.session.user);
     const [isLoaded, setIsLoaded] = useState(false);
     const placeData = useSelector((state) => state.places[placeId]);
-    const placeimageData = useSelector((state) => state.placeimages);
+    const placeimageData = useSelector((state) => state.placeimages.placeImage);
     useEffect(() => {
         dispatch(getPlaceDetails(placeId)).then(()=>dispatch(getPlaceimageDetails(placeId))).then(()=>setIsLoaded(true))
     }, [dispatch, placeId])
@@ -34,6 +34,7 @@ const PlaceDetails = () => {
     if(!placeimageurl || !placeimageurl.length){
         placeimageurl = noImg;
     }
+    console.log("placeimageurl", placeimageurl)
 
     if(isLoaded){
         return(
@@ -42,9 +43,14 @@ const PlaceDetails = () => {
                 <div id="item1">
                     <Link to={"/places"}> <p>Places</p> </Link>
                 </div>
-                {/* <div id="item2">
-                    <img id="images" src={imageUrl} alt="place"/>
-                </div> */}
+                <div id="item2">
+                {placeimageurl == noImg && <img id="images" src={placeimageurl} alt="placeimage"/>}
+                {/* {placeimageurl != noImg && <img id="images" src={} alt="place"/>} */}
+                {placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                  <img className={`placeimageitem${index}`} src={image.image_url} alt="placeimage" key={index}/>
+                ))}
+                    {/* <img id="images" src={placeimageurl} alt="place"/> */}
+                </div>
                 <div id="item3">
                     <h1>{name}</h1>
                     <p>{type}</p>
