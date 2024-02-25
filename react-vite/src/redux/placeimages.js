@@ -1,9 +1,9 @@
 // /** Action Type Constants: */
-export const LOAD_IMAGES = "places/LOAD_IMAGES";
-export const LOAD_IMAGE_DETAILS = "places/LOAD_IMAGE_DETAILS";
-export const RECEIVE_IMAGE = "places/RECEIVE_IMAGE";
-export const UPDATE_IMAGE = "places/UPDATE_IMAGE";
-export const REMOVE_IMAGE = "places/REMOVE_IMAGE";
+export const LOAD_IMAGES = "placeimages/LOAD_IMAGES";
+export const LOAD_PLACEIMAGE = "placeimages/LOAD_PLACEIMAGE";
+export const RECEIVE_IMAGE = "placeimages/RECEIVE_IMAGE";
+export const UPDATE_IMAGE = "placeimages/UPDATE_IMAGE";
+export const REMOVE_IMAGE = "placeimages/REMOVE_IMAGE";
 
 // /**  Action Creators: */
 export const loadImages = (images) => ({
@@ -11,65 +11,52 @@ export const loadImages = (images) => ({
     images,
 });
 
-export const loadImageDetails = (image) => ({
-    type: LOAD_IMAGE_DETAILS,
+export const loadPlaceImage = (image) => ({
+    type: LOAD_PLACEIMAGE,
     image,
 });
 
-export const receivePlace = (place) => ({
-    type: RECEIVE_PLACE,
-    place,
+export const receiveImage = (image) => ({
+    type: RECEIVE_IMAGE,
+    image,
 });
 
-export const editPlace = (place) => ({
-    type: UPDATE_PLACE,
-    place,
+export const editImage = (image) => ({
+    type: UPDATE_IMAGE,
+    image,
 });
 
-export const removePlace = (place) => ({
-    type: REMOVE_PLACE,
-    place,
+export const removeImage = (image) => ({
+    type: REMOVE_IMAGE,
+    image,
 });
 
 // /** Thunk Action Creators: */
-export const getAllPlaces = () => async (dispatch) => {
-    const res = await fetch(`/api/places`);
+export const getAllPlaceimages = () => async (dispatch) => {
+    const res = await fetch(`/api/places/images`);
 
     if (res.ok) {
         const data = await res.json();
-        // console.log("data", data);
-        dispatch(loadPlaces(data));
+        dispatch(loadImages(data));
         return data;
     }
     return res;
 };
 
-export const getPlaceDetails = (placeId) => async dispatch => {
-    // console.log("Fetching place details for placeId:", placeId);
-    const res = await fetch(`/api/places/${placeId}`);
+export const getPlaceimageDetails = (placeId) => async dispatch => {
+    // console.log("Fetching places' images for placeId:", placeId);
+    const res = await fetch(`/api/places/${placeId}/images`);
 
     if (res.ok) {
         const data = await res.json();
-        // console.log("Received data:", data);
-        dispatch(loadPlaceDetails(data));
-        return data;
-    }
-    // console.log("Error fetching place details:", res.statusText);
-    return res;
-};
-
-export const getMyPlaces = () => async (dispatch) => {
-    const res = await fetch('/api/places/current');
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadPlaces(data));
+        dispatch(loadPlaceImage(data));
         return data;
     }
     return res;
 };
 
-export const createPlace = (payload) => async (dispatch) => {
-    const res = await fetch("/api/places/", {
+export const createPlaceimage = (payload, placeId) => async (dispatch) => {
+    const res = await fetch(`/api/places/${placeId}/images`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -77,63 +64,63 @@ export const createPlace = (payload) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(receivePlace(data));
+        dispatch(receiveImage(data));
         return data;
     }
     return res;
 };
 
-export const updatePlace = (place) => async (dispatch) => {
-    const res = await fetch(`/api/places/${place.id}`, {
+export const updatePlaceimage = (image) => async (dispatch) => {
+    const res = await fetch(`/api/places/images/${image.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(place),
+        body: JSON.stringify(image),
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(editPlace(data));
+        dispatch(editImage(data));
         return data;
     }
     return res;
 };
 
-export const deletePlace = (placeId) => async (dispatch) => {
-    const res = await fetch(`/api/places/${placeId}`, {
+export const deletePlaceimage = (imageId) => async (dispatch) => {
+    const res = await fetch(`/api/places/images/${imageId}`, {
         method: "DELETE",
     });
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(removePlace(placeId));
+        dispatch(removeImage(imageId));
         return data;
     }
     return res;
 };
 
-const placesReducer = (state = {}, action) => {
+const placeimagesReducer = (state = {}, action) => {
     switch (action.type) {
-        case LOAD_PLACES: {
-            const placesState = { ...state };
-            action.places.places.forEach((place) => {
-                if (!placesState[place.id]) { placesState[place.id] = place; }
+        case LOAD_IMAGES: {
+            const placeimagesState = { ...state };
+            action.images.placeimages.forEach((placeimage) => {
+                if (!placeimagesState[placeimage.id]) { placeimagesState[placeimage.id] = placeimage; }
             });
-            return {...placesState};
+            return {...placeimagesState};
         }
-        case LOAD_PLACE_DETAILS: {
-            return { ...state, [action.place.id]: action.place };
+        case LOAD_PLACEIMAGE: {
+            return { ...state, [action.placeimage.id]: action.placeimage };
         }
-        case RECEIVE_PLACE:
-            return { ...state, [action.place.id]: action.place };
-        case UPDATE_PLACE:
+        case RECEIVE_IMAGE:
+            return { ...state, [action.placeimage.id]: action.placeimage };
+        case UPDATE_IMAGE:
             return { ...state };
-        case REMOVE_PLACE: {
-            const placeState = { ...state };
-            delete placeState[action.place];
-            return {...placeState};
+        case REMOVE_IMAGE: {
+            const placeimageState = { ...state };
+            delete placeimageState[action.placeimage];
+            return {...placeimageState};
         }
         default:
             return { ...state };
     }
 };
 
-export default placesReducer;
+export default placeimagesReducer;

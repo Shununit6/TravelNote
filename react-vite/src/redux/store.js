@@ -11,6 +11,7 @@ import plansReducer from './plans';
 import placesReducer from "./places";
 import storiesReducer from "./stories";
 import expensesReducer from "./expenses";
+import placeimagesReducer from "./placeimages";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   places: placesReducer,
   stories: storiesReducer,
   expenses: expensesReducer,
+  placeimages: placeimagesReducer,
   likes: likesReducer
 });
 

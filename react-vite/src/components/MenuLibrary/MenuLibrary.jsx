@@ -15,7 +15,7 @@ function MenuLibrary(){
 				{" "} Spotify
             </div> */}
             <div>
-                <Link exact to="/">
+                <Link to="/">
 					<i id="fa-house" className="fa-solid fa-house"></i>
 					{" "} Home
 				</Link>
@@ -26,15 +26,15 @@ function MenuLibrary(){
             </div> */}
 			{sessionUser &&
 			<div >
-				<NavLink exact to="/plans/current"><button>View my plans</button></NavLink>
+				<NavLink to="/plans/current"><button>View my plans</button></NavLink>
 			</div>}
 			{sessionUser &&
 			<div>
-				<NavLink exact to="/places/current"><button>View my places</button></NavLink>
+				<NavLink to="/places/current"><button>View my places</button></NavLink>
 			</div>}
 			{sessionUser &&
 			<div>
-				<NavLink exact to="/stories/current"><button>View my stories</button></NavLink>
+				<NavLink to="/stories/current"><button>View my stories</button></NavLink>
 			</div>}
 
 		</div>
@@ -46,27 +46,27 @@ function MenuLibrary(){
 			<div className="leftmenulibrarycreate">
 				<div className="leftmenulibrarycreate-1">
 					<div id="leftmenulibrarytext1">View all travels here</div>
-					<NavLink exact to="/plans"><button>View all the plans</button></NavLink>
-					<NavLink exact to="/places"><button>View all the places</button></NavLink>
-					<NavLink exact to="/stories"><button>View all the stories</button></NavLink>
+					<NavLink to="/plans"><button>View all the plans</button></NavLink>
+					<NavLink to="/places"><button>View all the places</button></NavLink>
+					<NavLink to="/stories"><button>View all the stories</button></NavLink>
 				</div>
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-2">
 					<div id="leftmenulibrarytext2">Create a new plan here. It is easy, we will help you</div>
 					{/* <NavLink exact to="/plans/new"><button>Create Plan</button></NavLink> */}
-					<NavLink exact to="/plans/new"><button>Create Plan</button></NavLink>
+					<NavLink to="/plans/new"><button>Create Plan</button></NavLink>
 				</div>
 				}
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-4">
 					<div id="leftmenulibrarytext4">Create a new place here. It is easy, we will help you</div>
-					<NavLink exact to="/places/new"><button>Create Place</button></NavLink>
+					<NavLink to="/places/new"><button>Create Place</button></NavLink>
 				</div>
 				}
 				{sessionUser &&
 				<div className="leftmenulibrarycreate-3">
 					<div id="leftmenulibrarytext3">Create a new story here. It is easy, we will help you</div>
-					<NavLink exact to="/stories/new"><button>Create Story</button></NavLink>
+					<NavLink to="/stories/new"><button>Create Story</button></NavLink>
 				</div>
 				}
 			</div>
