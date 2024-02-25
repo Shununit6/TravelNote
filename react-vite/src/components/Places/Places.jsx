@@ -30,7 +30,7 @@ function Places() {
         </h2>
          <div id="viewallplaces">
             {places && Object.values(places).map((place, index) => (
-                  <PlaceIndexItem place={place} placeimage={Object.values(placeimages)} key={index}/>
+                  <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
             ))}
          </div>
     </div>
