@@ -49,7 +49,17 @@ const PlaceDetails = () => {
                 {placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <img className={`placeimageitem${index}`} src={image.image_url} alt="placeimage" key={index}/>
                 ))}
-                    {/* <img id="images" src={placeimageurl} alt="place"/> */}
+                {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                  <button key={index} className={`placeimageitemupdate${index}`} >Update Image</button>
+                )):null}
+                {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                  <DeleteModal key={index} id={`placeimageitemdelete${index}`}
+                  itemText="Delete"
+                  modalComponent={<DeletePlaceModal place={placeData}/>}
+                  />
+                //   <button className={`placeimageitemdelete${index}`} >Delete Image</button>
+                )):null}
+                {/* <img id="images" src={placeimageurl} alt="place"/> */}
                 </div>
                 <div id="item3">
                     <h1>{name}</h1>
