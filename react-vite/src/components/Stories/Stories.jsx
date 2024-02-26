@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import { getAllStories } from '../../redux/stories';
 import StoryIndexItem from '../StoryIndexItem';
 import "./Stories.css";
+import { getAllStoryimages } from '../../redux/storyimages';
 
 function Stories() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const stories = useSelector((state) => state.stories);
+    const storyimages = useSelector((state)=>state.storyimages);
     useEffect(()=>{
-      dispatch(getAllStories()).then(()=>setIsLoaded(true))
+      dispatch(getAllStories()).then(()=>dispatch(getAllStoryimages())).then(()=>setIsLoaded(true))
     }, [dispatch]);
 
   if (!isLoaded) {
@@ -26,7 +28,7 @@ function Stories() {
         </h2>
          <div id="viewallstories">
             {Object.values(stories).map((story, index) => (
-                  <StoryIndexItem story={story} key={index}/>
+                  <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
             ))}
          </div>
     </div>

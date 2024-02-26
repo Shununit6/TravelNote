@@ -14,7 +14,7 @@ const PlaceIndexItem = ({ place, placeimages }) => {
         placeimageurl = Object.values(placeimages).filter((image)=> image.place_id == id);
     }
     if(placeimageurl && placeimageurl.length){
-        console.log(placeimageurl[0].image_url)
+        // console.log(placeimageurl[0].image_url)
         placeimageurl = placeimageurl[0].image_url;
     }else{
         placeimageurl = noImg;

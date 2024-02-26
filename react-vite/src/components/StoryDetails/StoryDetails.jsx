@@ -7,19 +7,23 @@ import "./StoryDetails.css";
 import DeleteModal from "../DeleteModal";
 import DeleteStoryModal from "../DeleteStoryModal";
 import LikeStory from "../LikeStory";
+import { getStoryimageDetails } from '../../redux/storyimages';
+import noImg from '../../images/noimage.png';
+// import DeleteImageModal from "../DeleteImageModal";
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const [isLoaded, setIsLoaded] = useState(false);
     const storyData = useSelector((state) => state.stories[storyId]);
+    const storyimageData = useSelector((state) => state.storyimages.storyImage);
 
     // useEffect(() => {
     //     dispatch(getStoryDetails(storyId)).then(()=>setIsLoaded(true))
     // }, [dispatch, storyId])
     useEffect(() => {
         dispatch(getStoryDetails(storyId)).then(()=>dispatch(getAllLikes()))
-        .then(()=>dispatch(getStoryLikes(storyId))).then(() => setIsLoaded(true));
+        .then(()=>dispatch(getStoryLikes(storyId))).then(()=>dispatch(getStoryimageDetails(storyId))).then(() => setIsLoaded(true));
       }, [dispatch, storyId]);
     if(isLoaded && !storyData){
         return (<Navigate to="/stories"/>);
@@ -35,6 +39,11 @@ const StoryDetails = () => {
         isStoryCreator=true;
     }
 
+    let storyimageurl = Object.values(storyimageData);
+    if(!storyimageurl || !storyimageurl.length){
+        storyimageurl = noImg;
+    }
+
     if(isLoaded){
         return(
             <div id="items">
@@ -45,11 +54,18 @@ const StoryDetails = () => {
                 {/* <div id="item2">
                     <img id="images" src={imageUrl} alt="story"/>
                 </div> */}
+                <div id="item2">
+                {storyimageurl == noImg && <img id="images" src={storyimageurl} alt="storyimage"/>}
+                {storyimageurl != noImg && (storyimageurl).map((image, index) => (
+                  <img className={`storyimageitem${index}`} src={image.image_url} alt="storyimage" key={index}/>
+                ))}
+                </div>
                 <div id="item3">
                     <h1>{title}</h1>
                     <p>{description}</p>
-                    <p>{article_url}</p>
-                    <p>{shorts_url}</p>
+                    {/* <p>{article_url}</p> */}
+                    <a target='_blank' rel='noopener noreferrer' href={article_url}>Read Original Content</a>
+                    <p>Available URL of Shorts: {shorts_url}</p>
                 </div>
                     {sessionUser && isStoryCreator ?
                         <div id="item4" className="buttons-container">

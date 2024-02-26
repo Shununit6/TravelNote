@@ -1,0 +1,8 @@
+#viewallstories {
+    /* background: gray none repeat scroll 0 0; */
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    width: auto;
+    column-gap: 1em;
+  }

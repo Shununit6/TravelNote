@@ -7,7 +7,7 @@ import DeleteModal from "../DeleteModal";
 import DeletePlaceModal from "../DeletePlaceModal";
 import { getPlaceimageDetails } from "../../redux/placeimages";
 import noImg from '../../images/noimage.png';
-import DeleteImageModal from "../DeleteImageModal";
+// import DeleteImageModal from "../DeleteImageModal";
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
@@ -35,7 +35,7 @@ const PlaceDetails = () => {
     if(!placeimageurl || !placeimageurl.length){
         placeimageurl = noImg;
     }
-    console.log("placeimageurl", placeimageurl)
+    // console.log("placeimageurl", placeimageurl)
 
     if(isLoaded){
         return(
@@ -46,20 +46,20 @@ const PlaceDetails = () => {
                 </div>
                 <div id="item2">
                 {placeimageurl == noImg && <img id="images" src={placeimageurl} alt="placeimage"/>}
+                {/* {sessionUser && isPlaceCreator && placeimageurl == noImg && <button className={"firstimage"} >Add Image</button>} */}
                 {/* {placeimageurl != noImg && <img id="images" src={} alt="place"/>} */}
                 {placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <img className={`placeimageitem${index}`} src={image.image_url} alt="placeimage" key={index}/>
                 ))}
-                {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                {/* {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <button key={index} className={`placeimageitemupdate${index}`} >Update Image</button>
-                )):null}
-                {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                )):null} */}
+                {/* {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <DeleteModal key={index} id={`placeimageitemdelete${index}`}
-                  itemText="Delete"
+                  itemText="Delete Image"
                   modalComponent={<DeleteImageModal image={image}/>}
                   />
-                //   <button className={`placeimageitemdelete${index}`} >Delete Image</button>
-                )):null}
+                )):null} */}
                 {/* <img id="images" src={placeimageurl} alt="place"/> */}
                 </div>
                 <div id="item3">

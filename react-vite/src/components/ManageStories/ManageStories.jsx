@@ -5,16 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllStories } from '../../redux/stories';
 import StoryIndexItem from '../StoryIndexItem';
 // import MenuLibrary from '../MenuLibrary';
+import { getAllStoryimages } from '../../redux/storyimages';
 
 const ManageStories = () => {
     const dispatch = useDispatch();
     const stories = useSelector((state) => Object.values(state.stories));
+    const storyimages = useSelector((state)=>state.storyimages);
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllStories()).then(() => setIsLoading(false));
+            dispatch(getAllStories()).then(()=>dispatch(getAllStoryimages())).then(() => setIsLoading(false));
         }
     }, [dispatch, sessionUser]);
 
@@ -40,7 +42,7 @@ const ManageStories = () => {
             {hasStories && <ul className='manageStoryIndex'>
                 {storiesByUser.map((story) => (
                     <ul className='manageEachStory' key={String(story.id)}>
-                        {story && <StoryIndexItem story={story} />}
+                        {story && <StoryIndexItem story={story} storyimages={storyimages}/>}
                     </ul>
                 ))}
              </ul>}
