@@ -7,6 +7,7 @@ import DeleteModal from "../DeleteModal";
 import DeletePlaceModal from "../DeletePlaceModal";
 import { getPlaceimageDetails } from "../../redux/placeimages";
 import noImg from '../../images/noimage.png';
+import DeleteImageModal from "../DeleteImageModal";
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
@@ -55,7 +56,7 @@ const PlaceDetails = () => {
                 {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <DeleteModal key={index} id={`placeimageitemdelete${index}`}
                   itemText="Delete"
-                  modalComponent={<DeletePlaceModal place={placeData}/>}
+                  modalComponent={<DeleteImageModal image={image}/>}
                   />
                 //   <button className={`placeimageitemdelete${index}`} >Delete Image</button>
                 )):null}
