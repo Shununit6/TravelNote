@@ -19,7 +19,7 @@ const DeleteImageModal = ({image}) => {
         e.preventDefault();
         await dispatch(deletePlaceimage(imageId));
         closeModal();
-        navigate(`/places`);
+        navigate(`/places/${placeId}`);
     };
 
     return (
