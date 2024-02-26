@@ -13,6 +13,7 @@ from .api.story_routes import story_routes
 from .api.expense_routes import expense_routes
 from .api.like_routes import like_routes
 from .api.placeimage_routes import placeimage_routes
+from .api.storyimage_routes import storyimage_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -40,6 +41,7 @@ app.register_blueprint(story_routes, url_prefix='/api/stories')
 app.register_blueprint(expense_routes, url_prefix='/api/expenses')
 app.register_blueprint(like_routes, url_prefix='/api/stories')
 app.register_blueprint(placeimage_routes, url_prefix='/api/places')
+app.register_blueprint(storyimage_routes, url_prefix='/api/stories')
 db.init_app(app)
 Migrate(app, db)
 
