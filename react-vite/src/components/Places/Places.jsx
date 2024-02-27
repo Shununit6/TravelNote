@@ -6,7 +6,7 @@ import PlaceIndexItem from '../PlaceIndexItem';
 import "./Places.css";
 import { getAllPlaceimages } from '../../redux/placeimages';
 
-function Places() {
+function Places({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const places = useSelector((state) => state.places);
@@ -25,14 +25,22 @@ function Places() {
   return (
     <div id="placeslistgrid">
         <h2>
-            {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
-        <Link id="placesIsActive" to="/places" > Places </Link>
+          <Link id="placesIsActive" to="/places" > Places </Link>
         </h2>
-         <div id="viewallplaces">
-            {places && Object.values(places).map((place, index) => (
-                  <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
-            ))}
-         </div>
+        {
+          num == 3 && <div id="viewallplaces">
+          {places && Object.values(places).slice(0, 3).map((place, index) => (
+                <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
+          ))}
+          </div>
+        }
+        {
+          num != 3 && <div id="viewallplaces">
+          {places && Object.values(places).map((place, index) => (
+                <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
+          ))}
+       </div>
+        }
     </div>
   );}
 }

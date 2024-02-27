@@ -5,23 +5,23 @@ import Places from '../Places';
 import Stories from '../Stories';
 
 function MainPageContent(){
-    // const num = 4;
+    const num = 3;
 	return (
         <nav>
             <div id="MainPageContentCss">
                 <div>
                     <ul className='MainPageFourSong'>
-                        <Plans/>
+                        <Plans num={num}/>
                     </ul>
                 </div>
                 <div>
                     <ul className='MainPageFourAlbum'>
-                        <Places/>
+                        <Places num={num}/>
                     </ul>
                 </div>
                 <div>
                     <ul className='MainPageFourPlaylist'>
-                        <Stories/>
+                        <Stories num={num}/>
                     </ul>
                 </div>
             </div>
