@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, Plan
+from app.models import db, Plan, Expense
 from ..forms.plan_form import PlanForm
+from ..forms.expense_form import ExpenseForm
 
 plan_routes = Blueprint('plans', __name__)
 
@@ -71,7 +72,67 @@ def post_plan():
         return jsonify(new_plan.to_dict()), 201  # HTTP status code for Created
     return form.errors, 401
 
+# Create an expense to a selected plan
+# Require Authentication: true
+# POST /api/plans/:planId/expenses
+@plan_routes.route('/<int:planId>/expenses', methods = ['POST'])
+@login_required
+def new_expense_to_plan(planId):
+    plan = Plan.query.filter(Plan.id==planId).first()
+    if not plan:
+        return {'error':f"Plan {planId} is not found"}, 404
+    if (plan.user_id != current_user.id):
+        return {'errors': {'message': 'Unauthorized'}}, 401
+    """
+    Creates and returns a new expense in a dictionary.
+    """
+    form = ExpenseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
+    if form.validate_on_submit():
+        new_expense = Expense(
+            plan_id=planId,
+            name=form.data['name'],
+            amount=form.data['amount'],
+            split = form.data['split'],
+        )
+
+        db.session.add(new_expense)
+        db.session.commit()
+
+        return jsonify(new_expense.to_dict()), 201  # HTTP status code for Created
+    return form.errors, 401
+
+# Add an existing expense to one of the current user's plans
+# Require Authentication: true
+# POST /api/plans/:planId/expenses/:expenseId
+@plan_routes.route('/<int:planId>/expenses/<int:expenseId>', methods = ['POST'])
+@login_required
+def add_expense_to_plan(expenseId, planId):
+  expense = Expense.query.get(expenseId)
+  if expense.plan_id == planId:
+      return {'error':f"Bad Request, Expense {expenseId} with Plan {planId} already exist"}, 400
+  if not expense:
+      return {'error':f"Expense {expenseId} is not found"}, 404
+  plan = Plan.query.filter(Plan.id==planId).first()
+  if (plan.user_id != current_user.id):
+      return {'errors': {'message': 'Unauthorized'}}, 401
+  if not plan:
+      return {'error':f"Plan {planId} is not found"}, 404
+
+  plan = Plan.query.filter(Plan.user_id==current_user.get_id()).filter(Plan.id==planId).first()
+
+  if expense and plan:
+    new_expense = Expense(
+            plan_id=planId,
+            name=expense.name,
+            amount=expense.amount,
+            split = expense.split,
+    )
+    db.session.add(new_expense)
+    db.session.commit()
+    return jsonify(new_expense.to_dict()), 201  # HTTP status code for Created
+  return {'error':f"Failed to add Expense {expenseId} to Plan {planId}"}, 401
 
 # Edit a Plan
 # Updates and returns an existing plan.

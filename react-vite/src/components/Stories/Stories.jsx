@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import { getAllStories } from '../../redux/stories';
 import StoryIndexItem from '../StoryIndexItem';
 import "./Stories.css";
+import { getAllStoryimages } from '../../redux/storyimages';
 
-function Stories() {
+function Stories({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const stories = useSelector((state) => state.stories);
+    const storyimages = useSelector((state)=>state.storyimages);
     useEffect(()=>{
-      dispatch(getAllStories()).then(()=>setIsLoaded(true))
+      dispatch(getAllStories()).then(()=>dispatch(getAllStoryimages())).then(()=>setIsLoaded(true))
     }, [dispatch]);
 
   if (!isLoaded) {
@@ -24,11 +26,20 @@ function Stories() {
             {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
         <Link id="storiesIsActive" to="/stories" > Stories </Link>
         </h2>
-         <div id="viewallstories">
-            {Object.values(stories).map((story, index) => (
-                  <StoryIndexItem story={story} key={index}/>
+        {
+          num==3 && <div id="viewallstories">
+            {Object.values(stories).slice(0,3).map((story, index) => (
+                  <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
             ))}
-         </div>
+          </div>
+        }
+        {
+          num!=3 && <div id="viewallstories">
+          {Object.values(stories).map((story, index) => (
+                <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
+          ))}
+          </div>
+        }
     </div>
   );}
 }

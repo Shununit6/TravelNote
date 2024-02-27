@@ -1,0 +1,15 @@
+
+.fa-solid,.fa-regular{
+    /* color:white; */
+    margin-left: 27px;
+    margin-top: 3vh;
+    margin-right: 15px;
+}
+
+#regularlike, #solidlike{
+    font-size:1.5rem;
+}
+
+#solidlike{
+    color:red;
+}

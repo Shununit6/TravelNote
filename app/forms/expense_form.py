@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, NumberRange
 
 class ExpenseForm(FlaskForm):
     name = StringField('Expense Name', validators=[DataRequired(message='Expense Name is required')])
+    category = StringField ('Expense Type', validators=[DataRequired(message='Expense Type is required' )])
     amount =IntegerField('Expense Amount', validators=[NumberRange(min=1, message='Expense Amount must be at least $1')])
     split = BooleanField('Split', default=True)
     submit = SubmitField('Submit')

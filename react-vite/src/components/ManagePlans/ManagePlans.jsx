@@ -11,6 +11,7 @@ const ManagePlans = () => {
     const plans = useSelector((state) => Object.values(state.plans));
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
+    const manage = true;
 
     useEffect(() => {
         if (sessionUser) {
@@ -40,7 +41,7 @@ const ManagePlans = () => {
             {hasPlans && <ul className='managePlanIndex'>
                 {plansByUser.map((plan) => (
                     <ul className='manageEachPlan' key={String(plan.id)}>
-                        {plan && <PlanIndexItem plan={plan} />}
+                        {plan && <PlanIndexItem manage={manage} plan={plan} />}
                     </ul>
                 ))}
              </ul>}

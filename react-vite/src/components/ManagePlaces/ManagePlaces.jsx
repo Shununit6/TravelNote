@@ -5,16 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlaces } from '../../redux/places';
 import PlaceIndexItem from '../PlaceIndexItem';
 // import MenuLibrary from '../MenuLibrary';
+import { getAllPlaceimages } from '../../redux/placeimages';
 
 const ManagePlaces = () => {
     const dispatch = useDispatch();
     const places = useSelector((state) => Object.values(state.places));
+    const placeimages = useSelector((state)=>state.placeimages);
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllPlaces()).then(() => setIsLoading(false));
+            dispatch(getAllPlaces()).then(()=>dispatch(getAllPlaceimages())).then(() => setIsLoading(false));
         }
     }, [dispatch, sessionUser]);
 
@@ -40,7 +42,7 @@ const ManagePlaces = () => {
             {hasPlaces && <ul className='managePlaceIndex'>
                 {placesByUser.map((place) => (
                     <ul className='manageEachPlace' key={String(place.id)}>
-                        {place && <PlaceIndexItem place={place} />}
+                        {place && <PlaceIndexItem place={place} placeimages={placeimages}/>}
                     </ul>
                 ))}
              </ul>}

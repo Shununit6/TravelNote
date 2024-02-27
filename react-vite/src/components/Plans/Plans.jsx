@@ -5,7 +5,7 @@ import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
 import "./Plans.css";
 
-function Plans() {
+function Plans({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const plans = useSelector((state) => state.plans);
@@ -24,11 +24,20 @@ function Plans() {
             {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
         <Link id="plansIsActive" to="/plans" > Plans </Link>
         </h2>
-         <div id="viewallplans">
+        {
+          num == 3 && <div id="viewallplans">
+          {Object.values(plans).slice(0, 3).map((plan, index) => (
+                <PlanIndexItem plan={plan} key={index}/>
+          ))}
+       </div>
+        }
+        {
+          num != 3 && <div id="viewallplans">
             {Object.values(plans).map((plan, index) => (
                   <PlanIndexItem plan={plan} key={index}/>
             ))}
          </div>
+        }
     </div>
   );}
 }

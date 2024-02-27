@@ -54,10 +54,10 @@ const StoryForm = ({ story, formType }) => {
                     newStory = await dispatch(updateStory(story));
                     // console.log("after", newStory)
                 } else {
-                    console.log("before", story)
+                    // console.log("before", story)
                     // story.place_id = 1;
                     newStory = await dispatch(createStory(story));
-                    console.log("after", newStory)
+                    // console.log("after", newStory)
                 }
                 if (newStory.id) {
                     // console.log("newStory.id", newStory.id);

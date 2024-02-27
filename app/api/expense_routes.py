@@ -57,6 +57,7 @@ def post_expense():
         new_expense = Expense(
             # plan_id=,
             name=form.data['name'],
+            category=form.data['category'],
             amount=form.data['amount'],
             split = form.data['split'],
         )

@@ -35,5 +35,6 @@ class Plan(db.Model):
             'start_date': self.start_date,
             'end_date': self.end_date,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            # 'expenses':[expense.to_dict() for expense in self.expenses]
         }

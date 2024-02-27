@@ -14,7 +14,7 @@ function LikeStory({storyId, userId}) {
     const numofl=  Object.values(alllikes).filter((curr)=> (curr.story_id == storyId)).length;
 
     let currLike = Object.values(alllikes).filter((curr)=> (curr.story_id == storyId && curr.user_id == sessionUser.id));
-    console.log("currLike", currLike);
+    // console.log("currLike", currLike);
     // .filter((curr)=> (curr.story_id == storyId));
 
     const[isliked, setIsLiked] = useState(currLike.length==true);
@@ -51,14 +51,16 @@ function LikeStory({storyId, userId}) {
   if(!isliked){
     return (
       <>
-        <button onClick={handleClick}>like</button>
+        {/* <button onClick={handleClick}>like</button> */}
+        <div id="regularlike" onClick={handleClick}><i className="fa-regular fa-heart"></i></div>
         <div>{numofl} liked this story</div>
       </>
         )
   }else{
     return (
       <>
-        <button onClick={handleClick}>unlike</button>
+        {/* <button onClick={handleClick}>unlike</button> */}
+        <div id="solidlike" onClick={handleClick}><i className="fa-solid fa-heart"></i></div>
         <div>{numofl} liked this story</div>
       </>
     )
