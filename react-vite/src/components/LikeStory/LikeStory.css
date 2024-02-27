@@ -9,3 +9,7 @@
 #regularlike, #solidlike{
     font-size:1.5rem;
 }
+
+#solidlike{
+    color:red;
+}
