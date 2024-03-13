@@ -11,33 +11,39 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
     const { id, name } = plan;
     const isPrivate = plan.private;
     const planexpenses = (id) =>{
-        if(Object.values(expense) && Object.values(expense).filter(expense=>expense.plan_id==id).length){
-            // console.log(Object.values(expense).filter(expense=>expense.plan_id==id));
-            // console.log(Object.values(expense).filter(expense=>expense.plan_id==id).length);
-            // console.log(Object.values(expense).filter(expense=>expense.plan_id==id)[0]);
-            // console.log(Object.values(expense).filter(expense=>expense.plan_id==id)[1]);
-            // console.log(Object.values(expense).filter(expense=>expense.plan_id==id)[2]);
-            // const expensearr = Object.values(expense).filter(expense=>expense.plan_id==id);
-            // expensearr.forEach((expense, index)=>{console.log(expense.amount)})
+        if(expense && Object.values(expense) && Object.values(expense).filter(expense=>expense.plan_id==id).length){
             return Object.values(expense).filter(expense=>expense.plan_id==id);
         }
     }
     const expensedata = planexpenses(id);
     console.log(expensedata)
+    const data = []
+    data.push(["category", "amount"])
+    if(expensedata){
+        expensedata.forEach((x)=>{
+            data.push([x.category, x.amount])})
+        console.log(data)
+    }
+    // const options = {
+    //     title: "Plan Expenses",
+    // };
+
     return (
         <Link id="planlinkwithtext" to={`/plans/${id}`} key={`${id}`}>
             <div id="plangrid1">
                 <div id="planitem1">
                     {/* <img id="planExpenseImage" src={url} alt="planExpenseImage" /> */}
                 </div>
-                {expensedata && expensedata.map((expense)=>{return expense.amount, expense.category})}
+                {/* {expensedata && expensedata.map((expense)=>{return expense.amount, expense.category})} */}
                 {/* <div id='myDiv'></div> */}
-                <Chart/>
-                {manage && <div id="planitem2">
+                {/* {expensedata && <Chart data={data}/>} */}
+                {manage && expensedata && <div id="planitem2">
                     {name}
+                    <Chart data={data}/>
                 </div>}
-                {!manage && !isPrivate && <div id="planitem2">
+                {!manage && !isPrivate && expensedata && <div id="planitem2">
                     {name}
+                    <Chart data={data}/>
                 </div>}
             </div>
         </Link>
