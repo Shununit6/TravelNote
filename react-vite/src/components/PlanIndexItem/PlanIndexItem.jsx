@@ -3,8 +3,7 @@
 // import { getPlanDetails } from "../../redux/plans";
 import { Link } from 'react-router-dom';
 import "./PlanIndexItem.css";
-// import Plotly from "plotly.js-dist";
-import { PieChart, Pie } from 'recharts';
+import Chart from '../Charts';
 const PlanIndexItem = ({ plan, expense, manage }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
@@ -25,24 +24,6 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
     }
     const expensedata = planexpenses(id);
     console.log(expensedata)
-    // var data = [{
-    //     values: [19, 26, 55],
-    //     labels: ['Residential', 'Non-Residential', 'Utility'],
-    //     type: 'pie'
-    //   }];
-
-    //   var layout = {
-    //     height: 400,
-    //     width: 500
-    //   };
-
-    //   Plotly.newPlot('myDiv', data, layout);
-    const data = [
-        { name: 'Geeksforgeeks', students: 400 },
-        { name: 'Technical scripter', students: 700 },
-        { name: 'Geek-i-knack', students: 200 },
-        { name: 'Geek-o-mania', students: 1000 }
-    ];
     return (
         <Link id="planlinkwithtext" to={`/plans/${id}`} key={`${id}`}>
             <div id="plangrid1">
@@ -51,9 +32,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 </div>
                 {expensedata && expensedata.map((expense)=>{return expense.amount, expense.category})}
                 {/* <div id='myDiv'></div> */}
-                <PieChart width={700} height={700}>
-                    <Pie data={data} dataKey="students" outerRadius={250} fill="green" />
-                </PieChart>
+                <Chart/>
                 {manage && <div id="planitem2">
                     {name}
                 </div>}
