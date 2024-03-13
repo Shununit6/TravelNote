@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
 // import MenuLibrary from '../MenuLibrary';
+import { getAllExpenses } from '../../redux/expenses';
 
 const ManagePlans = () => {
     const dispatch = useDispatch();
@@ -12,10 +13,12 @@ const ManagePlans = () => {
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
     const manage = true;
+    const expenses = useSelector(state => state.expenses);
+    const expense = Object.values(expenses);
 
     useEffect(() => {
         if (sessionUser) {
-            dispatch(getAllPlans()).then(() => setIsLoading(false));
+            dispatch(getAllExpenses()).then(()=>dispatch(getAllPlans())).then(() => setIsLoading(false));
         }
     }, [dispatch, sessionUser]);
 
@@ -41,7 +44,7 @@ const ManagePlans = () => {
             {hasPlans && <ul className='managePlanIndex'>
                 {plansByUser.map((plan) => (
                     <ul className='manageEachPlan' key={String(plan.id)}>
-                        {plan && <PlanIndexItem manage={manage} plan={plan} />}
+                        {plan && <PlanIndexItem expense={expense} manage={manage} plan={plan} />}
                     </ul>
                 ))}
              </ul>}
