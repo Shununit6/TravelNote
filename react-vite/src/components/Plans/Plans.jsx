@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
 import "./Plans.css";
+import { getAllExpenses } from '../../redux/expenses';
 
 function Plans({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const plans = useSelector((state) => state.plans);
+    const expenses = useSelector((state)=> state.expenses);
+    // console.log(Object.values(expenses));
+    const expense = Object.values(expenses);
     useEffect(()=>{
-      dispatch(getAllPlans()).then(()=>setIsLoaded(true))
+      dispatch(getAllExpenses()).then(()=>dispatch(getAllPlans())).then(()=>setIsLoaded(true))
     }, [dispatch]);
 
   if (!isLoaded) {
@@ -27,14 +31,14 @@ function Plans({num}) {
         {
           num == 3 && <div id="viewallplans">
           {Object.values(plans).slice(0, 3).map((plan, index) => (
-                <PlanIndexItem plan={plan} key={index}/>
+                <PlanIndexItem plan={plan} expense={expense} key={index}/>
           ))}
        </div>
         }
         {
           num != 3 && <div id="viewallplans">
             {Object.values(plans).map((plan, index) => (
-                  <PlanIndexItem plan={plan} key={index}/>
+                  <PlanIndexItem plan={plan} expense={expense} key={index}/>
             ))}
          </div>
         }
