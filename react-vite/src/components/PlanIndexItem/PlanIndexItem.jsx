@@ -18,11 +18,22 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
     const expensedata = planexpenses(id);
     console.log(expensedata)
     const data = []
+    const datacategory = []
+    const dataamount = []
     data.push(["category", "amount"])
     if(expensedata){
         expensedata.forEach((x)=>{
-            data.push([x.category, x.amount])})
-        console.log(data)
+            if(datacategory.includes(x.category)){
+                dataamount[datacategory.indexOf(x.category)] += x.amount
+            }
+            else{
+                datacategory.push(x.category)
+                dataamount.push(x.amount)
+            }
+        })
+        datacategory.forEach((x, index)=>{
+            data.push([x, dataamount[index]])
+        })
     }
     // const options = {
     //     title: "Plan Expenses",
