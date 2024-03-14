@@ -5,4 +5,13 @@
     position: relative;
     width: auto;
     column-gap: 1em;
-  }
+}
+
+#placesIsActive{
+    text-decoration: none;
+    color: black;
+}
+#placesIsActive:hover{
+    color: blue;
+    text-decoration: underline;
+}

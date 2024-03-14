@@ -6,3 +6,12 @@
     width: auto;
     column-gap: 1em;
   }
+
+#storiesIsActive{
+    text-decoration: none;
+    color: black;
+}
+#storiesIsActive:hover{
+    color: blue;
+    text-decoration: underline;
+}

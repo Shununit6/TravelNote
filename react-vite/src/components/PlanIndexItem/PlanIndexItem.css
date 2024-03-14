@@ -1,3 +1,9 @@
-#planExpense{
+#planlinkwithtext{
+    text-decoration: none;
     color:black;
+}
+
+#planlinkwithtext:hover{
+    color:blue;
+    text-decoration: underline;
 }

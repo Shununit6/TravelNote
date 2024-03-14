@@ -54,10 +54,10 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                     {/* <img id="planExpenseImage" src={url} alt="planExpenseImage" /> */}
                 </div>
                 {manage && expensedata && <div id="planitem2">
-                    <Chart data={data} options={{title: `${name}`}}/>
+                    <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
                 </div>}
                 {!manage && !isPrivate && expensedata && <div id="planitem2">
-                    <Chart data={data} options={{title: `${name}`}}/>
+                    <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
                 </div>}
             </div>
         </Link>

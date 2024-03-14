@@ -1,0 +1,24 @@
+#plantext{
+    text-decoration: none;
+    color:black;
+    font-size: 1.5em;
+}
+
+#plantext:hover{
+    text-decoration: underline;
+    color:blue;
+    font-size: 1.5em;
+}
+
+#plandataonechartdetail, #plandatachartdetail{
+    width:510px;
+    height: fit-content;
+}
+
+#item2{
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    width: auto;
+    column-gap: 1em;
+}
