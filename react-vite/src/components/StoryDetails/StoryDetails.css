@@ -1,4 +1,21 @@
-.storyimageitem0, .storyimageitem1, .storyimageitem2, .storyimageitem3,.storyimageitem4 {
+.storyimageitem0, .storyimageitem1, .storyimageitem2, .storyimageitem3,.storyimageitem4, #nostoryimages {
     width:420px;
     height:270px
+}
+
+#storytext{
+    text-decoration: none;
+    color:black;
+    font-size: 1.5em;
+}
+
+#storytext:hover{
+    text-decoration: underline;
+    color:#90daec;
+    font-size: 1.5em;
+}
+
+#items{
+    display: grid;
+    justify-content: center;
 }

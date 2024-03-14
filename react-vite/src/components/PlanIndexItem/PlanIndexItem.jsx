@@ -8,7 +8,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
     // const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user);
     // const { id, user_id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = plan;
-    const { id, name, number_traveler } = plan;
+    const { id, name, number_traveler, city, country, start_date, end_date} = plan;
     const isPrivate = plan.private;
     const planexpenses = (id) =>{
         if(expense && Object.values(expense) && Object.values(expense).filter(expense=>expense.plan_id==id).length){
@@ -16,7 +16,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
         }
     }
     const expensedata = planexpenses(id);
-    // console.log(expensedata)
+    console.log(expensedata)
     const data = []
     const datacategory = []
     const dataamount = []
@@ -53,10 +53,40 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 <div id="planitem1">
                     {/* <img id="planExpenseImage" src={url} alt="planExpenseImage" /> */}
                 </div>
+                {manage && !expensedata &&
+                <div>
+                    <h1>{name}</h1>
+                    <p>Number Of Traveler: {number_traveler}</p>
+                    <p>Destination: {city}, {country}</p>
+                    <p>Travel Duration: From {start_date} To {end_date}</p>
+                    <p>Expenses of {name} not available</p>
+                </div>
+                }
                 {manage && expensedata && <div id="planitem2">
+                <div>
+                    <h1>{name}</h1>
+                    <p>Number Of Traveler: {number_traveler}</p>
+                    <p>Destination: {city}, {country}</p>
+                    <p>Travel Duration: From {start_date} To {end_date}</p>
+                </div>
                     <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
                 </div>}
+                {!manage && !expensedata && !isPrivate &&
+                <div>
+                    <h1>{name}</h1>
+                    <p>Number Of Traveler: {number_traveler}</p>
+                    <p>Destination: {city}, {country}</p>
+                    <p>Travel Duration: From {start_date} To {end_date}</p>
+                    <p>Expenses of {name} not available</p>
+                </div>
+                }
                 {!manage && !isPrivate && expensedata && <div id="planitem2">
+                <div>
+                    <h1>{name}</h1>
+                    <p>Number Of Traveler: {number_traveler}</p>
+                    <p>Destination: {city}, {country}</p>
+                    <p>Travel Duration: From {start_date} To {end_date}</p>
+                </div>
                     <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
                 </div>}
             </div>

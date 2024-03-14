@@ -1,6 +1,9 @@
 .homewrapper{
     font-family: Georgia, serif, cursive;
     display:flex;
+    /* display: grid; */
+    /* justify-content: center; */
+
 }
 
 .homeitem-1{
