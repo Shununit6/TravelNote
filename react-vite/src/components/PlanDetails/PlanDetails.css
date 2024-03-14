@@ -21,4 +21,5 @@
     position: relative;
     width: auto;
     column-gap: 1em;
+    row-gap: 1em;
 }
