@@ -46,11 +46,9 @@ const PlanDetails = () => {
         }
     }
     const expensedata = planexpenses(id);
-    // console.log(expensedata[0].split)
     const data = []
     const datacategory = []
     const dataamount = []
-    // let options;
     data.push(["category", "amount"])
     if(expensedata){
         expensedata.forEach((x)=>{
