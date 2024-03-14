@@ -49,19 +49,20 @@ const StoryDetails = () => {
             <div id="items">
                 {/* <div id="items-2"></div> */}
                 <div id="item1">
-                    <Link to={"/stories"}> <p>Stories</p> </Link>
+                    <Link id="storytext" to={"/stories"}> <p>Stories</p> </Link>
                 </div>
                 {/* <div id="item2">
                     <img id="images" src={imageUrl} alt="story"/>
                 </div> */}
                 <div id="item2">
-                {storyimageurl == noImg && <img id="images" src={storyimageurl} alt="storyimage"/>}
+                {storyimageurl == noImg && <img id="nostoryimages" src={storyimageurl} alt="storyimage"/>}
                 {storyimageurl != noImg && (storyimageurl).map((image, index) => (
                   <img className={`storyimageitem${index}`} src={image.image_url} alt="storyimage" key={index}/>
                 ))}
                 </div>
                 <div id="item3">
                     <h1>{title}</h1>
+                    {sessionUser && <LikeStory userId={user_id} storyId={storyId}/>}
                     <p>{description}</p>
                     {/* <p>{article_url}</p> */}
                     <a target='_blank' rel='noopener noreferrer' href={article_url}>Read Original Content</a>
@@ -70,15 +71,15 @@ const StoryDetails = () => {
                     {sessionUser && isStoryCreator ?
                         <div id="item4" className="buttons-container">
                         <Link to={`/stories/${storyId}/edit`}>
-                            <button id="updatestorydetails" >Update</button>
+                            <button id="updatestorydetails" >Update My Story</button>
                         </Link>
                         <DeleteModal id="deletedstorydetails"
-                                itemText="Delete"
+                                itemText="Delete My Story"
                                 modalComponent={<DeleteStoryModal story={storyData}/>}
                                 />
                         </div>
                         : null}
-                    {sessionUser && <LikeStory userId={user_id} storyId={storyId}/>}
+                    {/* {sessionUser && <LikeStory userId={user_id} storyId={storyId}/>} */}
             </div>
         );
     }

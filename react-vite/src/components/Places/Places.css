@@ -7,11 +7,22 @@
     column-gap: 1em;
 }
 
-#placesIsActive{
-    text-decoration: none;
+#placesmainpage{
     color: black;
+    text-decoration:none;
 }
-#placesIsActive:hover{
-    color: blue;
+
+#placesIsActive{
+    color: black;
+    text-decoration:none;
+    margin-left: 0.6rem;
+}
+
+#plansIsNotActive, #storiesIsNotActive{
+    text-decoration:none;
+    color: grey;
+}
+#storiesIsNotActive:hover, #plansIsNotActive:hover, #placesmainpage:hover{
+    color: #90daec;
     text-decoration: underline;
 }

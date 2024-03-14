@@ -25,11 +25,17 @@
 }
 
 button{
-    /* color:black; */
-    /* background-color: white; */
-    border-radius: 60px;
+    color:black;
+    background-color: white;
+    border-radius: 51px;
     margin-left: 27px;
     margin-top: 1.5vh;
+    font-size: 1.2rem;
+}
+
+button:hover{
+    color:white;
+    background-color: #90daec;
 }
 
 .fa-solid,.fa-brands, #homemenulibrary{
@@ -50,4 +56,12 @@ button{
 #leftmenulibrarytext1,#leftmenulibrarytext2,#leftmenulibrarytext3, #leftmenulibrarytext4{
     margin-left: 27px;
     margin-top: 27px;
+}
+#fa-house, #homeicontext{
+    text-decoration: none;
+    color:black;
+}
+#homeicontext:hover{
+    color:#90daec;
+    text-decoration: underline;
 }

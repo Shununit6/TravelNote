@@ -6,7 +6,7 @@
 
 #plantext:hover{
     text-decoration: underline;
-    color:blue;
+    color:#90daec;
     font-size: 1.5em;
 }
 
@@ -23,3 +23,8 @@
     column-gap: 1em;
     row-gap: 1em;
 }
+
+/* #planitems{
+    display: grid;
+    justify-content: center;
+} */

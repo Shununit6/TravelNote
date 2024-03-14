@@ -100,7 +100,7 @@ const PlanDetails = () => {
 
     if(isLoaded){
         return(
-            <div id="items">
+            <div id="planitems">
                 {/* <div id="items-2"></div> */}
                 <div id="item1">
                     <Link id="plantext" to={"/plans"}> <p>Plans</p> </Link>

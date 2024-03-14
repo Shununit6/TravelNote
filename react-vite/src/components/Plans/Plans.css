@@ -1,9 +1,20 @@
-#plansIsActive{
-    text-decoration: none;
+#plansmainpage{
     color: black;
+    text-decoration:none;
 }
-#plansIsActive:hover{
-    color: blue;
+
+#plansIsActive{
+    color: black;
+    text-decoration:none;
+}
+
+#placesIsNotActive, #storiesIsNotActive{
+    text-decoration:none;
+    color: grey;
+    margin-left: 0.6rem;
+}
+#storiesIsNotActive:hover, #placesIsNotActive:hover, #plansmainpage:hover{
+    color: #90daec;
     text-decoration: underline;
 }
 #viewallplans {
