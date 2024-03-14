@@ -1,3 +1,23 @@
+#storiesmainpage{
+    color: black;
+    text-decoration:none;
+}
+
+#storiesIsActive{
+    color: black;
+    text-decoration:none;
+    margin-left: 0.6rem;
+}
+
+#placesIsNotActive, #plansIsNotActive{
+    text-decoration:none;
+    color: grey;
+}
+#plansIsNotActive:hover, #placesIsNotActive:hover, #storiesmainpage:hover{
+    color: #90daec;
+    text-decoration: underline;
+}
+
 #viewallstories {
     /* background: gray none repeat scroll 0 0; */
     display: flex;
@@ -5,13 +25,4 @@
     position: relative;
     width: auto;
     column-gap: 1em;
-  }
-
-#storiesIsActive{
-    text-decoration: none;
-    color: black;
-}
-#storiesIsActive:hover{
-    color: blue;
-    text-decoration: underline;
 }

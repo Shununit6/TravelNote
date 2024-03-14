@@ -42,7 +42,7 @@ const PlaceDetails = () => {
             <div id="items">
                 {/* <div id="items-2"></div> */}
                 <div id="item1">
-                    <Link to={"/places"}> <p>Places</p> </Link>
+                    <Link id="placetext" to={"/places"}> <p>Places</p> </Link>
                 </div>
                 <div id="item2">
                 {placeimageurl == noImg && <img id="images" src={placeimageurl} alt="placeimage"/>}

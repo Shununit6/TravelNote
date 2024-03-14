@@ -2,3 +2,15 @@
     width:420px;
     height:270px
 }
+
+#placetext{
+    text-decoration: none;
+    color:black;
+    font-size: 1.5em;
+}
+
+#placetext:hover{
+    text-decoration: underline;
+    color:#90daec;
+    font-size: 1.5em;
+}

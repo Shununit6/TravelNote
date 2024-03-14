@@ -22,19 +22,23 @@ function Stories({num}) {
   if(isLoaded){
   return (
     <div id="storieslistgrid">
-        <h2>
-            {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
-        <Link id="storiesIsActive" to="/stories" > Stories </Link>
-        </h2>
+        {num ==2 && <h2>
+          <Link id="storiesmainpage" to="/stories" > Stories </Link>
+        </h2>}
+        {num !=2 && <h2>
+          <Link id="plansIsNotActive" to="/plans" > Plans </Link>
+          <Link id="placesIsNotActive" to="/places" > Places </Link>
+          <Link id="storiesIsActive" to="/stories" > Stories </Link>
+        </h2>}
         {
-          num==3 && <div id="viewallstories">
-            {Object.values(stories).slice(0,3).map((story, index) => (
+          num==2 && <div id="viewallstories">
+            {Object.values(stories).slice(0,2).map((story, index) => (
                   <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
             ))}
           </div>
         }
         {
-          num!=3 && <div id="viewallstories">
+          num!=2 && <div id="viewallstories">
           {Object.values(stories).map((story, index) => (
                 <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
           ))}

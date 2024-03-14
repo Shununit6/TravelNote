@@ -24,18 +24,23 @@ function Places({num}) {
   if(isLoaded){
   return (
     <div id="placeslistgrid">
-        <h2>
+        {num ==2 && <h2>
+          <Link id="placesmainpage" to="/places" > Places </Link>
+        </h2>}
+        {num !=2 && <h2>
+          <Link id="plansIsNotActive" to="/plans" > Plans </Link>
           <Link id="placesIsActive" to="/places" > Places </Link>
-        </h2>
+          <Link id="storiesIsNotActive" to="/stories" > Stories </Link>
+        </h2>}
         {
-          num == 3 && <div id="viewallplaces">
-          {places && Object.values(places).slice(0, 3).map((place, index) => (
+          num == 2 && <div id="viewallplaces">
+          {places && Object.values(places).slice(0, 2).map((place, index) => (
                 <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
           ))}
           </div>
         }
         {
-          num != 3 && <div id="viewallplaces">
+          num != 2 && <div id="viewallplaces">
           {places && Object.values(places).map((place, index) => (
                 <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
           ))}

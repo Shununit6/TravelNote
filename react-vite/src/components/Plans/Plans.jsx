@@ -24,19 +24,23 @@ function Plans({num}) {
   if(isLoaded){
   return (
     <div id="planslistgrid">
-        <h2>
-            {/* <Link id="eventsIsNotActive" to="/events" > Events </Link> */}
-        <Link id="plansIsActive" to="/plans" > Plans </Link>
-        </h2>
+        {num ==2 && <h2>
+          <Link id="plansmainpage" to="/plans" > Plans </Link>
+        </h2>}
+        {num !=2 && <h2>
+          <Link id="plansIsActive" to="/plans" > Plans </Link>
+          <Link id="placesIsNotActive" to="/places" > Places </Link>
+          <Link id="storiesIsNotActive" to="/stories" > Stories </Link>
+        </h2>}
         {
-          num == 3 && <div id="viewallplans">
-          {Object.values(plans).slice(0, 3).map((plan, index) => (
+          num == 2 && <div id="viewallplans">
+          {Object.values(plans).slice(0, 2).map((plan, index) => (
                 <PlanIndexItem plan={plan} expense={expense} key={index}/>
           ))}
        </div>
         }
         {
-          num != 3 && <div id="viewallplans">
+          num != 2 && <div id="viewallplans1">
             {Object.values(plans).map((plan, index) => (
                   <PlanIndexItem plan={plan} expense={expense} key={index}/>
             ))}
