@@ -16,10 +16,11 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
         }
     }
     const expensedata = planexpenses(id);
-    console.log(expensedata)
+    // console.log(expensedata)
     const data = []
     const datacategory = []
     const dataamount = []
+    // let options;
     data.push(["category", "amount"])
     if(expensedata){
         expensedata.forEach((x)=>{
@@ -42,8 +43,8 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
             data.push([x, dataamount[index]])
         })
     }
-    // const options = {
-    //     title: "Plan Expenses",
+    // options = {
+    //       title: "Plan Expenses",
     // };
 
     return (
@@ -52,21 +53,14 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 <div id="planitem1">
                     {/* <img id="planExpenseImage" src={url} alt="planExpenseImage" /> */}
                 </div>
-                {/* {expensedata && expensedata.map((expense)=>{return expense.amount, expense.category})} */}
-                {/* <div id='myDiv'></div> */}
-                {/* {expensedata && <Chart data={data}/>} */}
                 {manage && expensedata && <div id="planitem2">
-                    {name}
-                    <Chart data={data}/>
+                    <Chart data={data} options={{title: `${name}`}}/>
                 </div>}
                 {!manage && !isPrivate && expensedata && <div id="planitem2">
-                    {name}
-                    <Chart data={data}/>
+                    <Chart data={data} options={{title: `${name}`}}/>
                 </div>}
             </div>
         </Link>
-
-
     );
 }
 

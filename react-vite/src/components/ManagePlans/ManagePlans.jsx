@@ -9,18 +9,15 @@ import { getAllExpenses } from '../../redux/expenses';
 
 const ManagePlans = () => {
     const dispatch = useDispatch();
-    const plans = useSelector((state) => Object.values(state.plans));
     const [isLoading, setIsLoading] = useState(true);
     const sessionUser = useSelector(state => state.session.user);
     const manage = true;
-    const expenses = useSelector(state => state.expenses);
+    const plans = Object.values(useSelector((state) => state.plans));
+    const expenses = useSelector((state)=> state.expenses);
     const expense = Object.values(expenses);
-
     useEffect(() => {
-        if (sessionUser) {
-            dispatch(getAllExpenses()).then(()=>dispatch(getAllPlans())).then(() => setIsLoading(false));
-        }
-    }, [dispatch, sessionUser]);
+        dispatch(getAllExpenses()).then(()=>dispatch(getAllPlans())).then(() => setIsLoading(false));
+    }, [dispatch]);
 
     if (isLoading) return <>Loading...</>;
 
