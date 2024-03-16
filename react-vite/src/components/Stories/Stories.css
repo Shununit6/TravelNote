@@ -26,3 +26,8 @@
     width: auto;
     column-gap: 1em;
 }
+
+/* #storieslistgrid{
+    display: grid;
+    align-items: center;
+} */

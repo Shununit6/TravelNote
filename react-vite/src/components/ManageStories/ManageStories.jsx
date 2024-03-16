@@ -37,7 +37,7 @@ const ManageStories = () => {
                 <MenuLibrary />
             </div> */}
             <div className='manageStoryitem-2'>
-            <p className='title'>Manage My Stories</p>
+            <h1 className='title'>My Stories</h1>
             {!hasStories && <Link to={'/stories/new'}><button className='createStoryButton'>Create a New Story</button></Link>}
             {hasStories && <ul className='manageStoryIndex'>
                 {storiesByUser.map((story) => (

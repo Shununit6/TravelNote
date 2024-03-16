@@ -36,7 +36,7 @@ const ManagePlans = () => {
                 <MenuLibrary />
             </div> */}
             <div className='managePlanitem-2'>
-            <p className='title'>Manage My Plans</p>
+            <h1 className='title'>My Plans</h1>
             {!hasPlans && <Link to={'/plans/new'}><button className='createPlanButton'>Create a New Plan</button></Link>}
             {hasPlans && <ul className='managePlanIndex'>
                 {plansByUser.map((plan) => (
