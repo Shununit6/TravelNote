@@ -37,7 +37,7 @@ const ManagePlaces = () => {
                 <MenuLibrary />
             </div> */}
             <div className='managePlaceitem-2'>
-            <p className='title'>Manage My Places</p>
+            <h1 className='title'>My Places</h1>
             {!hasPlaces && <Link to={'/places/new'}><button className='createPlaceButton'>Create a New Place</button></Link>}
             {hasPlaces && <ul className='managePlaceIndex'>
                 {placesByUser.map((place) => (
