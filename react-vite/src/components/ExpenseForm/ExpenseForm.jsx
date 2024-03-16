@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
-import { createPlace, updatePlace } from "../../redux/places";
-import "./PlaceForm.css";
+import { createExpense, updateExpense } from "../../redux/expenses";
+import "./ExpenseForm.css";
 
-const PlaceForm = ({ place, formType }) => {
+const ExpenseForm = ({ expense, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
