@@ -46,7 +46,16 @@ def seed_expenses():
         plan_id=1, name='Museum Tickets', category='Entertainment', amount=100, split=True)
     expensetwentyone = Expense(
         plan_id=1, name='Cleaning and laundry', category='Other', amount=5, split=False)
-    # expensetwentyone
+    expensetwentytwo = Expense(
+        plan_id=1, name='Rental Car', category='Other', amount=1200, split=False)
+    expensetwentythree = Expense(
+        plan_id=2, name='Gas', category='Other', amount=222, split=False)
+    expensetwentyfour = Expense(
+        plan_id=2, name='Airport Parking', category='Other', amount=120, split=False)
+    expensetwentyfive = Expense(
+        plan_id=5, name='Rental Car', category='Other', amount=800, split=False)
+    expensetwentysix = Expense(
+        plan_id=5, name='Gas', category='Other', amount=180, split=False)
     # expensetwentytwo
     # expensetwentythree
     # expensetwentyfour
@@ -88,6 +97,11 @@ def seed_expenses():
     db.session.add(expensenineteen)
     db.session.add(expensetwenty)
     db.session.add(expensetwentyone)
+    db.session.add(expensetwentytwo)
+    db.session.add(expensetwentythree)
+    db.session.add(expensetwentyfour)
+    db.session.add(expensetwentyfive)
+    db.session.add(expensetwentysix)
     db.session.commit()
 
 
