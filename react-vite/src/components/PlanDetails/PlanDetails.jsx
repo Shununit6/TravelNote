@@ -108,12 +108,12 @@ const PlanDetails = () => {
                 <div id="item2">
                 <div id="plandatachartdetail">
                     {expensedata &&
-                    <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
+                    <Chart data={data} options={{title: `${name}` + " Expenses Divided By Categories", pieSliceText: "label",}}/>
                     }
                 </div>
                 <div id="plandataonechartdetail">
                     {expensedata &&
-                    <Chart data={dataone} options={{title: `${name}`, pieSliceText: "label",}}/>
+                    <Chart data={dataone} options={{title: `${name}` + " Expenses Divided By Names", pieSliceText: "label",}}/>
                     }
                 </div>
                 </div>

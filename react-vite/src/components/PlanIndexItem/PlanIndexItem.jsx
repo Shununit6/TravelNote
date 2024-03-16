@@ -16,7 +16,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
         }
     }
     const expensedata = planexpenses(id);
-    console.log(expensedata)
+    // console.log(expensedata)
     const data = []
     const datacategory = []
     const dataamount = []
@@ -69,7 +69,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
                 </div>
-                    <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
+                    <Chart data={data} options={{title: `${name}` + " Expenses Divided By Categories", pieSliceText: "label",}}/>
                 </div>}
                 {!manage && !expensedata && !isPrivate &&
                 <div>
@@ -87,7 +87,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
                 </div>
-                    <Chart data={data} options={{title: `${name}`, pieSliceText: "label",}}/>
+                    <Chart data={data} options={{title: `${name}` + " Expenses Divided By Categories", pieSliceText: "label",}}/>
                 </div>}
             </div>
         </Link>
