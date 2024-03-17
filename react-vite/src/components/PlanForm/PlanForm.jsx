@@ -3,6 +3,7 @@ import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
 import { createPlan, updatePlan } from "../../redux/plans";
 import "./PlanForm.css";
+import { useModal } from "../../context/Modal";
 
 const PlanForm = ({ plan, formType }) => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const PlanForm = ({ plan, formType }) => {
     let [endDate, setEndDate] = useState(plan?.end_date);
     let privateState;
     let userId = sessionUser.id;
+    const { closeModal } = useModal();
     if(plan?.private === 1){
         privateState="Private";
     }else if(plan?.private === 0){
@@ -84,6 +86,7 @@ const PlanForm = ({ plan, formType }) => {
                 }
                 if (newPlan.id) {
                     // console.log("newPlan.id", newPlan.id);
+                    closeModal();
                     navigate(`/plans/${newPlan.id}`);
                 } else {
                     const { validationErrors } = await newPlan.json();

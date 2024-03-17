@@ -7,6 +7,7 @@ import DeleteModal from "../DeleteModal";
 import DeletePlanModal from "../DeletePlanModal";
 import Chart from '../Charts';
 import { getAllExpenses } from '../../redux/expenses';
+import PlanForm from "../PlanForm/PlanForm";
 
 const PlanDetails = () => {
     const dispatch = useDispatch();
@@ -148,6 +149,11 @@ const PlanDetails = () => {
                                 />
                         </div>
                         : null}
+                    <div><DeleteModal id="deleteplandetails"
+                                itemText="Update My Plan"
+                                modalComponent={<PlanForm plan={planData}/>}
+                                />
+                    </div>
             </div>
         );
     }
