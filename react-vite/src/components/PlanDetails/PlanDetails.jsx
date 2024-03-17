@@ -149,7 +149,7 @@ const PlanDetails = () => {
                                 />
                         </div>
                         : null}
-                    <div><DeleteModal id="deleteplandetails"
+                    <div><DeleteModal id="updateplandetails"
                                 itemText="Update My Plan"
                                 modalComponent={<PlanForm plan={planData}/>}
                                 />

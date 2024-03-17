@@ -190,7 +190,7 @@ const PlanForm = ({ plan, formType }) => {
             <div>
                 <label>
                     <input
-                        id='planformcity'
+                        id='planformcountry'
                         type="text"
                         placeholder="Please add the country"
                         onChange={(e) => setCountry(e.target.value)}
