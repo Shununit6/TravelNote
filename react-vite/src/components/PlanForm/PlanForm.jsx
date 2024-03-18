@@ -115,142 +115,146 @@ const PlanForm = ({ plan, formType }) => {
                     {!isUpdate && <h2>Start a New Plan</h2>}
                     {isUpdate && <h2>Update your Plan</h2>}
                 </div>
-            <div>
-                <label>
-                    <input
-                        id='planformname'
-                        type="text"
-                        placeholder="What is your plan name?"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.name.length > 0 &&
-                        validationErrors.name.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='planformnumber'
-                        type="number"
-                        min="1"
-                        value={number_traveler}
-                        placeholder="Please enter a number larger than 0"
-                        onChange={(e) => setNumber_Traveler(e.target.value)}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.number_traveler.length > 0 &&
-                        validationErrors.number_traveler.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>Is this a private or public plan?</p>
-                    <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
-                        <option value='' disabled>(select one)</option>
-                        <option value="Private">Private</option>
-                        <option value="Public">Public</option>
-                    </select>
-                    {hasSubmitted &&
-                        validationErrors.isPrivate.length > 0 &&
-                        validationErrors.isPrivate.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='planformcity'
-                        type="text"
-                        placeholder="Please add the city"
-                        onChange={(e) => setCity(e.target.value)}
-                        value={city}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.city.length > 0 &&
-                        validationErrors.city.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='planformcountry'
-                        type="text"
-                        placeholder="Please add the country"
-                        onChange={(e) => setCountry(e.target.value)}
-                        value={country}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.country.length > 0 &&
-                        validationErrors.country.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                     When does your trip start?
-                     <div>
+                <div>
+                    <label>
+                        What will your plan's name be?
                         <input
-                            id='planformstartDate'
-                            type="date"
-                            name="startDate"
-                            placeholder="MM/DD/YYYY"
-                            onChange={(e) => setStartDate(e.target.value)}
-                            value={startDate}
-                            min={Date()}
+                            id='planformname'
+                            type="text"
+                            placeholder="What is your plan name?"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
                         />
                         {hasSubmitted &&
-                            validationErrors.startDate.length > 0 &&
-                            validationErrors.startDate.map((error, idx) => (
+                            validationErrors.name.length > 0 &&
+                            validationErrors.name.map((error, idx) => (
                                 <div key={idx}>
                                     <p className="error">{error}</p>
                                 </div>
                             ))}
-                     </div>
-                 </label>
-            </div>
-            <div>
-                <label>
-                    When does your trip end?
-                    <div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        How many travlers are going on your trip?
                         <input
-                            id='planformendDate'
-                            type="date"
-                            name="endDate"
-                            placeholder="MM/DD/YYYY"
-                            onChange={(e) => setEndDate(e.target.value)}
-                            value={endDate}
-                            min={startDate}
+                            id='planformnumber'
+                            type="number"
+                            min="1"
+                            value={number_traveler}
+                            placeholder="Please enter a number larger than 0"
+                            onChange={(e) => setNumber_Traveler(e.target.value)}
                         />
                         {hasSubmitted &&
-                            validationErrors.endDate.length > 0 &&
-                            validationErrors.endDate.map((error, idx) => (
+                            validationErrors.number_traveler.length > 0 &&
+                            validationErrors.number_traveler.map((error, idx) => (
                                 <div key={idx}>
                                     <p className="error">{error}</p>
                                 </div>
                             ))}
-                    </div>
-                </label>
-            </div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Would you like to share this plan with others?
+                        <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                            <option value='' disabled>(select one)</option>
+                            <option value="Private">Private</option>
+                            <option value="Public">Public</option>
+                        </select>
+                        {hasSubmitted &&
+                            validationErrors.isPrivate.length > 0 &&
+                            validationErrors.isPrivate.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Which city are you going to?
+                        <input
+                            id='planformcity'
+                            type="text"
+                            placeholder="Please add the city"
+                            onChange={(e) => setCity(e.target.value)}
+                            value={city}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.city.length > 0 &&
+                            validationErrors.city.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Which country are you going to?
+                        <input
+                            id='planformcountry'
+                            type="text"
+                            placeholder="Please add the country"
+                            onChange={(e) => setCountry(e.target.value)}
+                            value={country}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.country.length > 0 &&
+                            validationErrors.country.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        When does your trip start?
+                        <div>
+                            <input
+                                id='planformstartDate'
+                                type="date"
+                                name="startDate"
+                                placeholder="MM/DD/YYYY"
+                                onChange={(e) => setStartDate(e.target.value)}
+                                value={startDate}
+                                min={Date()}
+                            />
+                            {hasSubmitted &&
+                                validationErrors.startDate.length > 0 &&
+                                validationErrors.startDate.map((error, idx) => (
+                                    <div key={idx}>
+                                        <p className="error">{error}</p>
+                                    </div>
+                                ))}
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        When does your trip end?
+                        <div>
+                            <input
+                                id='planformendDate'
+                                type="date"
+                                name="endDate"
+                                placeholder="MM/DD/YYYY"
+                                onChange={(e) => setEndDate(e.target.value)}
+                                value={endDate}
+                                min={startDate}
+                            />
+                            {hasSubmitted &&
+                                validationErrors.endDate.length > 0 &&
+                                validationErrors.endDate.map((error, idx) => (
+                                    <div key={idx}>
+                                        <p className="error">{error}</p>
+                                    </div>
+                                ))}
+                        </div>
+                    </label>
+                </div>
             <button type="submit" id="GroupCreateUpdateButton" >{formType}</button>
             </div>
         </form>
