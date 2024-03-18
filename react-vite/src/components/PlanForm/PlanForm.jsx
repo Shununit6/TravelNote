@@ -117,7 +117,7 @@ const PlanForm = ({ plan, formType }) => {
                 </div>
                 <div>
                     <label>
-                        What will your plan's name be?
+                        What is the name of your plan?
                         <input
                             id='planformname'
                             type="text"
@@ -189,6 +189,14 @@ const PlanForm = ({ plan, formType }) => {
                                 </div>
                             ))}
                     </label>
+                </div>
+                <div>
+                    <label for="country-select">Which country are you going to?</label>
+                    <div>
+                        <select name="country" id="country-select">
+                        <option selected>Select Country</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <label>
