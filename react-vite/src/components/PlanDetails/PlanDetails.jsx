@@ -149,11 +149,13 @@ const PlanDetails = () => {
                                 />
                         </div>
                         : null}
+                    {sessionUser && isPlanCreator ?
                     <div><DeleteModal id="updateplandetails"
                                 itemText="Update My Plan"
                                 modalComponent={<PlanForm plan={planData}/>}
                                 />
                     </div>
+                    : null}
             </div>
         );
     }
