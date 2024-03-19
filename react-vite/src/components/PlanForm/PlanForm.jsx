@@ -30,9 +30,10 @@ const PlanForm = ({ plan, formType }) => {
     let [isPrivate, setIsPrivate] = useState(privateState);
 
     let isUpdate = false;
-    if(formType === "Update Plan"){
+    if(formType == "Update Plan"){
         isUpdate = true;
     }
+    console.log(formType)
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -43,7 +44,7 @@ const PlanForm = ({ plan, formType }) => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };
         if (!name.length) errors["name"].push("Name is required");
         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
-        if (number_traveler < 1) errors["number_traveler"].push("");
+        if (!number_traveler.length || number_traveler < 1) errors["number_traveler"].push("Number of travelers are required");
         if (!isPrivate.length) errors["isPrivate"].push("Visibility Type is required");
         if (!city.length) errors["city"].push("City is required");
         if (!country.length) errors["country"].push("Country is required");
@@ -158,17 +159,17 @@ const PlanForm = ({ plan, formType }) => {
                 <div>
                     <label>
                         Would you like to share this plan with others?
-                        {!isUpdate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)} placeholder="select one">
+                        {!isUpdate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)} placeholder="select one">
                             <option value='' disabled>(select one)</option>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
                         </select>}
-                        {isUpdate && isPrivate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                        {isUpdate && isPrivate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
                             <option value='' disabled>(select one)</option>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
                         </select>}
-                        {isUpdate && !isPrivate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                        {isUpdate && !isPrivate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
                             <option value='' disabled>(select one)</option>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
@@ -239,7 +240,6 @@ const PlanForm = ({ plan, formType }) => {
                 <div>
                     <label>
                         When does your trip start?
-                        <div>
                             <input
                                 id='planformstartDate'
                                 type="date"
@@ -256,13 +256,11 @@ const PlanForm = ({ plan, formType }) => {
                                         <p className="error">{error}</p>
                                     </div>
                                 ))}
-                        </div>
                     </label>
                 </div>
                 <div>
                     <label>
                         When does your trip end?
-                        <div>
                             <input
                                 id='planformendDate'
                                 type="date"
@@ -279,10 +277,9 @@ const PlanForm = ({ plan, formType }) => {
                                         <p className="error">{error}</p>
                                     </div>
                                 ))}
-                        </div>
                     </label>
                 </div>
-            <button type="submit" id="GroupCreateUpdateButton" >{formType}</button>
+            <button type="submit" id="PlanCreateUpdateButton">{formType}</button>
             </div>
         </form>
     );

@@ -101,7 +101,7 @@ const PlanDetails = () => {
 
     if(isLoaded){
         return(
-            <div id="planitems">
+            <div id="planitems" className="planitems">
                 {/* <div id="items-2"></div> */}
                 <div id="item1">
                     <Link id="plantext" to={"/plans"}> <p>Plans</p> </Link>
@@ -145,7 +145,7 @@ const PlanDetails = () => {
                         </Link> */}
                         <div><DeleteModal id="updateplandetails"
                                     itemText="Update My Plan"
-                                    modalComponent={<PlanForm plan={planData}/>}
+                                    modalComponent={<PlanForm formType="Update Plan" plan={planData}/>}
                                     />
                         </div>
                         <DeleteModal id="deleteplandetails"

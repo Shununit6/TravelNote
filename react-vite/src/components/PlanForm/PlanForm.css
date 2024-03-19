@@ -1,37 +1,28 @@
 #planformcreateupdate{
-    display:grid;
     justify-content: space-around;
-    /* display: grid; */
-    width:360px;
+    display: grid;
+    width:330px;
     grid-gap: 0.6em;
-    /* align-items: center;
-    justify-items: center; */
+
     font-family: Georgia, serif, cursive;
     margin: 2em;
 }
 
-#planformnumber, #planformname, #private, #planformcity, #planformcountry{
-    width: 270px;
+#planformname, #planformnumber, #planformcity, #planformcountry{
+    width:240px;
 }
-#groupformimageUrl{
-  height:40px;
+#planformstartDate, #planformendDate{
+    width:180px;
 }
-#groupformisPrivate, #groupformtype{
-  width: 95px;
+#planformprivate{
+    width: 95px;
 }
-#GroupCreateUpdateButton{
-    height: 30px;
-    width: 120px;
-    font-size: 16px;
-    color:white;
-    background-color: #ff0088;
+
+.PlanCreateUpdateButton{
+    height:20px;
+    width:90px;
 }
-#groupformabout{
-  height:90px;
-}
+
 .error{
     color:#7D0027;
-}
-#titlecreateupdategroupform{
-    color:cadetblue;
 }
