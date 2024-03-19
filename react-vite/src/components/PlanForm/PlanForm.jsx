@@ -190,7 +190,7 @@ const PlanForm = ({ plan, formType }) => {
                             ))}
                     </label>
                 </div>
-                <div>
+                {/* <div>
                     <label>
                         Which city are you going to?<br></br>
                         <select name="city" id="city-select">
@@ -205,7 +205,7 @@ const PlanForm = ({ plan, formType }) => {
                         <option selected>Please select a country</option>
                         </select>
                     </label>
-                </div>
+                </div> */}
                 <div>
                     <label>
                         Which country are you going to?
