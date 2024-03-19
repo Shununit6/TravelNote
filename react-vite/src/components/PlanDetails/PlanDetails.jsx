@@ -140,22 +140,20 @@ const PlanDetails = () => {
                 </div>
                     {sessionUser && isPlanCreator ?
                         <div id="item4" className="buttons-container">
-                        <Link to={`/plans/${planId}/edit`}>
+                        {/* <Link to={`/plans/${planId}/edit`}>
                             <button id="updateplandetails" >Update My Plan</button>
-                        </Link>
+                        </Link> */}
+                        <div><DeleteModal id="updateplandetails"
+                                    itemText="Update My Plan"
+                                    modalComponent={<PlanForm plan={planData}/>}
+                                    />
+                        </div>
                         <DeleteModal id="deleteplandetails"
                                 itemText="Delete My Plan"
                                 modalComponent={<DeletePlanModal plan={planData}/>}
                                 />
                         </div>
                         : null}
-                    {sessionUser && isPlanCreator ?
-                    <div><DeleteModal id="updateplandetails"
-                                itemText="Update My Plan"
-                                modalComponent={<PlanForm plan={planData}/>}
-                                />
-                    </div>
-                    : null}
             </div>
         );
     }
