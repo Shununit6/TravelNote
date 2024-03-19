@@ -191,12 +191,20 @@ const PlanForm = ({ plan, formType }) => {
                     </label>
                 </div>
                 <div>
-                    <label for="country-select">Which country are you going to?</label>
-                    <div>
-                        <select name="country" id="country-select">
-                        <option selected>Select Country</option>
+                    <label>
+                        Which city are you going to?<br></br>
+                        <select name="city" id="city-select">
+                        <option selected>Please select a city</option>
                         </select>
-                    </div>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Which country are you going to?<br></br>
+                        <select name="country" id="country-select">
+                        <option selected>Please select a country</option>
+                        </select>
+                    </label>
                 </div>
                 <div>
                     <label>
