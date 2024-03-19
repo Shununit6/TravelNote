@@ -44,7 +44,7 @@ const PlanForm = ({ plan, formType }) => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };
         if (!name.length) errors["name"].push("Name is required");
         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
-        if (!number_traveler.length || number_traveler < 1) errors["number_traveler"].push("Number of travelers are required");
+        if (number_traveler < 1) errors["number_traveler"].push("Number of travelers are required");
         if (!isPrivate.length) errors["isPrivate"].push("Visibility Type is required");
         if (!city.length) errors["city"].push("City is required");
         if (!country.length) errors["country"].push("Country is required");
