@@ -19,9 +19,10 @@ const PlanForm = ({ plan, formType }) => {
     let privateState;
     let userId = sessionUser.id;
     const { closeModal } = useModal();
-    if(plan?.private === 1){
+
+    if(plan?.private == true){
         privateState="Private";
-    }else if(plan?.private === 0){
+    }else if(plan?.private == false){
         privateState="Public";
     }else{
         privateState="";
@@ -35,8 +36,8 @@ const PlanForm = ({ plan, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(plans);
-    console.log(userId)
+    console.log("plans", plans);
+    console.log("userId", userId);
 
     useEffect(() => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };
@@ -157,11 +158,21 @@ const PlanForm = ({ plan, formType }) => {
                 <div>
                     <label>
                         Would you like to share this plan with others?
-                        <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                        {!isUpdate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)} placeholder="select one">
                             <option value='' disabled>(select one)</option>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
-                        </select>
+                        </select>}
+                        {isUpdate && isPrivate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                            <option value='' disabled>(select one)</option>
+                            <option value="Private">Private</option>
+                            <option value="Public">Public</option>
+                        </select>}
+                        {isUpdate && !isPrivate && <select id="private" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
+                            <option value='' disabled>(select one)</option>
+                            <option value="Private">Private</option>
+                            <option value="Public">Public</option>
+                        </select>}
                         {hasSubmitted &&
                             validationErrors.isPrivate.length > 0 &&
                             validationErrors.isPrivate.map((error, idx) => (
