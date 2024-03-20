@@ -1,9 +1,8 @@
 #planformcreateupdate{
-    justify-content: space-around;
+    justify-self: center;
     display: grid;
     width:330px;
     grid-gap: 0.3em;
-
     font-family: Georgia, serif, cursive;
     margin: 2em;
 }
@@ -16,11 +15,6 @@
 }
 #planformprivate{
     width: 95px;
-}
-
-.PlanCreateUpdateButton{
-    height:20px;
-    width:90px;
 }
 
 .error{

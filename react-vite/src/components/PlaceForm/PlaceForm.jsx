@@ -81,60 +81,63 @@ const PlaceForm = ({ place, formType }) => {
                     {!isUpdate && <h2>Start a New Place</h2>}
                     {isUpdate && <h2>Update your Place</h2>}
                 </div>
-            <div>
-                <label>
-                    <input
-                        id='placeformname'
-                        type="text"
-                        placeholder="What is your place name?"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.name.length > 0 &&
-                        validationErrors.name.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input
-                        id='placeformtype'
-                        type="text"
-                        placeholder="Please add the type"
-                        onChange={(e) => setType(e.target.value)}
-                        value={type}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.type.length > 0 &&
-                        validationErrors.type.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <div>
-                <label>
-                    <textarea
-                        id='placeformdescription'
-                        placeholder="Please add the description"
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                    />
-                    {hasSubmitted &&
-                        validationErrors.description.length > 0 &&
-                        validationErrors.description.map((error, idx) => (
-                            <div key={idx}>
-                                <p className="error">{error}</p>
-                            </div>
-                        ))}
-                </label>
-            </div>
-            <button type="submit" id="PlaceCreateUpdateButton" >{formType}</button>
+                <div>
+                    <label>
+                        What is the name of your place?
+                        <input
+                            id='placeformname'
+                            type="text"
+                            placeholder="What is your place name?"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.name.length > 0 &&
+                            validationErrors.name.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        What type of place is this?
+                        <input
+                            id='placeformtype'
+                            type="text"
+                            placeholder="Please add the type"
+                            onChange={(e) => setType(e.target.value)}
+                            value={type}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.type.length > 0 &&
+                            validationErrors.type.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Describe this place here:
+                        <textarea
+                            id='placeformdescription'
+                            placeholder="Please add the description"
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                        />
+                        {hasSubmitted &&
+                            validationErrors.description.length > 0 &&
+                            validationErrors.description.map((error, idx) => (
+                                <div key={idx}>
+                                    <p className="error">{error}</p>
+                                </div>
+                            ))}
+                    </label>
+                </div>
+                <button type="submit" id="PlaceCreateUpdateButton" >{formType}</button>
             </div>
         </form>
     );

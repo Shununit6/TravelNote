@@ -8,6 +8,7 @@ import DeletePlaceModal from "../DeletePlaceModal";
 import { getPlaceimageDetails } from "../../redux/placeimages";
 import noImg from '../../images/noimage.png';
 // import DeleteImageModal from "../DeleteImageModal";
+import PlaceForm from "../PlaceForm/PlaceForm";
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
@@ -69,11 +70,16 @@ const PlaceDetails = () => {
                 </div>
                     {sessionUser && isPlaceCreator ?
                         <div id="item4" className="buttons-container">
-                        <Link to={`/places/${placeId}/edit`}>
+                        {/* <Link to={`/places/${placeId}/edit`}>
                             <button id="updateplacedetails" >Update</button>
-                        </Link>
+                        </Link> */}
+                        <div><DeleteModal id="updateplacedetails"
+                                    itemText="Update Place"
+                                    modalComponent={<PlaceForm formType="Update Place" place={placeData}/>}
+                                    />
+                        </div>
                         <DeleteModal id="deleteplacedetails"
-                                itemText="Delete"
+                                itemText="Delete Place"
                                 modalComponent={<DeletePlaceModal place={placeData}/>}
                                 />
                         </div>

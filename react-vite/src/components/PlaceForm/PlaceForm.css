@@ -1,0 +1,22 @@
+#placeformcreateupdate{
+    justify-self: center;
+    display: grid;
+    width:330px;
+    grid-gap: 0.3em;
+    font-family: Georgia, serif, cursive;
+    margin: 2em;
+}
+
+/* #planformname, #planformnumber, #planformcity, #planformcountry{
+    width:240px;
+}
+#planformstartDate, #planformendDate{
+    width:180px;
+}
+#planformprivate{
+    width: 95px;
+} */
+
+.error{
+    color:#7D0027;
+}

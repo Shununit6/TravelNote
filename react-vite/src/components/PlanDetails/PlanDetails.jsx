@@ -144,12 +144,12 @@ const PlanDetails = () => {
                             <button id="updateplandetails" >Update My Plan</button>
                         </Link> */}
                         <div><DeleteModal id="updateplandetails"
-                                    itemText="Update My Plan"
+                                    itemText="Update Plan"
                                     modalComponent={<PlanForm formType="Update Plan" plan={planData}/>}
                                     />
                         </div>
                         <DeleteModal id="deleteplandetails"
-                                itemText="Delete My Plan"
+                                itemText="Delete Plan"
                                 modalComponent={<DeletePlanModal plan={planData}/>}
                                 />
                         </div>
