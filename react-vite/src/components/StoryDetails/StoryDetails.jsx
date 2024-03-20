@@ -10,6 +10,7 @@ import LikeStory from "../LikeStory";
 import { getStoryimageDetails } from '../../redux/storyimages';
 import noImg from '../../images/noimage.png';
 // import DeleteImageModal from "../DeleteImageModal";
+import StoryForm from "../StoryForm/StoryForm";
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
@@ -70,11 +71,16 @@ const StoryDetails = () => {
                 </div>
                     {sessionUser && isStoryCreator ?
                         <div id="item4" className="buttons-container">
-                        <Link to={`/stories/${storyId}/edit`}>
+                        {/* <Link to={`/stories/${storyId}/edit`}>
                             <button id="updatestorydetails" >Update My Story</button>
-                        </Link>
+                        </Link> */}
+                        <div><DeleteModal id="updatestorydetails"
+                                    itemText="Update Story"
+                                    modalComponent={<StoryForm formType="Update Story" story={storyData}/>}
+                                    />
+                        </div>
                         <DeleteModal id="deletedstorydetails"
-                                itemText="Delete My Story"
+                                itemText="Delete Story"
                                 modalComponent={<DeleteStoryModal story={storyData}/>}
                                 />
                         </div>

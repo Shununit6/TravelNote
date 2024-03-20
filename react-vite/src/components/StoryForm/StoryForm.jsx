@@ -3,6 +3,7 @@ import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
 import { createStory, updateStory } from "../../redux/stories";
 import "./StoryForm.css";
+import { useModal } from "../../context/Modal";
 
 const StoryForm = ({ story, formType }) => {
     const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const StoryForm = ({ story, formType }) => {
     let [article_url, setArticle] = useState(story?.article_url);
     let [shorts_url, setShorts] = useState(story?.shorts_url);
     let isUpdate = false;
+    const { closeModal } = useModal();
+
     if(formType === "Update Story"){
         isUpdate = true;
     }
@@ -61,6 +64,7 @@ const StoryForm = ({ story, formType }) => {
                 }
                 if (newStory.id) {
                     // console.log("newStory.id", newStory.id);
+                    closeModal();
                     navigate(`/stories/${newStory.id}`);
                 } else {
                     const { validationErrors } = await newStory.json();
@@ -88,6 +92,7 @@ const StoryForm = ({ story, formType }) => {
                 </div>
             <div>
                 <label>
+                    What is the title of the story you want to share?
                     <input
                         id='storyformtitle'
                         type="text"
@@ -106,6 +111,7 @@ const StoryForm = ({ story, formType }) => {
             </div>
             <div>
                 <label>
+                    Add a short description of the story:
                     <textarea
                         id='storyformdescription'
                         placeholder="Please add the description"
@@ -122,6 +128,7 @@ const StoryForm = ({ story, formType }) => {
                 </label>
             </div>
             <div>
+                What is the original article URL link?
                 <label>
                     <input
                         id='storyformarticle'
@@ -141,6 +148,7 @@ const StoryForm = ({ story, formType }) => {
             </div>
             <div>
                 <label>
+                    Please add a video URL here:
                     <input
                         id='storyformshorts'
                         type="text"

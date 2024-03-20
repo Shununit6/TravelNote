@@ -1,0 +1,33 @@
+#storyformcreateupdate{
+    justify-self: center;
+    display: grid;
+    width:600px;
+    grid-gap: 0.3em;
+    font-family: Georgia, serif, cursive;
+    margin: 2em;
+    align-items: center;
+}
+
+#storyformtitle, #storyformdescription{
+    width:420px;
+}
+#storyformdescription{
+    height:100px;
+}
+
+#storyformarticle, #storyformshorts{
+    width:510px;
+}
+
+#storyformshorts{
+    margin-bottom: 2em;
+}
+
+.error{
+    color:#7D0027;
+}
+
+#StoryCreateUpdateButton{
+    width:fit-content;
+    margin: 0 auto;
+}
