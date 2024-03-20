@@ -3,6 +3,7 @@ import { useNavigate} from "react-router-dom"; //useParams,
 import { useDispatch, useSelector} from "react-redux"; //useSelector
 import { createPlace, updatePlace } from "../../redux/places";
 import "./PlaceForm.css";
+import { useModal } from "../../context/Modal";
 
 const PlaceForm = ({ place, formType }) => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const PlaceForm = ({ place, formType }) => {
     let [name, setName] = useState(place?.name);
     let [type, setType] = useState(place?.type);
     let [description, setDescription] = useState(place?.description);
-
+    const { closeModal } = useModal();
     let isUpdate = false;
     if(formType === "Update Place"){
         isUpdate = true;
@@ -57,6 +58,7 @@ const PlaceForm = ({ place, formType }) => {
                 }
                 if (newPlace.id) {
                     // console.log("newPlace.id", newPlace.id);
+                    closeModal();
                     navigate(`/places/${newPlace.id}`);
                 } else {
                     const { validationErrors } = await newPlace.json();
