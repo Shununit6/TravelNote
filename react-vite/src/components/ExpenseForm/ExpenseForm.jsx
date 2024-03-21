@@ -177,7 +177,7 @@ const ExpenseForm = ({ expense, formType }) => {
                         ))}
                  </label>
             </div>
-            <button type="submit" id="PlaceCreateUpdateButton" >{formType}</button>
+            <button type="submit" id="ExpenseCreateUpdateButton" >{formType}</button>
             </div>
         </form>
     );
