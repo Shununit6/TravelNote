@@ -1,143 +1,186 @@
-// import { useState, useEffect } from "react";
-// import { useNavigate} from "react-router-dom"; //useParams,
-// import { useDispatch, useSelector} from "react-redux"; //useSelector
-// import { createExpense, updateExpense } from "../../redux/expenses";
-// import "./ExpenseForm.css";
+import { useState, useEffect } from "react";
+import { useNavigate} from "react-router-dom"; //useParams,
+import { useDispatch, useSelector} from "react-redux"; //useSelector
+import { createExpense, updateExpense } from "../../redux/expenses";
+import "./ExpenseForm.css";
+import { useModal } from "../../context/Modal";
 
-// const ExpenseForm = ({ expense, formType }) => {
-//     const dispatch = useDispatch();
-//     const navigate = useNavigate();
-//     const sessionUser = useSelector(state => state.session.user);
-//     const places = useSelector(state => state.places);
-//     let [name, setName] = useState(place?.name);
-//     let [type, setType] = useState(place?.type);
-//     let [description, setDescription] = useState(place?.description);
+const ExpenseForm = ({ expense, formType }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const sessionUser = useSelector(state => state.session.user);
+    const expenses = useSelector(state => state.expenses);
+    let [name, setName] = useState(expense?.name);
+    let [category, setCategory] = useState(expense?.category);
+    let [amount, setAmount] = useState(expense?.amount);
 
-//     let isUpdate = false;
-//     if(formType === "Update Place"){
-//         isUpdate = true;
-//     }
+    let splitState;
 
-//     const [validationErrors, setValidationErrors] = useState({});
-//     const [hasSubmitted, setHasSubmitted] = useState(false);
-//     console.log(places);
-//     console.log(sessionUser.user_id)
+    if(expense?.split == true){
+        splitState="Split with everyone";
+    }else if(expense?.split == false){
+        splitState="Do not split";
+    }else{
+        splitState="";
+    }
+    let [split, setSplit] = useState(splitState);
 
-//     useEffect(() => {
-//         const errors = { name: [], type: [], description:[]};
-//         if (!name.length) errors["name"].push("Name is required");
-//         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
-//         if (!type.length) errors["type"].push("Type is required");
-//         if (!description.length) errors["description"].push("Description is required");
+    let isUpdate = false;
+    if(formType === "Update Expense"){
+        isUpdate = true;
+    }
 
-//         setValidationErrors(errors);
-//     }, [name, type, description]);
+    const [validationErrors, setValidationErrors] = useState({});
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    console.log(expenses);
+    console.log(sessionUser.user_id)
+
+    useEffect(() => {
+        const errors = { name:[], category: [], amount:[], split:[]};
+        if (!name.length) errors["name"].push("Name is required");
+        if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
+        if (!category.length) errors["category"].push("Category is required");
+        if (!amount.length) errors["amount"].push("Amount is required");
+        if (!split.length) errors["split"].push("Split is required");
+
+        setValidationErrors(errors);
+    }, [name, category, amount, split]);
 
 
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         setHasSubmitted(true);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true);
 
-//         place = { ...place, name, type, description};
+        if(isPrivate === "Private"){
+            isPrivate = 1;
+        }else{
+            isPrivate = 0;
+        }
 
-//         let newPlace;
-//         let errorCount = validationErrors.name.length + validationErrors.type.length
-//         + validationErrors.description.length;
-//         // console.log(errorCount);
-//         if (errorCount > 0){
-//             // console.log("has errors");
-//             }else{
-//                 // console.log("no errors");
-//                 if (formType === "Update Place") {
-//                     // console.log("before", place)
-//                     newPlace = await dispatch(updatePlace(place));
-//                     // console.log("after", newPlace)
-//                 } else {
-//                     newPlace = await dispatch(createPlace(place));
-//                 }
-//                 if (newPlace.id) {
-//                     // console.log("newPlace.id", newPlace.id);
-//                     navigate(`/places/${newPlace.id}`);
-//                 } else {
-//                     const { validationErrors } = await newPlace.json();
-//                     setValidationErrors(validationErrors);
-//                 }
-//                 // console.log(newPlace);
+        expense = { ...expense, name, category, amount, split};
 
-//                 setName('');
-//                 setType('');
-//                 setDescription('');
-//                 setValidationErrors({});
-//                 setHasSubmitted(false);
-//             }
-//     };
+        let newExpense;
+        let errorCount = validationErrors.name.length + validationErrors.category.length
+        + validationErrors.amount.length + validationErrors.split.length;
+        // console.log(errorCount);
+        if (errorCount > 0){
+            // console.log("has errors");
+            }else{
+                // console.log("no errors");
+                if (formType === "Update Expense") {
+                    // console.log("before", expense)
+                    newExpense = await dispatch(updateExpense(expense));
+                    // console.log("after", newExpense)
+                } else {
+                    newExpense = await dispatch(createExpense(expense));
+                }
+                if (newExpense.id) {
+                    // console.log("newExpense.id", newExpense.id);
+                    closeModal();
+                    navigate(`/plans/${newExpense.plan_id}`);
+                } else {
+                    const { validationErrors } = await newExpense.json();
+                    setValidationErrors(validationErrors);
+                }
+                // console.log(newExpense);
 
-// //     /* **DO NOT CHANGE THE RETURN VALUE** */
-//     return (
-//         <form onSubmit={handleSubmit}>
-//             {/* {console.log(validationErrors)} */}
-//             <div id="placeformcreateupdate">
-//                 <div id="titlecreateupdateplaceform">
-//                     {!isUpdate && <h2>Start a New Place</h2>}
-//                     {isUpdate && <h2>Update your Place</h2>}
-//                 </div>
-//             <div>
-//                 <label>
-//                     <input
-//                         id='placeformname'
-//                         type="text"
-//                         placeholder="What is your place name?"
-//                         onChange={(e) => setName(e.target.value)}
-//                         value={name}
-//                     />
-//                     {hasSubmitted &&
-//                         validationErrors.name.length > 0 &&
-//                         validationErrors.name.map((error, idx) => (
-//                             <div key={idx}>
-//                                 <p className="error">{error}</p>
-//                             </div>
-//                         ))}
-//                 </label>
-//             </div>
-//             <div>
-//                 <label>
-//                     <input
-//                         id='placeformtype'
-//                         type="text"
-//                         placeholder="Please add the type"
-//                         onChange={(e) => setType(e.target.value)}
-//                         value={type}
-//                     />
-//                     {hasSubmitted &&
-//                         validationErrors.type.length > 0 &&
-//                         validationErrors.type.map((error, idx) => (
-//                             <div key={idx}>
-//                                 <p className="error">{error}</p>
-//                             </div>
-//                         ))}
-//                 </label>
-//             </div>
-//             <div>
-//                 <label>
-//                     <textarea
-//                         id='placeformdescription'
-//                         placeholder="Please add the description"
-//                         onChange={(e) => setDescription(e.target.value)}
-//                         value={description}
-//                     />
-//                     {hasSubmitted &&
-//                         validationErrors.description.length > 0 &&
-//                         validationErrors.description.map((error, idx) => (
-//                             <div key={idx}>
-//                                 <p className="error">{error}</p>
-//                             </div>
-//                         ))}
-//                 </label>
-//             </div>
-//             <button type="submit" id="PlaceCreateUpdateButton" >{formType}</button>
-//             </div>
-//         </form>
-//     );
-// };
+                setName('');
+                setCategory('');
+                setAmount('');
+                setSplit('');
+                setValidationErrors({});
+                setHasSubmitted(false);
+            }
+    };
 
-// export default PlaceForm;
+//     /* **DO NOT CHANGE THE RETURN VALUE** */
+    return (
+        <form onSubmit={handleSubmit}>
+            {/* {console.log(validationErrors)} */}
+            <div id="expenseformcreateupdate">
+                <div id="titlecreateupdateexpenseform">
+                    {!isUpdate && <h2>Start a New Expense</h2>}
+                    {isUpdate && <h2>Update your Expense</h2>}
+                </div>
+            <div>
+                <label>
+                    What is the name of this expense?
+                    <input
+                        id='expenseformname'
+                        type="text"
+                        placeholder="What is your expense name?"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                    />
+                    {hasSubmitted &&
+                        validationErrors.name.length > 0 &&
+                        validationErrors.name.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <div>
+                <label>
+                    What kind of expense is this?
+                    <select id="expenseformcategory" value={category} onChange={(e) => setIsCategory(e.target.value)} placeholder="select one">
+                        <option value='' disabled>(select one)</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Food">Food</option>
+                        <option value="Lodging">Lodging</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    {hasSubmitted &&
+                        validationErrors.category.length > 0 &&
+                        validationErrors.category.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <div>
+                <label>
+                    What is the amount of this expense?
+                    <input
+                            id='expenseformamount'
+                            type="number"
+                            min="1"
+                            value={amount}
+                            placeholder="Please enter a number larger than 0"
+                            onChange={(e) => setAmount(e.target.value)}
+                        />
+                    {hasSubmitted &&
+                        validationErrors.amount.length > 0 &&
+                        validationErrors.amount.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                </label>
+            </div>
+            <div>
+                 <label>
+                    Would you like to split this expense with others?
+                    <select id="planformprivate" value={isSplit} onChange={(e) => setIsPrivate(e.target.value)}>
+                            <option value="Private">Private</option>
+                            <option value="Public">Public</option>
+                    </select>
+                    {hasSubmitted &&
+                        validationErrors.isPrivate.length > 0 &&
+                        validationErrors.isPrivate.map((error, idx) => (
+                            <div key={idx}>
+                                <p className="error">{error}</p>
+                            </div>
+                        ))}
+                 </label>
+            </div>
+            <button type="submit" id="ExpenseCreateUpdateButton" >{formType}</button>
+            </div>
+        </form>
+    );
+};
+
+export default ExpenseForm;
