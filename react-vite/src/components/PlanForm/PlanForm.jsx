@@ -159,21 +159,10 @@ const PlanForm = ({ plan, formType }) => {
                 <div>
                     <label>
                         Would you like to share this plan with others?
-                        {!isUpdate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)} placeholder="select one">
-                            <option value='' disabled>(select one)</option>
+                        <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
-                        </select>}
-                        {isUpdate && isPrivate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
-                            <option value='' disabled>(select one)</option>
-                            <option value="Private">Private</option>
-                            <option value="Public">Public</option>
-                        </select>}
-                        {isUpdate && !isPrivate && <select id="planformprivate" value={isPrivate} onChange={(e) => setIsPrivate(e.target.value)}>
-                            <option value='' disabled>(select one)</option>
-                            <option value="Private">Private</option>
-                            <option value="Public">Public</option>
-                        </select>}
+                        </select>
                         {hasSubmitted &&
                             validationErrors.isPrivate.length > 0 &&
                             validationErrors.isPrivate.map((error, idx) => (
