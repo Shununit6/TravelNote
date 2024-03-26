@@ -164,7 +164,7 @@ const ExpenseForm = ({ expense, formType }) => {
             <div>
                  <label>
                     Would you like to split this expense with others?
-                    <select id="planformprivate" value={isSplit} onChange={(e) => setIsPrivate(e.target.value)}>
+                    <select id="planformprivate" value={split} onChange={(e) => setSplit(e.target.value)}>
                             <option value="Private">Private</option>
                             <option value="Public">Public</option>
                     </select>
