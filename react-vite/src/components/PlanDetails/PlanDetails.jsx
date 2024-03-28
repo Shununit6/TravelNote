@@ -120,19 +120,19 @@ const PlanDetails = () => {
                     }
                 </div>
                 </div>
-                {sessionUser && isPlanCreator ?
+                {expensedata && sessionUser && isPlanCreator ?
                         <div id="item4" className="buttons-container">
                         {/* <Link to={`/plans/${planId}/edit`}>
                             <button id="updateplandetails" >Update My Plan</button>
                         </Link> */}
                         <div><DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
-                                    modalComponent={<ExpenseForm formType="Update Expense" expense={expensedata}/>}
+                                    modalComponent={<ExpenseForm formType="Update Expense" expense={expenses}/>}
                                     />
                         </div>
                         <DeleteModal id="deleteexpensedetails"
                                 itemText="Delete Expense"
-                                modalComponent={<DeleteExpenseModal expense={expensedata}/>}
+                                modalComponent={<DeleteExpenseModal expense={expenses}/>}
                                 />
                         </div>
                         : null}

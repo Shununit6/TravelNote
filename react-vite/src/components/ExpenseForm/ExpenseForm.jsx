@@ -61,6 +61,7 @@ const ExpenseForm = ({ expense, formType }) => {
         expense = { ...expense, name, category, amount, split};
 
         let newExpense;
+        console.log("validationErrorsvalidationErrors", validationErrors);
         let errorCount = validationErrors.name.length + validationErrors.category.length
         + validationErrors.amount.length + validationErrors.split.length;
         // console.log(errorCount);
