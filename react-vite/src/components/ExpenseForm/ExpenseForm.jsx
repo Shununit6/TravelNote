@@ -14,7 +14,7 @@ const ExpenseForm = ({ expense, formType }) => {
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
 
-    let splitState, isSplit;
+    let splitState;
 
     if(expense?.split == true){
         splitState="Split with everyone";
@@ -52,9 +52,9 @@ const ExpenseForm = ({ expense, formType }) => {
         setHasSubmitted(true);
 
         if(split === "Split with everyone"){
-            isSplit = 1;
+            split = 1;
         }else{
-            isSplit = 0;
+            split = 0;
         }
 
         expense = { ...expense, name, category, amount, split};
