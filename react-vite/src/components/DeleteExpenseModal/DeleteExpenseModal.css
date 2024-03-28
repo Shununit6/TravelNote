@@ -1,19 +1,19 @@
-#deletestorymodal{
+  #deleteexpensemodal{
     display: grid;
     width: 360px;
 }
 
-#deletestorymodal > h2{
+#deleteexpensemodal > h2{
     justify-self: center;
     margin-bottom: 0.3em;
 }
 
-#deletestorymodal > p{
+#deleteexpensemodal > p{
     margin-top: 0;
     justify-self: center;
 }
 
-#yesdeletestory{
+#yesdeleteexpense{
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin: 0.5em 1em;
@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-#nokeepstory{
+#nokeepexpense{
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin: 0.5em 1em;
