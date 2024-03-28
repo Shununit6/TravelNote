@@ -3,12 +3,12 @@
 import { useNavigate } from "react-router-dom"; //useParams,
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./DeleteStoryModal.css";
+import "./DeleteExpenseModal.css";
 import { deleteExpense } from "../../redux/expenses";
 
-const DeleteStoryModal = ({expense}) => {
+const DeleteExpenseModal = ({expense}) => {
     const expenseId = expense.id;
-    // console.log("deletemodal", typeof(storyId), storyId);
+    // console.log("deletemodal", typeof(expenseId), expenseId);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { closeModal } = useModal();
@@ -16,13 +16,13 @@ const DeleteStoryModal = ({expense}) => {
     // const [isLoaded, setIsLoaded] = useState(false);
     const handleDelete = async (e) => {
         e.preventDefault();
-        await dispatch(deleteStory(expenseId));
+        await dispatch(deleteExpense(expenseId));
         closeModal();
-        navigate(`/expenses`);
+        navigate(`/plans/${expense.plan_id}`);
     };
 
     return (
-        <div id="deletestorymodal">
+        <div id="deleteexpensemodal">
             <h2>Confirm Delete</h2>
             <p>Are you sure you want to remove this expense?</p>
             <button id="yesdeleteexpense" onClick={handleDelete}> Yes (Delete Expense) </button>

@@ -125,7 +125,7 @@ const ExpenseForm = ({ expense, formType }) => {
             <div>
                 <label>
                     What kind of expense is this?
-                    <select id="expenseformcategory" value={category} onChange={(e) => setIsCategory(e.target.value)} placeholder="select one">
+                    <select id="expenseformcategory" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="select one">
                         <option value='' disabled>(select one)</option>
                         <option value="Entertainment">Entertainment</option>
                         <option value="Food">Food</option>

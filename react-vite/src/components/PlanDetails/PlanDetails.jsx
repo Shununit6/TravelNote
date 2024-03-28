@@ -8,6 +8,8 @@ import DeletePlanModal from "../DeletePlanModal";
 import Chart from '../Charts';
 import { getAllExpenses } from '../../redux/expenses';
 import PlanForm from "../PlanForm/PlanForm";
+import ExpenseForm from "../ExpenseForm/ExpenseForm";
+import DeleteExpenseModal from "../DeleteExpenseModal";
 
 const PlanDetails = () => {
     const dispatch = useDispatch();
@@ -118,6 +120,22 @@ const PlanDetails = () => {
                     }
                 </div>
                 </div>
+                {sessionUser && isPlanCreator ?
+                        <div id="item4" className="buttons-container">
+                        {/* <Link to={`/plans/${planId}/edit`}>
+                            <button id="updateplandetails" >Update My Plan</button>
+                        </Link> */}
+                        <div><DeleteModal id="updateexpensedetails"
+                                    itemText="Update Expense"
+                                    modalComponent={<ExpenseForm formType="Update Expense" expense={expensedata}/>}
+                                    />
+                        </div>
+                        <DeleteModal id="deleteexpensedetails"
+                                itemText="Delete Expense"
+                                modalComponent={<DeleteExpenseModal expense={expensedata}/>}
+                                />
+                        </div>
+                        : null}
                 {/* <ul>
                     <ol>Expense Name</ol>
                     <ol>Category</ol>
