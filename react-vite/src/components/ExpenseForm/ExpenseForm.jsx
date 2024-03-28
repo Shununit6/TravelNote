@@ -13,8 +13,9 @@ const ExpenseForm = ({ expense, formType }) => {
     let [name, setName] = useState(expense?.name);
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
-
+    let userId = sessionUser.id;
     let splitState;
+    const { closeModal } = useModal();
 
     if(expense?.split == true){
         splitState="Split with everyone";
@@ -26,14 +27,14 @@ const ExpenseForm = ({ expense, formType }) => {
     let [split, setSplit] = useState(splitState);
 
     let isUpdate = false;
-    if(formType === "Update Expense"){
+    if(formType == "Update Expense"){
         isUpdate = true;
     }
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
     console.log(expenses);
-    console.log(sessionUser.user_id)
+    console.log(userId);
 
     useEffect(() => {
         const errors = { name:[], category: [], amount:[], split:[]};
