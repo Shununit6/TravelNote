@@ -14,7 +14,7 @@ const ExpenseForm = ({ expense, formType }) => {
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
 
-    let splitState;
+    let splitState, isSplit;
 
     if(expense?.split == true){
         splitState="Split with everyone";
@@ -51,10 +51,10 @@ const ExpenseForm = ({ expense, formType }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if(isPrivate === "Private"){
-            isPrivate = 1;
+        if(split === "Split with everyone"){
+            isSplit = 1;
         }else{
-            isPrivate = 0;
+            isSplit = 0;
         }
 
         expense = { ...expense, name, category, amount, split};
@@ -165,12 +165,12 @@ const ExpenseForm = ({ expense, formType }) => {
                  <label>
                     Would you like to split this expense with others?
                     <select id="planformprivate" value={split} onChange={(e) => setSplit(e.target.value)}>
-                            <option value="Private">Private</option>
-                            <option value="Public">Public</option>
+                            <option value="Split with everyone">Split with everyone</option>
+                            <option value="Do not split">Do not split</option>
                     </select>
                     {hasSubmitted &&
-                        validationErrors.isPrivate.length > 0 &&
-                        validationErrors.isPrivate.map((error, idx) => (
+                        validationErrors.isSplit.length > 0 &&
+                        validationErrors.isSplit.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
