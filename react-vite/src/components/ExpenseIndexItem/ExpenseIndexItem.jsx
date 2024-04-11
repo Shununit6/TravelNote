@@ -10,12 +10,14 @@ const ExpenseIndexItem = ({ expense }) => {
     // const { id, user_id, place_id, title, description, article_ url, shorts_url, created_at, updated_at} = story;
     // const { id, name} = expense;
 
+    console.log(expense)
+
     return (
         Object.values(expense).map((expense, index) => (
         <Link id="expenselinkwithtext" to={`/expenses/${id}`} key={`${id}`}>
             <div id="expensegrid1">
                 <div id="expenseitem2">
-                    {expense}
+                    {expense.name}
                 </div>
             </div>
         </Link>))
