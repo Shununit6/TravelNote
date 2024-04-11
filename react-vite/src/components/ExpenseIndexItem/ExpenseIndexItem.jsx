@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getExpenseDetails } from "../../redux/stories";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import "./ExpenseIndexItem.css";
 
 const ExpenseIndexItem = ({ expense }) => {
@@ -13,14 +13,15 @@ const ExpenseIndexItem = ({ expense }) => {
     console.log(expense)
 
     return (
-        Object.values(expense).map((expense, index) => (
-        <Link id="expenselinkwithtext" to={`/expenses/${id}`} key={`${id}`}>
-            <div id="expensegrid1">
+        Object.values(expense).map((expense) => (
+        // <Link id="expenselinkwithtext" to={`/expenses/${expense.id}`} key={`${expense.id}`}>
+            <div id="expensegrid1" key={`${expense.id}`}>
                 <div id="expenseitem2">
-                    {expense.name}
+                    <li>name: {expense.name} amount: {expense.amount} category: {expense.category}</li>
                 </div>
             </div>
-        </Link>))
+        /* </Link> */
+        ))
     );
 }
 

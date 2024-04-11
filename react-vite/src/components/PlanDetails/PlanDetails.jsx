@@ -135,9 +135,9 @@ const PlanDetails = () => {
                                 itemText="Delete Expense"
                                 modalComponent={<DeleteExpenseModal expense={expensedata}/>}
                                 />
-                        {/* {expensedata &&
+                        {expensedata &&
                         <ExpenseIndexItem expense={expensedata}/>
-                        } */}
+                        }
                         <div><DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
                                     modalComponent={<ExpenseIndexItem formType="Update Expense" expense={expensedata}/>}
