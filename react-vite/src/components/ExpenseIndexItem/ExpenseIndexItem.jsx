@@ -14,9 +14,9 @@ const ExpenseIndexItem = ({ expense }) => {
     console.log(expense[0].split)
 
     return (
-        Object.values(expense).map((currentexpense, index) => (
+        Object.values(expense).map((currentexpense) => (
         // <Link id="expenselinkwithtext" to={`/expenses/${expense.id}`} key={`${expense.id}`}>
-            <div id="expensegrid1" key={`{index}${currentexpense.id}${currentexpense.plan_id}`}>
+            <div id="expensegrid1" key={`${currentexpense.id}${currentexpense.plan_id}`}>
                 <div id="expenseitem2">
                     <li>name: {currentexpense.name} amount: {currentexpense.amount} category: {currentexpense.category} split: {currentexpense.split}</li>
                 </div>
