@@ -10,6 +10,7 @@ import { getAllExpenses } from '../../redux/expenses';
 import PlanForm from "../PlanForm/PlanForm";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import DeleteExpenseModal from "../DeleteExpenseModal";
+import ExpenseIndexItem from "../ExpenseIndexItem";
 
 const PlanDetails = () => {
     const dispatch = useDispatch();
@@ -127,13 +128,21 @@ const PlanDetails = () => {
                         </Link> */}
                         <div><DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
-                                    modalComponent={<ExpenseForm formType="Update Expense" expense={expenses}/>}
+                                    modalComponent={<ExpenseForm formType="Update Expense" expense={expensedata}/>}
                                     />
                         </div>
                         <DeleteModal id="deleteexpensedetails"
                                 itemText="Delete Expense"
-                                modalComponent={<DeleteExpenseModal expense={expenses}/>}
+                                modalComponent={<DeleteExpenseModal expense={expensedata}/>}
                                 />
+                        {/* {expensedata &&
+                        <ExpenseIndexItem expense={expensedata}/>
+                        } */}
+                        <div><DeleteModal id="updateexpensedetails"
+                                    itemText="Update Expense"
+                                    modalComponent={<ExpenseIndexItem formType="Update Expense" expense={expensedata}/>}
+                                    />
+                        </div>
                         </div>
                         : null}
                 {/* <ul>

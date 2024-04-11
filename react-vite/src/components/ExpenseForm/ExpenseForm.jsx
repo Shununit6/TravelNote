@@ -33,7 +33,7 @@ const ExpenseForm = ({ expense, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(expenses);
+    console.log(expense);
     console.log(userId);
 
     useEffect(() => {
