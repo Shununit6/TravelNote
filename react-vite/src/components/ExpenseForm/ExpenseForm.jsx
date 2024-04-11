@@ -171,8 +171,8 @@ const ExpenseForm = ({ expense, formType }) => {
                             <option value="Do not split">Do not split</option>
                     </select>
                     {hasSubmitted &&
-                        validationErrors.isSplit.length > 0 &&
-                        validationErrors.isSplit.map((error, idx) => (
+                        validationErrors.split.length > 0 &&
+                        validationErrors.split.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
