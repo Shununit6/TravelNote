@@ -70,9 +70,9 @@ const ExpenseForm = ({ expense, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Expense") {
-                    // console.log("before", expense)
+                    console.log("before", expense)
                     newExpense = await dispatch(updateExpense(expense));
-                    // console.log("after", newExpense)
+                    console.log("after", newExpense)
                 } else {
                     newExpense = await dispatch(createExpense(expense));
                 }
