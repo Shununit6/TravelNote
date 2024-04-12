@@ -9,7 +9,7 @@ const ExpenseForm = ({ expense, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
-    const expenses = useSelector(state => state.expenses);
+    // const expenses = useSelector(state => state.expenses);
     let [name, setName] = useState(expense?.name);
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
