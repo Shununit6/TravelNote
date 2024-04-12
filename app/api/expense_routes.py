@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, Expense
+from app.models import db, Expense, Plan
 from ..forms.expense_form import ExpenseForm
 
 expense_routes = Blueprint('expenses', __name__)
@@ -82,16 +82,14 @@ def edit_expense(expenseId):
     if not expensebyid:
         return {'errors': f"Expense {expenseId} does not exist."}, 404
     # checks if expense is created by the current user
-    if expensebyid.user_id != current_user.id:
+    expenseplan = Plan.query.get(expensebyid.plan_id)
+    if expenseplan.user_id != current_user.id:
         return {'errors': f"Forbidden, Expense {expenseId} is not created by the current user."}, 403
     payload= request.get_json()
     expensebyid.name=payload['name']
-    expensebyid.number_traveler=payload['number_traveler']
-    expensebyid.private=payload['private']
-    expensebyid.city=payload['city']
-    expensebyid.country=payload['country']
-    expensebyid.start_date=payload['start_date']
-    expensebyid.end_date=payload['end_date']
+    expensebyid.category=payload['category']
+    expensebyid.amount=payload['amount']
+    expensebyid.split=payload['split']
     db.session.commit()
     return jsonify(expensebyid.to_dict())
 
@@ -108,7 +106,8 @@ def delete_expense(expenseId):
     if not expensebyid:
         return {'errors': f"Expense {expenseId} does not exist."}, 404
     # checks if expense is created by the current user
-    if expensebyid.user_id != current_user.id:
+    expenseplan = Plan.query.get(expensebyid.plan_id)
+    if expenseplan.user_id != current_user.id:
         return {'errors': f"Forbidden, Expense {expenseId} is not created by the current user."}, 403
     db.session.delete(expensebyid)
     db.session.commit()
