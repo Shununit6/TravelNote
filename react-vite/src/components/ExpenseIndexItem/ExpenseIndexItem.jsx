@@ -21,7 +21,7 @@ const ExpenseIndexItem = ({ expense }) => {
         // <Link id="expenselinkwithtext" to={`/expenses/${expense.id}`} key={`${expense.id}`}>
             <div id="expensegrid1" key={`${currentexpense.id}${currentexpense.plan_id}`}>
                 <div id="expenseitem2">
-                    <li>name: {currentexpense.name} amount: {currentexpense.amount} category: {currentexpense.category} split: {currentexpense.split}
+                    {/* <li>name: {currentexpense.name} amount: {currentexpense.amount} category: {currentexpense.category} split: {currentexpense.split}
 
                     <DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
@@ -31,7 +31,32 @@ const ExpenseIndexItem = ({ expense }) => {
                                 itemText="Delete Expense"
                                 modalComponent={<DeleteExpenseModal expense={currentexpense}/>}
                                 />
-                    </li>
+                    </li> */}
+                    <table>
+                    {/* <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Most famous song</th>
+                        </tr>
+                    </thead> */}
+                    <tbody>
+                        <tr>
+                        <th scope="row">{currentexpense.name}</th>
+                        <td>{currentexpense.category}</td>
+                        <td>{currentexpense.amount}</td>
+                        <td><DeleteModal id="updateexpensedetails"
+                                    itemText="Update Expense"
+                                    modalComponent={<ExpenseForm formType="Update Expense" expense={currentexpense}/>}
+                                    />
+                    <DeleteModal id="deleteexpensedetails"
+                                itemText="Delete Expense"
+                                modalComponent={<DeleteExpenseModal expense={currentexpense}/>}
+                                /></td>
+                        </tr>
+                    </tbody>
+                    </table>
                 </div>
             </div>
         /* </Link> */
