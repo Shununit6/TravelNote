@@ -41,7 +41,7 @@ const ExpenseForm = ({ expense, formType }) => {
         if (!name.length) errors["name"].push("Name is required");
         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
         if (!category.length) errors["category"].push("Category is required");
-        if (!amount.length) errors["amount"].push("Amount is required");
+        if (amount < 0) errors["amount"].push("Amount is required");
         if (!split.length) errors["split"].push("Split is required");
 
         setValidationErrors(errors);
@@ -149,7 +149,7 @@ const ExpenseForm = ({ expense, formType }) => {
                     <input
                             id='expenseformamount'
                             type="number"
-                            min="1"
+                            // min="1"
                             value={amount}
                             placeholder="Please enter a number larger than 0"
                             onChange={(e) => setAmount(e.target.value)}
