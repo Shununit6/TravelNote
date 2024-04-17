@@ -9,6 +9,9 @@ function MainPageContent(){
 	return (
         <nav>
             <div id="MainPageContentCss">
+            {/* <Link id="plansIsActive" to="/plans" > Plans </Link>
+            <Link id="placesIsNotActive" to="/places" > Places </Link>
+            <Link id="storiesIsNotActive" to="/stories" > Stories </Link> */}
                 <div>
                     <ul className='MainPagePlans'>
                         <Plans num={num}/>

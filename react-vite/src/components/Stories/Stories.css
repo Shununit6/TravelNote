@@ -6,7 +6,7 @@
 #storiesIsActive{
     color: black;
     text-decoration:none;
-    margin-left: 0.6rem;
+    margin-left: 2.6rem;
 }
 
 #placesIsNotActive, #plansIsNotActive{
@@ -16,6 +16,12 @@
 #plansIsNotActive:hover, #placesIsNotActive:hover, #storiesmainpage:hover{
     color: #90daec;
     text-decoration: underline;
+}
+
+#switchlinkstories{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #viewallstories {
@@ -31,3 +37,12 @@
     display: grid;
     align-items: center;
 } */
+
+#viewallstories1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    /* display: grid;
+    place-items: center;*/
+}

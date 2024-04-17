@@ -9,6 +9,7 @@ import { getAllExpenses } from '../../redux/expenses';
 function Plans({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
+    const sessionUser = useSelector(state => state.session.user);
     const plans = useSelector((state) => state.plans);
     const expenses = useSelector((state)=> state.expenses);
     // console.log(Object.values(expenses));
@@ -26,8 +27,12 @@ function Plans({num}) {
     <div id="planslistgrid">
         {num ==2 && <h2>
           <Link id="plansmainpage" to="/plans" > Plans </Link>
+          {sessionUser &&
+          <div >
+            <Link to="/plans/current"><button>View my plans</button></Link>
+          </div>}
         </h2>}
-        {num !=2 && <h2>
+        {num !=2 && <h2 id="switchlinkplan">
           <Link id="plansIsActive" to="/plans" > Plans </Link>
           <Link id="placesIsNotActive" to="/places" > Places </Link>
           <Link id="storiesIsNotActive" to="/stories" > Stories </Link>

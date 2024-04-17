@@ -11,8 +11,15 @@
 #placesIsNotActive, #storiesIsNotActive{
     text-decoration:none;
     color: grey;
-    margin-left: 0.6rem;
+    margin-left: 2.6rem;
 }
+
+#switchlinkplan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #storiesIsNotActive:hover, #placesIsNotActive:hover, #plansmainpage:hover{
     color: #90daec;
     text-decoration: underline;
@@ -30,4 +37,15 @@
 #planslistgrid{
     display: grid;
     align-items: center;
+}
+
+/* #planslistgrid{
+    background-color: grey;
+} */
+
+#viewallplans1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
 }
