@@ -6,9 +6,9 @@ import navlogo from '../../../src/images/logo.png';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	return (
-		<nav><NavLink to="/home"><img id="logoImage" src={navlogo} alt="logoimage"/></NavLink>
+		<nav><NavLink to="/"><img id="logoImage" src={navlogo} alt="logoimage"/></NavLink>
 			<div>
-			{/* <Link to="/home"><i id="discover" className="fa-solid fa-bars"></i></Link> */}
+			{/* <Link to="/"><i id="discover" className="fa-solid fa-bars"></i></Link> */}
 			{isLoaded && (
 				<ProfileButton user={sessionUser} />
 			)}

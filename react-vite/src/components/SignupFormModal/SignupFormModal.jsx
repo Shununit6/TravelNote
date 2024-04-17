@@ -36,7 +36,7 @@ function SignupFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
-      Navigate("/home");
+      Navigate("/");
     }
   };
 
