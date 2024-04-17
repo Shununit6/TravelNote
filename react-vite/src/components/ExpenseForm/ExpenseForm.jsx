@@ -9,12 +9,13 @@ const ExpenseForm = ({ expense, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
-    const expenses = useSelector(state => state.expenses);
+    // const expenses = useSelector(state => state.expenses);
     let [name, setName] = useState(expense?.name);
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
-
+    let userId = sessionUser.id;
     let splitState;
+    const { closeModal } = useModal();
 
     if(expense?.split == true){
         splitState="Split with everyone";
@@ -26,21 +27,21 @@ const ExpenseForm = ({ expense, formType }) => {
     let [split, setSplit] = useState(splitState);
 
     let isUpdate = false;
-    if(formType === "Update Expense"){
+    if(formType == "Update Expense"){
         isUpdate = true;
     }
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(expenses);
-    console.log(sessionUser.user_id)
+    console.log(expense);
+    console.log(userId);
 
     useEffect(() => {
         const errors = { name:[], category: [], amount:[], split:[]};
         if (!name.length) errors["name"].push("Name is required");
         if (name.length > 60) errors["name"].push("Name must be 60 characters or less");
         if (!category.length) errors["category"].push("Category is required");
-        if (!amount.length) errors["amount"].push("Amount is required");
+        if (amount < 0) errors["amount"].push("Amount is required");
         if (!split.length) errors["split"].push("Split is required");
 
         setValidationErrors(errors);
@@ -51,15 +52,16 @@ const ExpenseForm = ({ expense, formType }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if(isPrivate === "Private"){
-            isPrivate = 1;
+        if(split === "Split with everyone"){
+            split = 1;
         }else{
-            isPrivate = 0;
+            split = 0;
         }
 
         expense = { ...expense, name, category, amount, split};
 
         let newExpense;
+        console.log("validationErrorsvalidationErrors", validationErrors);
         let errorCount = validationErrors.name.length + validationErrors.category.length
         + validationErrors.amount.length + validationErrors.split.length;
         // console.log(errorCount);
@@ -68,9 +70,9 @@ const ExpenseForm = ({ expense, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Expense") {
-                    // console.log("before", expense)
+                    console.log("before", expense)
                     newExpense = await dispatch(updateExpense(expense));
-                    // console.log("after", newExpense)
+                    console.log("after", newExpense)
                 } else {
                     newExpense = await dispatch(createExpense(expense));
                 }
@@ -124,7 +126,7 @@ const ExpenseForm = ({ expense, formType }) => {
             <div>
                 <label>
                     What kind of expense is this?
-                    <select id="expenseformcategory" value={category} onChange={(e) => setIsCategory(e.target.value)} placeholder="select one">
+                    <select id="expenseformcategory" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="select one">
                         <option value='' disabled>(select one)</option>
                         <option value="Entertainment">Entertainment</option>
                         <option value="Food">Food</option>
@@ -147,7 +149,7 @@ const ExpenseForm = ({ expense, formType }) => {
                     <input
                             id='expenseformamount'
                             type="number"
-                            min="1"
+                            // min="1"
                             value={amount}
                             placeholder="Please enter a number larger than 0"
                             onChange={(e) => setAmount(e.target.value)}
@@ -164,13 +166,13 @@ const ExpenseForm = ({ expense, formType }) => {
             <div>
                  <label>
                     Would you like to split this expense with others?
-                    <select id="planformprivate" value={isSplit} onChange={(e) => setIsPrivate(e.target.value)}>
-                            <option value="Private">Private</option>
-                            <option value="Public">Public</option>
+                    <select id="planformprivate" value={split} onChange={(e) => setSplit(e.target.value)}>
+                            <option value="Split with everyone">Split with everyone</option>
+                            <option value="Do not split">Do not split</option>
                     </select>
                     {hasSubmitted &&
-                        validationErrors.isPrivate.length > 0 &&
-                        validationErrors.isPrivate.map((error, idx) => (
+                        validationErrors.split.length > 0 &&
+                        validationErrors.split.map((error, idx) => (
                             <div key={idx}>
                                 <p className="error">{error}</p>
                             </div>
