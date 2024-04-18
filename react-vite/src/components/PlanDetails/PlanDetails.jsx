@@ -106,9 +106,9 @@ const PlanDetails = () => {
         return(
             <div id="planitems" className="planitems">
                 {/* <div id="items-2"></div> */}
-                <div id="item1">
+                {/* <div id="item1">
                     <Link id="plantext" to={"/plans"}> <p>Plans</p> </Link>
-                </div>
+                </div> */}
                 <div id="item2">
                 <div id="plandatachartdetail">
                     {expensedata &&

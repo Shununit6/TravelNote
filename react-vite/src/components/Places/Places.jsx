@@ -9,7 +9,7 @@ import { getAllPlaceimages } from '../../redux/placeimages';
 function Places({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const places = useSelector((state) => state.places);
     const placeimages = useSelector((state)=>state.placeimages);
     useEffect(()=>{

@@ -9,7 +9,7 @@ import { getAllExpenses } from '../../redux/expenses';
 function Plans({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const plans = useSelector((state) => state.plans);
     const expenses = useSelector((state)=> state.expenses);
     // console.log(Object.values(expenses));
