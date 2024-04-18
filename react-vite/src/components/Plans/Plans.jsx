@@ -27,10 +27,10 @@ function Plans({num}) {
     <div id="planslistgrid">
         {num ==2 && <h2>
           <Link id="plansmainpage" to="/plans" > Plans </Link>
-          {sessionUser &&
+          {/* {sessionUser &&
           <div >
             <Link to="/plans/current"><button>View my plans</button></Link>
-          </div>}
+          </div>} */}
         </h2>}
         {num !=2 && <h2 id="switchlinkplan">
           <Link id="plansIsActive" to="/plans" > Plans </Link>
