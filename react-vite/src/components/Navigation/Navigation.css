@@ -39,3 +39,23 @@
   display: flex;
   justify-content: space-between;
 } */
+
+#viewall, #viewmy, #createnew{
+  background: none;
+	color: black;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#viewall:hover, #viewmy:hover, #createnew:hover{
+  background: white;
+	color: #90daec;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

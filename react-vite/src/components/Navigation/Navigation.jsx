@@ -10,15 +10,15 @@ function Navigation({ isLoaded }){
 			<div className="navbox">
 				<div><NavLink to="/"><img id="logoImage" src={navlogo} alt="logoimage"/></NavLink></div>
 				<div >
-					<NavLink to="/plans/"><button>View All Plans</button></NavLink>
+					<NavLink to="/plans/"><button id="viewall">View All Plans</button></NavLink>
 				</div>
 				{sessionUser &&
 				<div>
-					<NavLink to="/plans/current"><button>View My Plans</button></NavLink>
+					<NavLink to="/plans/current"><button id="viewmy">View My Plans</button></NavLink>
 				</div>}
 				{sessionUser &&
 				<div>
-					<NavLink to="/plans/new"><button>Create New Plans</button></NavLink>
+					<NavLink to="/plans/new"><button id="createnew">Create New Plans</button></NavLink>
 				</div>}
 				<div>
 					{isLoaded && (
