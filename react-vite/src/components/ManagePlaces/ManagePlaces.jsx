@@ -42,13 +42,13 @@ const ManagePlaces = () => {
             <Link id="placesIsActive" to="/places/current" > My Places </Link>
             <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link>
             {!hasPlaces && <Link to={'/places/new'}><button className='createPlaceButton'>Create a New Place</button></Link>}
-            {hasPlaces && <ul className='managePlaceIndex'>
+            {hasPlaces && <div className='managePlaceIndex'>
                 {placesByUser.map((place) => (
-                    <ul className='manageEachPlace' key={String(place.id)}>
+                    <div className='manageEachPlace' key={String(place.id)}>
                         {place && <PlaceIndexItem place={place} placeimages={placeimages}/>}
-                    </ul>
+                    </div>
                 ))}
-             </ul>}
+             </div>}
             </div>
         </div>
     );

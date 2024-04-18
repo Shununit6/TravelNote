@@ -25,14 +25,14 @@ function Places({num}) {
   if(isLoaded){
   return (
     <div id="placeslistgrid">
-        {num ==2 && <h2>
+        {num == 2 && <h2>
           <Link id="placesmainpage" to="/places" > Places </Link>
           {sessionUser &&
           <div >
             <Link to="/places/current"><button>View my places</button></Link>
           </div>}
         </h2>}
-        {num !=2 && <h2 id="switchplace">
+        {num != 2 && <h2 id="switchplace">
           <Link id="plansIsNotActive" to="/plans" > Plans </Link>
           <Link id="placesIsActive" to="/places" > Places </Link>
           <Link id="storiesIsNotActive" to="/stories" > Stories </Link>

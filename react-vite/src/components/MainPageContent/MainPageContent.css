@@ -1,11 +1,28 @@
-#MainPageContentCss{
+.MainPageContentCss{
+    /* display: grid;
+    place-items: center; */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    /* margin-left: 10vw; */
 }
 
-.MainPagePlans, .MainPagePlaces, .MainPageStories{
-    width: fit-content;
-    height: fit-content;
+@media (width <= 1300px) {
+    .MainPageContentCss{
+        margin-left: 10vw;
+    }
 }
+
+@media (width > 1300px)  and (width <= 1600px) {
+    .MainPageContentCss{
+        margin-left: 15vw;
+    }
+}
+
+@media (width > 1600px) {
+    .MainPageContentCss{
+        margin-left: 25vw;
+    }
+}
+/* .MainPagePlans, .MainPagePlaces, .MainPageStories{
+
+} */

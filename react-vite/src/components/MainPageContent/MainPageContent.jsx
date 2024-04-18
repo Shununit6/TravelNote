@@ -7,28 +7,25 @@ import Stories from '../Stories';
 function MainPageContent(){
     const num = 2;
 	return (
-        <nav>
-            <div id="MainPageContentCss">
+        <>
+            <div className="MainPageContentCss">
             {/* <Link id="plansIsActive" to="/plans" > Plans </Link>
             <Link id="placesIsNotActive" to="/places" > Places </Link>
             <Link id="storiesIsNotActive" to="/stories" > Stories </Link> */}
-                <div>
-                    <ul className='MainPagePlans'>
-                        <Plans num={num}/>
-                    </ul>
+                <div className='MainPagePlans'>
+                    <Plans num={num}/>
                 </div>
-                <div>
-                    <ul className='MainPagePlaces'>
-                        <Places num={num}/>
-                    </ul>
+
+                <div className='MainPagePlaces'>
+                    <Places num={num}/>
                 </div>
-                <div>
-                    <ul className='MainPageStories'>
-                        <Stories num={num}/>
-                    </ul>
+
+                <div className='MainPageStories'>
+                    <Stories num={num}/>
                 </div>
+
             </div>
-        </nav>
+        </>
 	);
 }
 

@@ -42,13 +42,13 @@ const ManageStories = () => {
             <Link id="placesIsNotActive" to="/places/current" > My Places </Link>
             <Link id="storiesIsActive" to="/stories/current" > My Stories </Link>
             {!hasStories && <Link to={'/stories/new'}><button className='createStoryButton'>Create a New Story</button></Link>}
-            {hasStories && <ul className='manageStoryIndex'>
+            {hasStories && <div className='manageStoryIndex'>
                 {storiesByUser.map((story) => (
-                    <ul className='manageEachStory' key={String(story.id)}>
+                    <div className='manageEachStory' key={String(story.id)}>
                         {story && <StoryIndexItem story={story} storyimages={storyimages}/>}
-                    </ul>
+                    </div>
                 ))}
-             </ul>}
+             </div>}
             </div>
         </div>
     );

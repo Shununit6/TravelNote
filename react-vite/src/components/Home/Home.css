@@ -1,12 +1,16 @@
 .homewrapper{
     font-family: Georgia, serif, cursive;
-    display:flex;
+    /* display:flex; */
     /* display: grid; */
     /* justify-content: center; */
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start; */
 
 }
 
-.homeitem-1{
+/* .homeitem-1{
     position: relative;
     float:inline-start;
     width:270px;
@@ -18,7 +22,7 @@
     width:auto;
     margin-left: 30px;
     margin-top: 15px;
-}
+} */
 
 /* html {
     background: url("../../../public/images/homepage-1.jpg") no-repeat center center fixed;
