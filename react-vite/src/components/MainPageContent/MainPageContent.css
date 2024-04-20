@@ -1,0 +1,28 @@
+.MainPageContentCss{
+    /* display: grid;
+    place-items: center; */
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 10vw; */
+}
+
+@media (width <= 1300px) {
+    .MainPageContentCss{
+        margin-left: 10vw;
+    }
+}
+
+@media (width > 1300px)  and (width <= 1600px) {
+    .MainPageContentCss{
+        margin-left: 15vw;
+    }
+}
+
+@media (width > 1600px) {
+    .MainPageContentCss{
+        margin-left: 25vw;
+    }
+}
+/* .MainPagePlans, .MainPagePlaces, .MainPageStories{
+
+} */

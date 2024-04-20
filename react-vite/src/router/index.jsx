@@ -18,7 +18,7 @@ import StoryDetails from '../components/StoryDetails';
 import EditStoryForm from '../components/EditStoryForm';
 import CreateStoryForm from '../components/CreateStoryForm';
 import ManageStories from '../components/ManageStories';
-import FrontPage from '../components/FrontPage/FrontPage';
+// import FrontPage from '../components/FrontPage/FrontPage';
 
 export const router = createBrowserRouter([
   {
@@ -93,13 +93,13 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path: "home",
+        path: "/",
         element: <Home />,
       },
-      {
-        path: "/",
-        element: <FrontPage />,
-      },
+      // {
+      //   path: "/",
+      //   element: <FrontPage />,
+      // },
     ],
   },
 ]);

@@ -118,7 +118,7 @@ return (
           <div>Hello, {user.username}</div>
           <div>{user.email}</div>
           <div>
-               <Link id="menulibraryhome" to="/home" > View Home Page </Link>
+               <Link id="menulibraryhome" to="/" > View Home Page </Link>
           </div>
           <div>
             <hr/>

@@ -37,14 +37,17 @@ const ManagePlans = () => {
             </div> */}
             <div className='managePlanitem-2'>
             <h1 className='title'>My Plans</h1>
+            <Link id="plansIsActive" to="/plans/current" > My Plans </Link>
+            <Link id="placesIsNotActive" to="/places/current" > My Places </Link>
+            <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link>
             {!hasPlans && <Link to={'/plans/new'}><button className='createPlanButton'>Create a New Plan</button></Link>}
-            {hasPlans && <ul className='managePlanIndex'>
+            {hasPlans && <div className='managePlanIndex'>
                 {plansByUser.map((plan) => (
-                    <ul className='manageEachPlan' key={String(plan.id)}>
+                    <div className='manageEachPlan' key={String(plan.id)}>
                         {plan && <PlanIndexItem expense={expense} manage={manage} plan={plan} />}
-                    </ul>
+                    </div>
                 ))}
-             </ul>}
+             </div>}
             </div>
         </div>
     );

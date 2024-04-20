@@ -36,7 +36,7 @@ function SignupFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
-      Navigate("/home");
+      Navigate("/");
     }
   };
 
@@ -55,7 +55,7 @@ function SignupFormModal() {
           Email <br></br>
           <input
             className="signupinput"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             minLength={4}

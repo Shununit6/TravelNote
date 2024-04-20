@@ -23,3 +23,12 @@
     column-gap: 1em;
     row-gap: 1em;
 }
+
+.planitems{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1em;
+}

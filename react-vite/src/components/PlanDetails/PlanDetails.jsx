@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import { getPlanDetails} from '../../redux/plans';
 import "./PlanDetails.css";
@@ -106,9 +106,9 @@ const PlanDetails = () => {
         return(
             <div id="planitems" className="planitems">
                 {/* <div id="items-2"></div> */}
-                <div id="item1">
+                {/* <div id="item1">
                     <Link id="plantext" to={"/plans"}> <p>Plans</p> </Link>
-                </div>
+                </div> */}
                 <div id="item2">
                 <div id="plandatachartdetail">
                     {expensedata &&

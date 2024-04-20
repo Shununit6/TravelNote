@@ -55,7 +55,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 </div>
                 {manage && !expensedata &&
                 <div>
-                    <h1>{name}</h1>
+                    <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
@@ -64,7 +64,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 }
                 {manage && expensedata && <div id="planitem2">
                 <div>
-                    <h1>{name}</h1>
+                    <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
@@ -73,7 +73,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 </div>}
                 {!manage && !expensedata && !isPrivate &&
                 <div>
-                    <h1>{name}</h1>
+                    <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
@@ -82,7 +82,7 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 }
                 {!manage && !isPrivate && expensedata && <div id="planitem2">
                 <div>
-                    <h1>{name}</h1>
+                    <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>

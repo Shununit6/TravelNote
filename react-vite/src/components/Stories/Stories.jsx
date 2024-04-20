@@ -25,7 +25,7 @@ function Stories({num}) {
         {num ==2 && <h2>
           <Link id="storiesmainpage" to="/stories" > Stories </Link>
         </h2>}
-        {num !=2 && <h2>
+        {num !=2 && <h2 id="switchlinkstories">
           <Link id="plansIsNotActive" to="/plans" > Plans </Link>
           <Link id="placesIsNotActive" to="/places" > Places </Link>
           <Link id="storiesIsActive" to="/stories" > Stories </Link>
@@ -38,7 +38,7 @@ function Stories({num}) {
           </div>
         }
         {
-          num!=2 && <div id="viewallstories">
+          num!=2 && <div id="viewallstories1">
           {Object.values(stories).map((story, index) => (
                 <StoryIndexItem story={story} storyimages={storyimages} key={index}/>
           ))}

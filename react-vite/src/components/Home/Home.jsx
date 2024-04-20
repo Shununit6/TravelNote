@@ -1,6 +1,6 @@
 // import React from 'react';
 import './Home.css';
-import MenuLibrary from '../MenuLibrary';
+// import MenuLibrary from '../MenuLibrary';
 import MainPageContent from '../MainPageContent';
 
 function Home(){
@@ -8,9 +8,9 @@ function Home(){
         <>
 		<nav>
 			<div className="homewrapper">
-                <div className="homeitem-1">
+                {/* <div className="homeitem-1">
                     <MenuLibrary />
-                </div>
+                </div> */}
                 <div className="homeitem-2">
                     <MainPageContent />
                 </div>

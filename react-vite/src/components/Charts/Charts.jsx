@@ -1,4 +1,5 @@
 import { Chart } from "react-google-charts";
+import "./Charts.css";
 
 const charts = ({data, options}) => {
   return (

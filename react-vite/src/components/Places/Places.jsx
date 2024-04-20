@@ -9,6 +9,7 @@ import { getAllPlaceimages } from '../../redux/placeimages';
 function Places({num}) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
+    // const sessionUser = useSelector(state => state.session.user);
     const places = useSelector((state) => state.places);
     const placeimages = useSelector((state)=>state.placeimages);
     useEffect(()=>{
@@ -24,10 +25,14 @@ function Places({num}) {
   if(isLoaded){
   return (
     <div id="placeslistgrid">
-        {num ==2 && <h2>
+        {num == 2 && <h2>
           <Link id="placesmainpage" to="/places" > Places </Link>
+          {/* {sessionUser &&
+          <div >
+            <Link to="/places/current"><button>View my places</button></Link>
+          </div>} */}
         </h2>}
-        {num !=2 && <h2>
+        {num != 2 && <h2 id="switchplace">
           <Link id="plansIsNotActive" to="/plans" > Plans </Link>
           <Link id="placesIsActive" to="/places" > Places </Link>
           <Link id="storiesIsNotActive" to="/stories" > Stories </Link>
@@ -40,7 +45,7 @@ function Places({num}) {
           </div>
         }
         {
-          num != 2 && <div id="viewallplaces">
+          num != 2 && <div id="viewallplaces1">
           {places && Object.values(places).map((place, index) => (
                 <PlaceIndexItem place={place} placeimages={placeimages} key={index}/>
           ))}
