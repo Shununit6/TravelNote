@@ -1,5 +1,6 @@
 #loginmodal {
     border-radius: 60px;
+    /* background-color: #EEEEEE; */
 }
 #loginform {
     display: grid;
@@ -12,6 +13,11 @@
 #loginmodal > h1{
     text-align: center;
 }
+
+#loginform > p{
+    color: brown;
+}
+
 .loginput {
     width:270px;
     padding: 6px 6px;

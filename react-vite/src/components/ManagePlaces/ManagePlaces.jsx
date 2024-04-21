@@ -40,7 +40,7 @@ const ManagePlaces = () => {
             <h1 className='title'>My Places</h1>
             <Link id="plansIsNotActive" to="/plans/current" > My Plans </Link>
             <Link id="placesIsActive" to="/places/current" > My Places </Link>
-            <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link>
+            <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link><br></br>
             {!hasPlaces && <Link to={'/places/new'}><button className='createPlaceButton'>Create a New Place</button></Link>}
             {hasPlaces && <div className='managePlaceIndex'>
                 {placesByUser.map((place) => (

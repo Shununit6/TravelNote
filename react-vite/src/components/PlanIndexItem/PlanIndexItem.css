@@ -1,6 +1,8 @@
 #planlinkwithtext{
     text-decoration: none;
     color:black;
+    width: 400px;
+    height: 560px;
 }
 
 #planlinkwithtext:hover{

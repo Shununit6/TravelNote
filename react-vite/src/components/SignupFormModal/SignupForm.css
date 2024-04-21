@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+#signupform > p{
+    color:brown;
+}
+
 .signupinput {
     width: 270px;
     padding: 6px 6px;

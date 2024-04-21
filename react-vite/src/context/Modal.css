@@ -23,4 +23,6 @@
   position: absolute;
   background-color:white;
   overflow-y: auto;
+  /* background-color: #EEEEEE; */
+  border-radius: 10px;
 }

@@ -1,4 +1,39 @@
 .manageStorywrapper{
     display: grid;
     justify-content: center;
+    row-gap: 1em;
+}
+
+.createStoryButton{
+    margin-left: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: azure;
+}
+
+.createStoryButton:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: azure;
+    cursor: pointer;
+}
+
+.createStoryButton1{
+    margin-left: 130px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: azure;
+}
+
+.createStoryButton1:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: azure;
+    cursor: pointer;
 }
