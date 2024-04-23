@@ -45,8 +45,15 @@
 
 #viewallplans1{
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    column-gap: 1em;
+    align-items: start;
+    column-gap: 1em; */
+    /* display: grid; */
+    /* display: flex;
+    flex-flow: row wrap;
+    justify-content: center; */
 }

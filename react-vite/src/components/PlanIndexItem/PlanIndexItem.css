@@ -1,11 +1,18 @@
 #planlinkwithtext{
     text-decoration: none;
     color:black;
-    width: 400px;
-    height: 560px;
 }
 
 #planlinkwithtext:hover{
     color:#90daec;
     text-decoration: underline;
+}
+
+[hidden] {
+    display: none;
+}
+
+#planitem2{
+    width:400px;
+    height: fit-content;
 }

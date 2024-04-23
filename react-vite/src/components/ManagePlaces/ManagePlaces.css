@@ -2,3 +2,41 @@
     display: grid;
     justify-content: center;
 }
+
+
+.createPlaceButton{
+    font-size: 1em;
+    margin-left: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.createPlaceButton:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+.createPlaceButton1{
+    font-size: 1em;
+    margin-top: 0.6em;
+    margin-left: 130px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.createPlaceButton1:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}

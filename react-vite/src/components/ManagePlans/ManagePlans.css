@@ -1,6 +1,43 @@
 .managePlanwrapper{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
-    align-content: flex-start;
+    row-gap: 1em;
+}
+
+
+.createPlanButton{
+    font-size: 1em;
+    margin-left: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.createPlanButton:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+.createPlanButton1{
+    font-size: 1em;
+    margin-top: 0.6em;
+    margin-left: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.createPlanButton1:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
 }

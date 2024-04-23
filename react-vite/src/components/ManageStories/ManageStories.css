@@ -5,19 +5,20 @@
 }
 
 .createStoryButton{
+    font-size: 1em;
     margin-left: 72px;
     width: fit-content;
     height: 2em;
     background-color: white;
     border-radius: 5px;
-    border-color: azure;
+    border-color: white;
 }
 
 .createStoryButton:hover{
     color:white;
     background-color: #90daec;
     border-radius: 5px;
-    border-color: azure;
+    border-color: white;
     cursor: pointer;
 }
 
@@ -29,13 +30,13 @@
     height: 2em;
     background-color: white;
     border-radius: 5px;
-    border-color: azure;
+    border-color: white;
 }
 
 .createStoryButton1:hover{
     color:white;
     background-color: #90daec;
     border-radius: 5px;
-    border-color: azure;
+    border-color: white;
     cursor: pointer;
 }

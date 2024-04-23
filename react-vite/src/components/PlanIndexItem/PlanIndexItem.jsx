@@ -49,12 +49,12 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
 
     return (
         <Link id="planlinkwithtext" to={`/plans/${id}`} key={`${id}`}>
-            <div id="plangrid1">
-                <div id="planitem1">
+            {/* <div id="plangrid1"> */}
+                {/* <div id="planitem1"> */}
                     {/* <img id="planExpenseImage" src={url} alt="planExpenseImage" /> */}
-                </div>
+                {/* </div> */}
                 {manage && !expensedata &&
-                <div>
+                <div id="planitem2">
                     <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
@@ -72,13 +72,13 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                     <Chart data={data} options={{title: `${name}` + " Expenses Divided By Categories", pieSliceText: "label",}}/>
                 </div>}
                 {!manage && !expensedata && !isPrivate &&
-                <div>
+                <div id="planitem2">
                     <h3>{name}</h3>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
                     <p>Travel Duration: From {start_date} To {end_date}</p>
                     <p>Expenses of {name} not available</p>
-                </div>
+                    </div>
                 }
                 {!manage && !isPrivate && expensedata && <div id="planitem2">
                 <div>
@@ -89,7 +89,10 @@ const PlanIndexItem = ({ plan, expense, manage }) => {
                 </div>
                     <Chart data={data} options={{title: `${name}` + " Expenses Divided By Categories", pieSliceText: "label",}}/>
                 </div>}
-            </div>
+                {!manage && isPrivate &&
+                    <div hidden></div>
+                }
+            {/* </div> */}
         </Link>
     );
 }

@@ -32,14 +32,13 @@ const ManagePlans = () => {
 
     return (
         <div className='managePlanwrapper'>
-            {/* <div className='managePlanitem-1'>
-                <MenuLibrary />
-            </div> */}
-            <div className='managePlanitem-2'>
+            <div className='managePlanitem-1'>
             <h1 className='title'>My Plans</h1>
-            <Link id="plansIsActive" to="/plans/current" > My Plans </Link>
-            <Link id="placesIsNotActive" to="/places/current" > My Places </Link>
-            <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link><br></br>
+                <Link id="plansIsActive" to="/plans/current" > My Plans </Link>
+                <Link id="placesIsNotActive" to="/places/current" > My Places </Link>
+                <Link id="storiesIsNotActive" to="/stories/current" > My Stories </Link><br></br>
+            </div>
+            <div className='managePlanitem-2'>
             {!hasPlans && <Link to={'/plans/new'}><button className='createPlanButton'>Create a New Plan</button></Link>}
             {hasPlans && <div className='managePlanIndex'>
                 {plansByUser.map((plan) => (
@@ -47,6 +46,7 @@ const ManagePlans = () => {
                         {plan && <PlanIndexItem expense={expense} manage={manage} plan={plan} />}
                     </div>
                 ))}
+                <Link to={'/plans/new'}><button className='createPlanButton1'>Create a New Plan</button></Link>
              </div>}
             </div>
         </div>
