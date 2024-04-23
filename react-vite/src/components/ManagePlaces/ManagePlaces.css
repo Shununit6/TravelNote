@@ -1,6 +1,7 @@
 .managePlacewrapper{
     display: grid;
     justify-content: center;
+    row-gap: 1em;
 }
 
 
