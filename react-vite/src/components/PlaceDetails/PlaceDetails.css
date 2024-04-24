@@ -31,9 +31,10 @@
     justify-content: center;
 }
 
-.deleteplanbutton > button, .updateplanbutton > button, .updateexpensebutton > button{
+.deleteplacebutton > button, .updateplacebutton > button{
     font-size: 1em;
-    margin-left: 72px;
+    margin-left: 3em;
+    margin-right: 3em;
     width: fit-content;
     height: 2em;
     background-color: white;
@@ -42,7 +43,7 @@
     margin-top: 1em;
 }
 
-.deleteplanbutton > button:hover, .updateplanbutton > button:hover, .updateexpensebutton > button:hover{
+.deleteplacebutton > button:hover, .updateplacebutton > button:hover{
     color:white;
     background-color: #90daec;
     border-radius: 5px;

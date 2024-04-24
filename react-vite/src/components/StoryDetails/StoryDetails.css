@@ -28,3 +28,23 @@
     width:630px;
     height:fit-content;
 }
+
+.updatestorybutton > button, .deletestorybutton > button{
+    font-size: 1em;
+    margin-left: 72px;
+    margin-right: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    margin-top: 1em;
+}
+
+.updatestorybutton > button:hover, .deletestorybutton > button:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}

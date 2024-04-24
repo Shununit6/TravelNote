@@ -83,15 +83,17 @@ const PlaceDetails = () => {
                         {/* <Link to={`/places/${placeId}/edit`}>
                             <button id="updateplacedetails" >Update</button>
                         </Link> */}
-                        <div><DeleteModal id="updateplacedetails"
+                        <div className="updateplacebutton"><DeleteModal id="updateplacedetails"
                                     itemText="Update Place"
                                     modalComponent={<PlaceForm formType="Update Place" place={placeData}/>}
                                     />
                         </div>
+                        <div className="deleteplacebutton">
                         <DeleteModal id="deleteplacedetails"
                                 itemText="Delete Place"
                                 modalComponent={<DeletePlaceModal place={placeData}/>}
                                 />
+                        </div>
                         </div>
                         : null}
             </div>

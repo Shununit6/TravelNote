@@ -84,15 +84,17 @@ const StoryDetails = () => {
                         {/* <Link to={`/stories/${storyId}/edit`}>
                             <button id="updatestorydetails" >Update My Story</button>
                         </Link> */}
-                        <div><DeleteModal id="updatestorydetails"
+                        <div className="updatestorybutton"><DeleteModal id="updatestorydetails"
                                     itemText="Update Story"
                                     modalComponent={<StoryForm formType="Update Story" story={storyData}/>}
                                     />
                         </div>
+                        <div className="deletestorybutton">
                         <DeleteModal id="deletedstorydetails"
                                 itemText="Delete Story"
                                 modalComponent={<DeleteStoryModal story={storyData}/>}
                                 />
+                        </div>
                         </div>
                         : null}
                     {/* {sessionUser && <LikeStory userId={user_id} storyId={storyId}/>} */}

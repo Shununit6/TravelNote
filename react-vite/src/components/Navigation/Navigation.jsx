@@ -16,10 +16,10 @@ function Navigation({ isLoaded }){
 				<div>
 					<NavLink to="/plans/current"><button id="viewmy">View My</button></NavLink>
 				</div>}
-				{sessionUser &&
+				{/* {sessionUser &&
 				<div>
 					<NavLink to="/plans/new"><button id="createnew">Create New</button></NavLink>
-				</div>}
+				</div>} */}
 				<div>
 					{isLoaded && (
 						<ProfileButton user={sessionUser} />

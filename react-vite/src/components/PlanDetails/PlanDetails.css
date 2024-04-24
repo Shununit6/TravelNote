@@ -32,3 +32,28 @@
     align-items: center;
     column-gap: 1em;
 }
+
+.deleteplanbutton > button, .updateplanbutton > button, .updateexpensebutton > button{
+    font-size: 1em;
+    margin-left: 63px;
+    margin-right: 63px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    margin-top: 1em;
+}
+
+.deleteplanbutton > button:hover, .updateplanbutton > button:hover, .updateexpensebutton > button:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+#item4{
+    display: flex;
+    justify-content: start;
+}
