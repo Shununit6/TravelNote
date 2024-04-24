@@ -58,7 +58,7 @@ const PlaceDetails = () => {
                 <Carousel useKeyboardArrows={true}>
                     {placeimageurl.map((URL, index) => (
                     <div className="slide">
-                        <img alt="sample_file" src={URL.image_url} key={index} />
+                        <img className={`placeimageitem${index}`} alt="sample_file" src={URL.image_url} key={index} />
                     </div>
                     ))}
                 </Carousel>}

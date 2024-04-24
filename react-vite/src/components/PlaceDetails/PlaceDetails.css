@@ -1,6 +1,6 @@
 .placeimageitem0, .placeimageitem1, .placeimageitem2, #noplaceimages {
-    width:420px;
-    height:270px
+    width:630px;
+    height:fit-content;
 }
 
 #placetext{
@@ -17,5 +17,15 @@
 
 .slide{
     width:210px;
+    height:420px;
+}
+
+#items{
+    display: grid;
+    justify-content: center;
+}
+
+#item3{
+    width:630px;
     height:fit-content;
 }
