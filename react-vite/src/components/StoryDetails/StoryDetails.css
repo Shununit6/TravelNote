@@ -1,6 +1,6 @@
 .storyimageitem0, .storyimageitem1, .storyimageitem2, .storyimageitem3,.storyimageitem4, #nostoryimages {
-    width:420px;
-    height:270px
+    /* width:630px;
+    height:fit-content; */
 }
 
 #storytext{
@@ -13,6 +13,11 @@
     text-decoration: underline;
     color:#90daec;
     font-size: 1.5em;
+}
+
+.slide{
+    width:210px;
+    height:fit-content;
 }
 
 #items{

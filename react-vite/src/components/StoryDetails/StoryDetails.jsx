@@ -11,6 +11,8 @@ import { getStoryimageDetails } from '../../redux/storyimages';
 import noImg from '../../images/noimage.png';
 // import DeleteImageModal from "../DeleteImageModal";
 import StoryForm from "../StoryForm/StoryForm";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
@@ -60,6 +62,14 @@ const StoryDetails = () => {
                 {storyimageurl != noImg && (storyimageurl).map((image, index) => (
                   <img className={`storyimageitem${index}`} src={image.image_url} alt="storyimage" key={index}/>
                 ))}
+                {storyimageurl != noImg &&
+                <Carousel useKeyboardArrows={true}>
+                    {storyimageurl.map((URL, index) => (
+                    <div className="slide">
+                        <img className={`storyimageitem${index}`} alt="sample_file" src={URL.image_url} key={index} />
+                    </div>
+                    ))}
+                </Carousel>}
                 </div>
                 <div id="item3">
                     <h1>{title}</h1>
