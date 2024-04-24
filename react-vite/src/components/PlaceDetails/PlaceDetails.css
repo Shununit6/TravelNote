@@ -24,7 +24,33 @@
     justify-content: center;
 }
 
-#item1, #item2, #item3,#item4{
+#item3{
     width:630px;
     height:fit-content;
+    display: grid;
+    justify-content: center;
+}
+
+.deleteplanbutton > button, .updateplanbutton > button, .updateexpensebutton > button{
+    font-size: 1em;
+    margin-left: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    margin-top: 1em;
+}
+
+.deleteplanbutton > button:hover, .updateplanbutton > button:hover, .updateexpensebutton > button:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+#item4{
+    display: flex;
+    justify-content: center;
 }

@@ -138,7 +138,7 @@ const PlanDetails = () => {
                         {expensedata &&
                         <ExpenseIndexItem expense={expensedata}/>
                         } */}
-                        <div><DeleteModal id="updateexpensedetails"
+                        <div className="updateexpensebutton"><DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
                                     modalComponent={<ExpenseIndexItem formType="Update Expense" expense={expensedata}/>}
                                     />
@@ -170,15 +170,17 @@ const PlanDetails = () => {
                         {/* <Link to={`/plans/${planId}/edit`}>
                             <button id="updateplandetails" >Update My Plan</button>
                         </Link> */}
-                        <div><DeleteModal id="updateplandetails"
+                        <div className="updateplanbutton"><DeleteModal id="updateplandetails"
                                     itemText="Update Plan"
                                     modalComponent={<PlanForm formType="Update Plan" plan={planData}/>}
                                     />
                         </div>
+                        <div className="deleteplanbutton">
                         <DeleteModal id="deleteplandetails"
                                 itemText="Delete Plan"
                                 modalComponent={<DeletePlanModal plan={planData}/>}
                                 />
+                        </div>
                         </div>
                         : null}
             </div>
