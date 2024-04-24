@@ -15,11 +15,6 @@
     font-size: 1.5em;
 }
 
-/* .slide > img{
-    width:210px;
-    height:fit-content;
-} */
-
 #items{
     display: grid;
     justify-content: center;
@@ -27,4 +22,9 @@
 
 .carousel-root{
     width:630px;
+}
+
+#item1, #item2, #item3,#item4{
+    width:630px;
+    height:fit-content;
 }

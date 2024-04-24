@@ -15,9 +15,8 @@
     font-size: 1.5em;
 }
 
-.slide{
-    width:210px;
-    height:420px;
+.carousel-root{
+    width:630px;
 }
 
 #items{
@@ -25,7 +24,7 @@
     justify-content: center;
 }
 
-#item3{
+#item1, #item2, #item3,#item4{
     width:630px;
     height:fit-content;
 }

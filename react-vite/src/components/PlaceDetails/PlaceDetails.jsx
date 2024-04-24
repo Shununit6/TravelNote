@@ -51,14 +51,14 @@ const PlaceDetails = () => {
                 {placeimageurl == noImg && <img id="noplaceimages" src={placeimageurl} alt="placeimage"/>}
                 {/* {sessionUser && isPlaceCreator && placeimageurl == noImg && <button className={"firstimage"} >Add Image</button>} */}
                 {/* {placeimageurl != noImg && <img id="images" src={} alt="place"/>} */}
-                {/* {placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                {placeimageurl != noImg && placeimageurl.length == 1 && (placeimageurl).map((image, index) => (
                   <img className={`placeimageitem${index}`} src={image.image_url} alt="placeimage" key={index}/>
-                ))} */}
-                {placeimageurl != noImg &&
+                ))}
+                {placeimageurl != noImg && placeimageurl.length > 1 &&
                 <Carousel useKeyboardArrows={true}>
                     {placeimageurl.map((URL, index) => (
                     <div className="slide" key={index}>
-                        <img className={`placeimageitem${index}`} alt="sample_file" src={URL.image_url} key={index} />
+                        <img className={`placeimageitem${index}`} alt="placeimages" src={URL.image_url} key={index} />
                     </div>
                     ))}
                 </Carousel>}
