@@ -12,7 +12,7 @@ import noImg from '../../images/noimage.png';
 // import DeleteImageModal from "../DeleteImageModal";
 import StoryForm from "../StoryForm/StoryForm";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
@@ -58,15 +58,15 @@ const StoryDetails = () => {
                     <img id="images" src={imageUrl} alt="story"/>
                 </div> */}
                 <div id="item2">
-                {storyimageurl == noImg && <img id="nostoryimages" src={storyimageurl} alt="storyimage"/>}
-                {storyimageurl != noImg && (storyimageurl).map((image, index) => (
+                {storyimageurl == noImg && <img id="nostoryimages" src={storyimageurl} alt="storyimage" key="noimg"/>}
+                {storyimageurl != noImg && storyimageurl.length == 1 && (storyimageurl).map((image, index) => (
                   <img className={`storyimageitem${index}`} src={image.image_url} alt="storyimage" key={index}/>
                 ))}
-                {storyimageurl != noImg &&
+                {storyimageurl != noImg && storyimageurl.length > 1 &&
                 <Carousel useKeyboardArrows={true}>
                     {storyimageurl.map((URL, index) => (
-                    <div className="slide">
-                        <img className={`storyimageitem${index}`} alt="sample_file" src={URL.image_url} key={index} />
+                    <div className="slide" key={index}>
+                        <img alt="storyimages" src={URL.image_url} key={index} />
                     </div>
                     ))}
                 </Carousel>}

@@ -57,7 +57,7 @@ const PlaceDetails = () => {
                 {placeimageurl != noImg &&
                 <Carousel useKeyboardArrows={true}>
                     {placeimageurl.map((URL, index) => (
-                    <div className="slide">
+                    <div className="slide" key={index}>
                         <img className={`placeimageitem${index}`} alt="sample_file" src={URL.image_url} key={index} />
                     </div>
                     ))}

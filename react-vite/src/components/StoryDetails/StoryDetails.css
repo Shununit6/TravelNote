@@ -1,6 +1,6 @@
 .storyimageitem0, .storyimageitem1, .storyimageitem2, .storyimageitem3,.storyimageitem4, #nostoryimages {
-    /* width:630px;
-    height:fit-content; */
+    width:630px;
+    height:fit-content;
 }
 
 #storytext{
