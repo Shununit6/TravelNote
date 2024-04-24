@@ -1,0 +1,43 @@
+#expenseformcreateupdate{
+    justify-self: center;
+    display: grid;
+    width:330px;
+    grid-gap: 0.3em;
+    font-family: Georgia, serif, cursive;
+    margin: 2em;
+    z-index: 1;
+}
+
+#expenseformname, #expenseformamount, #expenseformcategory{
+    width:150px;
+}
+
+#expenseformprivate{
+    width:300px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ExpenseCreateUpdateButton{
+    width:fit-content;
+    font-size: 1em;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+#ExpenseCreateUpdateButton:hover{
+    width:fit-content;
+    margin: 0 auto;
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
