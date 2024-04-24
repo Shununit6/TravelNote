@@ -66,7 +66,7 @@ const StoryDetails = () => {
                 <Carousel useKeyboardArrows={true}>
                     {storyimageurl.map((URL, index) => (
                     <div className="slide" key={index}>
-                        <img alt="storyimages" src={URL.image_url} key={index} />
+                        <img className={`storyimageitem${index}`} alt="storyimages" src={URL.image_url} key={index} />
                     </div>
                     ))}
                 </Carousel>}
