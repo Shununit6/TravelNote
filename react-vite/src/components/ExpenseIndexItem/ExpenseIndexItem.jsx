@@ -35,17 +35,17 @@ const ExpenseIndexItem = ({ expense }) => {
                     <table>
                     {/* <thead>
                         <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Most famous song</th>
+                        <td scope="col">Name</td>
+                        <td scope="col">Category</td>
+                        <td scope="col">Amount</td>
+                        <td scope="col">Amount</td>
                         </tr>
                     </thead> */}
                     <tbody>
                         <tr>
-                        <th scope="row">{currentexpense.name}</th>
-                        <td>{currentexpense.category}</td>
-                        <td>{currentexpense.amount}</td>
+                        <th scope="row"> {currentexpense.name}</th>
+                        <td> {currentexpense.category}</td>
+                        <td> {currentexpense.amount}</td>
                         <td><DeleteModal id="updateexpensedetails"
                                     itemText="Update Expense"
                                     modalComponent={<ExpenseForm formType="Update Expense" expense={currentexpense}/>}
