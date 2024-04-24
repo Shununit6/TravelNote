@@ -28,8 +28,6 @@
 #item3{
     width:630px;
     height:fit-content;
-    display: grid;
-    justify-content: center;
 }
 
 .deleteplacebutton > button, .updateplacebutton > button{

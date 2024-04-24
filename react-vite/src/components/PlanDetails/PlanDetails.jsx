@@ -158,7 +158,7 @@ const PlanDetails = () => {
                     </ul>
                     // <div key={index}>name:{expense.name}category:{expense.category}amount:{expense.amount}split{expense.split}</div>
                 ))} */}
-                <div id="item3">
+                <div id="planitem3">
                     <p>{name}</p>
                     <p>Number Of Traveler: {number_traveler}</p>
                     <p>Destination: {city}, {country}</p>
