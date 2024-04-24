@@ -22,6 +22,7 @@
 
 .carousel-root{
     width:630px;
+    z-index: 0;
 }
 
 #item3{

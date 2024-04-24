@@ -5,6 +5,7 @@
     grid-gap: 0.3em;
     font-family: Georgia, serif, cursive;
     margin: 2em;
+    z-index: 1;
 }
 
 #placeformdescription{
@@ -12,23 +13,31 @@
     height:200px
 }
 
-/* #updateplacedetails{
-
-} */
-/* #titlecreateupdateplaceform{
-
-} */
-
-/* #planformname, #planformnumber, #planformcity, #planformcountry{
+#placeformname, #planformtype{
     width:240px;
 }
-#planformstartDate, #planformendDate{
-    width:180px;
-}
-#planformprivate{
-    width: 95px;
-} */
 
 .error{
     color:#7D0027;
+}
+
+#PlaceCreateUpdateButton{
+    width:fit-content;
+    font-size: 1em;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+
+}
+
+#PlaceCreateUpdateButton:hover{
+    width:fit-content;
+    margin: 0 auto;
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
 }
