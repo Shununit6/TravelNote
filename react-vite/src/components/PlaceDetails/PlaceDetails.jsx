@@ -9,6 +9,8 @@ import { getPlaceimageDetails } from "../../redux/placeimages";
 import noImg from '../../images/noimage.png';
 // import DeleteImageModal from "../DeleteImageModal";
 import PlaceForm from "../PlaceForm/PlaceForm";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
@@ -49,9 +51,17 @@ const PlaceDetails = () => {
                 {placeimageurl == noImg && <img id="noplaceimages" src={placeimageurl} alt="placeimage"/>}
                 {/* {sessionUser && isPlaceCreator && placeimageurl == noImg && <button className={"firstimage"} >Add Image</button>} */}
                 {/* {placeimageurl != noImg && <img id="images" src={} alt="place"/>} */}
-                {placeimageurl != noImg && (placeimageurl).map((image, index) => (
+                {/* {placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <img className={`placeimageitem${index}`} src={image.image_url} alt="placeimage" key={index}/>
-                ))}
+                ))} */}
+                {placeimageurl != noImg &&
+                <Carousel useKeyboardArrows={true}>
+                    {placeimageurl.map((URL, index) => (
+                    <div className="slide">
+                        <img alt="sample_file" src={URL.image_url} key={index} />
+                    </div>
+                    ))}
+                </Carousel>}
                 {/* {sessionUser && isPlaceCreator ? placeimageurl != noImg && (placeimageurl).map((image, index) => (
                   <button key={index} className={`placeimageitemupdate${index}`} >Update Image</button>
                 )):null} */}
