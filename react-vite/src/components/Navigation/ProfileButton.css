@@ -9,12 +9,25 @@
     float: inline-end;
 }
 #menuitemlogin{
-    margin-right: 1em;
+    margin-right: 2em;
+}
+#menuitemlogin:hover{
+    color: grey;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
 }
 
 #menuitemsignup{
     margin-left: 1em;
     margin-right: 1.5em;
+}
+
+#menuitemsignup:hover{
+    color: grey;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
 }
 
 .hidden{

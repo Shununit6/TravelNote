@@ -55,3 +55,11 @@
     text-decoration: none;
     color: black;
 }
+
+.logindemobutton:hover,#logindemobutton:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
