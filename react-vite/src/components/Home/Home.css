@@ -28,12 +28,25 @@
     justify-self: center;
     align-self: center;
 }
+#hometextlink1{
+    margin-left: 6.3vw;
+}
 
-#hometextlink1 , #hometextlink2, #hometextlink3, #hometextsignup{
+#hometextlink2{
+    margin-left: 4.2vw;
+}
+
+#hometextlink3{
+    margin-left: 12vw;
+}
+
+#hometextsignup{
+    margin-left: 9.6vw;
+}
+
+#hometextlink1, #hometextlink2, #hometextlink3, #hometextsignup{
     text-decoration: none;
-    font-size: 1em;
-    margin-left: 72px;
-    margin-right: 72px;
+    font-size: 0.9em;
     width: fit-content;
     height: 2em;
     background-color: white;

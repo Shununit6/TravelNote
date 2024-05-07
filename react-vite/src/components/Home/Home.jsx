@@ -35,7 +35,6 @@ function Home(){
                 {sessionUser &&
                 <Link to="/plans/new" > <button id="hometextlink3">Start a new plan</button> </Link>}
                 {!sessionUser &&
-                // <Link id="hometextlink3" to="/places/current" > <button>Join Traveler Note</button> </Link>
                 <div>
                     <button id="hometextsignup">
                     <OpenModalMenuItem
