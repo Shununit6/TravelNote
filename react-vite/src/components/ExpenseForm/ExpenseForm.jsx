@@ -5,15 +5,14 @@ import { createExpense, updateExpense } from "../../redux/expenses";
 import "./ExpenseForm.css";
 import { useModal } from "../../context/Modal";
 
-const ExpenseForm = ({ expense, formType }) => {
+const ExpenseForm = ({ expense, formType, planId }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     // const expenses = useSelector(state => state.expenses);
     let [name, setName] = useState(expense?.name);
     let [category, setCategory] = useState(expense?.category);
     let [amount, setAmount] = useState(expense?.amount);
-    let userId = sessionUser.id;
     let splitState;
     const { closeModal } = useModal();
 
@@ -33,8 +32,11 @@ const ExpenseForm = ({ expense, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(expense);
-    console.log(userId);
+    // console.log(expense);
+    // console.log(userId);
+    if(planId){
+        console.log("planid", planId.planId)
+    }
 
     useEffect(() => {
         const errors = { name:[], category: [], amount:[], split:[]};
@@ -70,10 +72,14 @@ const ExpenseForm = ({ expense, formType }) => {
             }else{
                 // console.log("no errors");
                 if (formType === "Update Expense") {
-                    console.log("before", expense)
+                    // console.log("before", expense)
                     newExpense = await dispatch(updateExpense(expense));
-                    console.log("after", newExpense)
+                    // console.log("after", newExpense)
                 } else {
+                    if(planId){
+                        expense.plan_id = planId.planId;
+                        // console.log(expense)
+                    }
                     newExpense = await dispatch(createExpense(expense));
                 }
                 if (newExpense.id) {
@@ -149,7 +155,7 @@ const ExpenseForm = ({ expense, formType }) => {
                     <input
                             id='expenseformamount'
                             type="number"
-                            // min="1"
+                            min="1"
                             value={amount}
                             placeholder="Please enter a number larger than 0"
                             onChange={(e) => setAmount(e.target.value)}

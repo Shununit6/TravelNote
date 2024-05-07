@@ -1,6 +1,6 @@
 import ExpenseForm from "../ExpenseForm";
 
-const CreateExpenseForm = () => {
+const CreateExpenseForm = (planId) => {
   const expense = {
     name: '',
     category: '',
@@ -13,6 +13,7 @@ const CreateExpenseForm = () => {
     <ExpenseForm
       expense={expense}
       formType="Create Expense"
+      planId={planId}
     />
   );
 };

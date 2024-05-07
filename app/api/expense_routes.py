@@ -55,7 +55,7 @@ def post_expense():
 
     if form.validate_on_submit():
         new_expense = Expense(
-            # plan_id=,
+            plan_id=form.data['plan_id'],
             name=form.data['name'],
             category=form.data['category'],
             amount=form.data['amount'],

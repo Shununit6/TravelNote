@@ -33,7 +33,7 @@
     column-gap: 1em;
 }
 
-.deleteplanbutton > button, .updateplanbutton > button, .updateexpensebutton > button{
+.deleteplanbutton > button, .updateplanbutton > button, .updateexpensebutton > button, .createexpensebutton > button{
     font-size: 1em;
     margin-left: 63px;
     margin-right: 63px;
@@ -45,7 +45,7 @@
     margin-top: 1em;
 }
 
-.deleteplanbutton > button:hover, .updateplanbutton > button:hover, .updateexpensebutton > button:hover{
+.deleteplanbutton > button:hover, .updateplanbutton > button:hover, .updateexpensebutton > button:hover, .createexpensebutton > button:hover{
     color:white;
     background-color: #90daec;
     border-radius: 5px;

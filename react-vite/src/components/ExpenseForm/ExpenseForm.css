@@ -8,8 +8,12 @@
     z-index: 1;
 }
 
-#expenseformname, #expenseformamount, #expenseformcategory{
+#expenseformamount, #expenseformcategory{
     width:150px;
+}
+
+#expenseformname{
+    width:240px;
 }
 
 #expenseformprivate{

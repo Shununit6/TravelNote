@@ -68,11 +68,11 @@ export const getMyExpense = () => async (dispatch) => {
     return res;
 };
 
-export const createExpense = (payload) => async (dispatch) => {
+export const createExpense = (expense) => async (dispatch) => {
     const res = await fetch("/api/expenses/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(expense),
     });
 
     if (res.ok) {
