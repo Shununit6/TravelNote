@@ -2,7 +2,7 @@
 import './FrontPage.css';
 // import MenuLibrary from '../MenuLibrary';
 // import MainPageContent from '../MainPageContent';
-import frontimg from '../../../src/images/img-1.jpg';
+import frontimg from '../../../src/images/background.png';
 
 
 function FrontPage(){

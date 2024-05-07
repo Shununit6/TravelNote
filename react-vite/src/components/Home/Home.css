@@ -1,33 +1,30 @@
-.homewrapper{
+#homewrapper{
     font-family: Georgia, serif, cursive;
-    /* display:flex; */
-    /* display: grid; */
-    /* justify-content: center; */
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start; */
-
+    display: grid;
+    grid-template-areas:
+        "backgroundimg1 hometext1"
+        "hometext2 backgroundimg3"
+        "backgroundimg2 hometext3";
 }
 
-/* .homeitem-1{
-    position: relative;
-    float:inline-start;
-    width:270px;
+#backgroundimg1, #hometext2, #backgroundimg2{
+    width:27vw;
+    height: fit-content;
+    border-radius: 5px;
+    border-color: black;
+    margin-left: 18vw;
 }
 
-.homeitem-2{
-    position: relative;
-    flex:1;
-    width:auto;
-    margin-left: 30px;
-    margin-top: 15px;
-} */
+#backgroundimg3, #hometext1, #hometext3{
+    width:36vw;
+    height: fit-content;
+    border-radius: 5px;
+    border-color: black;
+    margin-right: 18vw;
+}
 
-/* html {
-    background: url("../../../public/images/homepage-1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-} */
+#hometext1, #hometext3, #hometext2{
+    font-size: 1.5em;
+    justify-self: center;
+    align-self: center;
+}
