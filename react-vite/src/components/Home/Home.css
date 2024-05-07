@@ -28,3 +28,9 @@
     justify-self: center;
     align-self: center;
 }
+
+#hometextlink1 , #hometextlink2, #hometextlink3{
+    text-decoration: none;
+    align-self: center;
+    justify-self: center;
+}
