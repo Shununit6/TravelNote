@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
-import { useDispatch, useSelector} from "react-redux"; //useSelector
+import { useDispatch} from "react-redux"; //useSelector
 import { createPlace, updatePlace } from "../../redux/places";
 import "./PlaceForm.css";
 import { useModal } from "../../context/Modal";
@@ -8,8 +8,8 @@ import { useModal } from "../../context/Modal";
 const PlaceForm = ({ place, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
-    const places = useSelector(state => state.places);
+    // const sessionUser = useSelector(state => state.session.user);
+    // const places = useSelector(state => state.places);
     let [name, setName] = useState(place?.name);
     let [type, setType] = useState(place?.type);
     let [description, setDescription] = useState(place?.description);
@@ -21,8 +21,8 @@ const PlaceForm = ({ place, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(places);
-    console.log(sessionUser.user_id)
+    // console.log(places);
+    // console.log(sessionUser.user_id)
 
     useEffect(() => {
         const errors = { name: [], type: [], description:[]};

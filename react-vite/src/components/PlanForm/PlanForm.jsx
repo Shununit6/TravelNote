@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
-import { useDispatch, useSelector} from "react-redux"; //useSelector
+import { useDispatch} from "react-redux"; //useSelector
 import { createPlan, updatePlan } from "../../redux/plans";
 import "./PlanForm.css";
 import { useModal } from "../../context/Modal";
@@ -8,8 +8,8 @@ import { useModal } from "../../context/Modal";
 const PlanForm = ({ plan, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
-    const plans = useSelector(state => state.plans);
+    // const sessionUser = useSelector(state => state.session.user);
+    // const plans = useSelector(state => state.plans);
     let [name, setName] = useState(plan?.name);
     let [number_traveler, setNumber_Traveler] = useState(plan?.number_traveler);
     let [city, setCity] = useState(plan?.city);
@@ -17,7 +17,7 @@ const PlanForm = ({ plan, formType }) => {
     let [startDate, setStartDate] = useState(plan?.start_date);
     let [endDate, setEndDate] = useState(plan?.end_date);
     let privateState;
-    let userId = sessionUser.id;
+    // let userId = sessionUser.id;
     const { closeModal } = useModal();
 
     if(plan?.private == true){
@@ -33,12 +33,12 @@ const PlanForm = ({ plan, formType }) => {
     if(formType == "Update Plan"){
         isUpdate = true;
     }
-    console.log(formType)
+    // console.log(formType)
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log("plans", plans);
-    console.log("userId", userId);
+    // console.log("plans", plans);
+    // console.log("userId", userId);
 
     useEffect(() => {
         const errors = { name: [], number_traveler: [], isPrivate:[], city: [], country:[], startDate:[], endDate:[] };

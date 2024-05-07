@@ -29,8 +29,23 @@
     align-self: center;
 }
 
-#hometextlink1 , #hometextlink2, #hometextlink3{
+#hometextlink1 , #hometextlink2, #hometextlink3, #hometextsignup{
     text-decoration: none;
-    align-self: center;
-    justify-self: center;
+    font-size: 1em;
+    margin-left: 72px;
+    margin-right: 72px;
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    border-radius: 5px;
+    border-color: white;
+    margin-top: 1em;
+}
+
+#hometextlink1:hover , #hometextlink2:hover, #hometextlink3:hover, #hometextsignup:hover{
+    color:white;
+    background-color: #90daec;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
 }

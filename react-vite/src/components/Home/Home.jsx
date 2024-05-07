@@ -7,7 +7,8 @@ import background2 from '../../../src/images/background2.png';
 import background3 from '../../../src/images/background3.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import SignupFormModal from '../SignupFormModal';
 
 function Home(){
     const sessionUser = useSelector((state) => state.session.user);
@@ -16,26 +17,34 @@ function Home(){
 		<nav>
 			<div id="homewrapper">
                 <img id="backgroundimg1" src={background1} alt="backgroundimg1"/>
-                <div id="hometext1"><h3>Hey there, fellow wanderer!</h3> Welcome to Traveler Note, your ultimate hub for all things travel-tastic!
-                    Whether you're mapping out your next big adventure, seeking out hidden gems, or itching to swap stories
-                    with fellow globetrotters, you've come to the right place!
-                    <Link id="hometextlink1" to="/places" > <button>See what has been created</button> </Link>
-                </div>
-                <div id="hometext2">Here, the world is your playground, and the possibilities are as endless as the horizon. Share your travel plans,
-                    dish out tips on must-visit destinations, or regale us with your most epic tales from the road. Let's turn those
-                    wanderlust dreams into reality, one adventure at a time!
+                <p id="hometext1"><h3>Hey there, fellow wanderer!</h3> Welcome to Traveler Note, your ultimate hub for all things travel-tastic!
+                    Whether you are mapping out your next big adventure, seeking out hidden gems, or itching to swap stories
+                    with fellow globetrotters, you have come to the right place! <br></br>
+                    <Link to="/places" > <button id="hometextlink1">See what has been created</button> </Link>
+                </p>
+                <p id="hometext2">Here, the world is your playground, and the possibilities are as endless as the horizon. Share your travel plans,
+                    dish out tips on must-visit destinations, or regale us with your most epic tales from the road. Let us turn those
+                    wanderlust dreams into reality, one adventure at a time! <br></br>
                     {sessionUser &&
-                    <Link id="hometextlink2" to="/places/current" > <button>View things I have added</button> </Link>}
-                </div>
+                    <Link to="/places/current" > <button id="hometextlink2">View things I have added</button> </Link>}
+                </p>
                 <img id="backgroundimg3" src={background3} alt="backgroundimg3"/>
                 <img id="backgroundimg2" src={background2} alt="backgroundimg2"/>
-                <div id="hometext3"> So grab your passport, pack your sense of adventure, and let's embark on this journey together.
-                Adventure awaits!
+                <p id="hometext3"> So grab your passport, pack your sense of adventure, and let us embark on this journey together.
+                Adventure awaits! <br></br>
                 {sessionUser &&
-                <Link id="hometextlink3" to="/places/current" > <button>Start a new plan</button> </Link>}
+                <Link to="/plans/new" > <button id="hometextlink3">Start a new plan</button> </Link>}
                 {!sessionUser &&
-                <Link id="hometextlink3" to="/places/current" > <button>Join Traveler Note</button> </Link>}
-                </div>
+                // <Link id="hometextlink3" to="/places/current" > <button>Join Traveler Note</button> </Link>
+                <div>
+                    <button id="hometextsignup">
+                    <OpenModalMenuItem
+                    itemText="Join Traveler Note"
+                    modalComponent={<SignupFormModal />}
+                    />
+                    </button>
+                </div>}
+                </p>
 			</div>
 		</nav>
         </>

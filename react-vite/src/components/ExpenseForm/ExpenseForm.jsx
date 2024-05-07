@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
-import { useDispatch, useSelector} from "react-redux"; //useSelector
+import { useDispatch } from "react-redux"; //useSelector
 import { createExpense, updateExpense } from "../../redux/expenses";
 import "./ExpenseForm.css";
 import { useModal } from "../../context/Modal";
@@ -34,9 +34,9 @@ const ExpenseForm = ({ expense, formType, planId }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     // console.log(expense);
     // console.log(userId);
-    if(planId){
-        console.log("planid", planId.planId)
-    }
+    // if(planId){
+    //     console.log("planid", planId.planId)
+    // }
 
     useEffect(() => {
         const errors = { name:[], category: [], amount:[], split:[]};
@@ -63,7 +63,7 @@ const ExpenseForm = ({ expense, formType, planId }) => {
         expense = { ...expense, name, category, amount, split};
 
         let newExpense;
-        console.log("validationErrorsvalidationErrors", validationErrors);
+        // console.log("validationErrorsvalidationErrors", validationErrors);
         let errorCount = validationErrors.name.length + validationErrors.category.length
         + validationErrors.amount.length + validationErrors.split.length;
         // console.log(errorCount);

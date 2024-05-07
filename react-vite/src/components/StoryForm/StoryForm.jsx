@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom"; //useParams,
-import { useDispatch, useSelector} from "react-redux"; //useSelector
+import { useDispatch} from "react-redux"; //useSelector
 import { createStory, updateStory } from "../../redux/stories";
 import "./StoryForm.css";
 import { useModal } from "../../context/Modal";
@@ -8,8 +8,8 @@ import { useModal } from "../../context/Modal";
 const StoryForm = ({ story, formType }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
-    const stories = useSelector(state => state.stories);
+    // const sessionUser = useSelector(state => state.session.user);
+    // const stories = useSelector(state => state.stories);
     let [title, setTitle] = useState(story?.title);
     let [description, setDescription] = useState(story?.description);
     let [article_url, setArticle] = useState(story?.article_url);
@@ -23,8 +23,8 @@ const StoryForm = ({ story, formType }) => {
 
     const [validationErrors, setValidationErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    console.log(stories);
-    console.log(sessionUser.user_id)
+    // console.log(stories);
+    // console.log(sessionUser.user_id)
 
     useEffect(() => {
         const errors = { title: [], description: [], article_url:[], shorts_url:[]};
