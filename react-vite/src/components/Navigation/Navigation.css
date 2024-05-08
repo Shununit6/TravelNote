@@ -59,3 +59,55 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+.githubimage{
+  position: relative;
+  float: left;
+}
+
+.githubimage .githubimage2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.githubimage:hover .githubimage2 {
+  display: block;
+}
+
+.githubimage:hover .githubimage2 {
+    display: block;
+}
+
+#github, #githubwhite, #lilogo{
+  width:fit-content;
+  height: 1.6em;
+}
+
+#githubwhite{
+  background-color: black;
+}
+
+#github:hover, #githubwhite:hover,#lilogo:hover{
+  height: 1.62em;
+}
+
+/*
+.github{
+  text-decoration: none;
+  font-size: 0.9em;
+  width: fit-content;
+  height: 2em;
+  background-color: white;
+  border-radius: 5px;
+  border-color: white;
+} */
+
+/* #github:hover{
+  color:white;
+  background-color: #90daec;
+  border-radius: 5px;
+  border-color: white;
+  cursor: pointer;
+} */
