@@ -6,6 +6,7 @@ import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
 // import MenuLibrary from '../MenuLibrary';
 import { getAllExpenses } from '../../redux/expenses';
+import loading from '../../../src/images/loading.mp4';
 
 const ManagePlans = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,13 @@ const ManagePlans = () => {
         dispatch(getAllExpenses()).then(()=>dispatch(getAllPlans())).then(() => setIsLoading(false));
     }, [dispatch]);
 
-    if (isLoading) return <>Loading...</>;
+    if (isLoading) {
+        return (
+          <div className="loadingcontainer">
+            <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+          </div>
+        );
+    }
 
 
     const plansByUser = plans ? plans.filter(plan => {

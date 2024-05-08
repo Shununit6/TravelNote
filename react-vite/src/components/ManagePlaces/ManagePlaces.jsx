@@ -6,6 +6,7 @@ import { getAllPlaces } from '../../redux/places';
 import PlaceIndexItem from '../PlaceIndexItem';
 // import MenuLibrary from '../MenuLibrary';
 import { getAllPlaceimages } from '../../redux/placeimages';
+import loading from '../../../src/images/loading.mp4';
 
 const ManagePlaces = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,13 @@ const ManagePlaces = () => {
         }
     }, [dispatch, sessionUser]);
 
-    if (isLoading) return <>Loading...</>;
+    if (isLoading) {
+        return (
+          <div className="loadingcontainer">
+            <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+          </div>
+        );
+    }
 
 
     const placesByUser = places ? places.filter(place => {

@@ -6,6 +6,7 @@ import { getAllStories } from '../../redux/stories';
 import StoryIndexItem from '../StoryIndexItem';
 // import MenuLibrary from '../MenuLibrary';
 import { getAllStoryimages } from '../../redux/storyimages';
+import loading from '../../../src/images/loading.mp4';
 
 const ManageStories = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,14 @@ const ManageStories = () => {
         }
     }, [dispatch, sessionUser]);
 
-    if (isLoading) return <>Loading...</>;
+    if (isLoading) {
+        return (
+          <div className="loadingcontainer">
+            <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+          </div>
+        );
+    }
+
 
 
     const storiesByUser = stories ? stories.filter(story => {

@@ -11,6 +11,7 @@ import noImg from '../../images/noimage.png';
 import PlaceForm from "../PlaceForm/PlaceForm";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import loading from '../../../src/images/loading.mp4';
 const PlaceDetails = () => {
     const dispatch = useDispatch();
     let { placeId } = useParams();
@@ -24,9 +25,13 @@ const PlaceDetails = () => {
     if(isLoaded && !placeData){
         return (<Navigate to="/places"/>);
     }
-    if(!isLoaded) {
-        return (<div>Loading...</div>);
-    }
+    if (!isLoaded) {
+        return (
+          <div className="loadingcontainer">
+            <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+          </div>
+        );
+      }
     // const { id, user_id, name, number_traveler, city, country, start_date, end_date, created_at, updated_at} = planData;
     const { user_id, name, type, description } = placeData;
     let isPlaceCreator=false;

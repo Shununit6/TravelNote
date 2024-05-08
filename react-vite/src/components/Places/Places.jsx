@@ -5,6 +5,7 @@ import { getAllPlaces } from '../../redux/places';
 import PlaceIndexItem from '../PlaceIndexItem';
 import "./Places.css";
 import { getAllPlaceimages } from '../../redux/placeimages';
+import loading from '../../../src/images/loading.mp4';
 
 function Places({num}) {
     const dispatch = useDispatch();
@@ -17,7 +18,11 @@ function Places({num}) {
     }, [dispatch]);
 
   if (!isLoaded) {
-    return (<div>Loading...</div>);
+    return (
+      <div className="loadingcontainer">
+        <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+      </div>
+    );
   }
   // console.log(places);
   // console.log(placeimages)

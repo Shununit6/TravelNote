@@ -23,7 +23,7 @@ function LikeStory({storyId, userId}) {
       dispatch(getStoryDetails(storyId)).then(()=>dispatch(getAllLikes())).then(()=>dispatch(getStoryLikes(storyId))).then(() => setIsLoading(false));
     }, [dispatch, storyId]);
 
-  if (isLoading) return (<>Loading...</>);
+  if (isLoading) return (<></>);
 
 
   const handleClick = () => {

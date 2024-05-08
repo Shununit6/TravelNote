@@ -13,6 +13,8 @@ import noImg from '../../images/noimage.png';
 import StoryForm from "../StoryForm/StoryForm";
 import { Carousel } from "react-responsive-carousel";
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
+import loading from '../../../src/images/loading.mp4';
+
 const StoryDetails = () => {
     const dispatch = useDispatch();
     let { storyId } = useParams();
@@ -31,8 +33,12 @@ const StoryDetails = () => {
     if(isLoaded && !storyData){
         return (<Navigate to="/stories"/>);
     }
-    if(!isLoaded) {
-        return (<div>Loading...</div>);
+    if (!isLoaded) {
+        return (
+        <div className="loadingcontainer">
+            <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+        </div>
+        );
     }
     // const { id, user_id, place_id, title, description, article_url, shorts_url, created_at, updated_at} = storyData;
     const { title, user_id, description, article_url, shorts_url} = storyData;

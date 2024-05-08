@@ -5,6 +5,7 @@ import { getAllStories } from '../../redux/stories';
 import StoryIndexItem from '../StoryIndexItem';
 import "./Stories.css";
 import { getAllStoryimages } from '../../redux/storyimages';
+import loading from '../../../src/images/loading.mp4';
 
 function Stories({num}) {
     const dispatch = useDispatch();
@@ -16,7 +17,11 @@ function Stories({num}) {
     }, [dispatch]);
 
   if (!isLoaded) {
-    return (<div>Loading...</div>);
+    return (
+      <div className="loadingcontainer">
+        <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+      </div>
+    );
   }
   // console.log(stories);
   if(isLoaded){
