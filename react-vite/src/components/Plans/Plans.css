@@ -49,3 +49,16 @@
     justify-content: center;
     align-items: start;
 }
+
+.loadingcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loadingmp4 {
+    border-radius: 6px;
+}

@@ -5,6 +5,7 @@ import { getAllPlans } from '../../redux/plans';
 import PlanIndexItem from '../PlanIndexItem';
 import "./Plans.css";
 import { getAllExpenses } from '../../redux/expenses';
+import loading from '../../../src/images/loading.mp4';
 
 function Plans({num}) {
     const dispatch = useDispatch();
@@ -19,7 +20,11 @@ function Plans({num}) {
     }, [dispatch]);
 
   if (!isLoaded) {
-    return (<div>Loading...</div>);
+    return (
+      <div className="loadingcontainer">
+        <div className='loadingmp4'><video autoPlay><source src={loading} type="video/mp4"></source></video></div>
+      </div>
+    );
   }
   // console.log(plans);
   if(isLoaded){
